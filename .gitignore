@@ -1,2 +1,26 @@
+# node deps
 node_modules/
+**/node_modules/
+
+# env
 .env
+**/.env
+
+# prisma
+prisma/dev.db
+**/prisma/dev.db
+
+# local editor / OS files
+.vscode/
+.DS_Store
+.idea/
+
+# docker
+docker-compose.override.yml
+docker-compose.yml
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*

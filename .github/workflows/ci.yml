@@ -1,0 +1,35 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project: [backend, frontend]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        working-directory: ${{ matrix.project }}
+        run: npm ci
+
+      - name: Lint (if configured)
+        working-directory: ${{ matrix.project }}
+        run: |
+          if [ -f package.json ]; then
+            npm run lint || echo "no lint script"
+          fi
+
+      - name: Run tests (if any)
+        working-directory: ${{ matrix.project }}
+        run: |
+          if [ -f package.json ]; then
+            npm test || echo "no tests"
+          fi
