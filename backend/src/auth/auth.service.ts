@@ -1,0 +1,177 @@
+import {
+  Injectable,
+  UnauthorizedException,
+  BadRequestException,
+} from '@nestjs/common';
+import { UsersService } from '../users/users.service';
+import { PrismaService } from '../prisma/prisma.service';
+import * as bcrypt from 'bcrypt';
+import { JwtService } from '@nestjs/jwt';
+import * as crypto from 'crypto';
+
+@Injectable()
+export class AuthService {
+  constructor(
+    private usersService: UsersService,
+    private prisma: PrismaService,
+    private jwtService: JwtService,
+  ) {}
+
+  private getAccessTokenPayload(user: any) {
+    return { sub: user.id, email: user.email, role: user.role };
+  }
+
+  async register(email: string, password: string, name?: string) {
+    const existing = await this.usersService.findByEmail(email);
+    if (existing) throw new BadRequestException('Email already in use');
+    return this.usersService.createUser(email, password, name);
+  }
+
+  async validateUser(email: string, password: string) {
+    const user = await this.usersService.findByEmail(email);
+    if (!user) return null;
+    const valid = await this.usersService.verifyPassword(user, password);
+    if (!valid) return null;
+    return user;
+  }
+
+  async getTokens(user: any) {
+    const payload = this.getAccessTokenPayload(user);
+
+    // CASTS: jwt typings are strict about options types; cast to any to allow '7d' / '900s' strings
+    const accessToken = this.jwtService.sign(
+      payload as any,
+      {
+        expiresIn: process.env.JWT_ACCESS_EXPIRES_IN || '900s',
+      } as any,
+    );
+
+    const refreshToken = this.jwtService.sign(
+      { sub: user.id } as any,
+      {
+        expiresIn: process.env.JWT_REFRESH_EXPIRES_IN || '7d',
+      } as any,
+    );
+
+    return { accessToken, refreshToken };
+  }
+
+  async login(email: string, password: string) {
+    const user = await this.validateUser(email, password);
+    if (!user) throw new UnauthorizedException('Invalid credentials');
+    const tokens = await this.getTokens(user);
+
+    // hash refresh token before saving
+    const hash = await bcrypt.hash(tokens.refreshToken, 10);
+    await this.usersService.setRefreshToken(user.id, hash);
+
+    return {
+      user: {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        role: user.role,
+      },
+      tokens,
+    };
+  }
+
+  async logout(userId: string) {
+    await this.usersService.setRefreshToken(userId, null);
+    return { ok: true };
+  }
+
+  async refreshTokens(userId: string, refreshToken: string) {
+    const user = await this.usersService.findById(userId);
+    if (!user || !user.hashedRefreshToken) throw new UnauthorizedException();
+
+    const matches = await bcrypt.compare(refreshToken, user.hashedRefreshToken);
+    if (!matches) throw new UnauthorizedException();
+
+    const tokens = await this.getTokens(user);
+    const newHash = await bcrypt.hash(tokens.refreshToken, 10);
+    await this.usersService.setRefreshToken(user.id, newHash);
+
+    return {
+      tokens,
+      user: {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        role: user.role,
+      },
+    };
+  }
+
+  // New helper: verify a refresh token, extract userId and refresh
+  async refreshUsingToken(refreshToken: string) {
+    try {
+      const decoded: any = this.jwtService.verify(refreshToken as string);
+      const userId = decoded.sub;
+      return this.refreshTokens(userId, refreshToken);
+    } catch (err) {
+      throw new UnauthorizedException('Invalid refresh token');
+    }
+  }
+
+  // Password reset (create token and store its SHA256 hash)
+  async createPasswordReset(email: string) {
+    const user = await this.usersService.findByEmail(email);
+    if (!user) return; // don't reveal user existence
+
+    const raw = crypto.randomBytes(32).toString('hex');
+    const tokenHash = crypto.createHash('sha256').update(raw).digest('hex');
+
+    const expires = new Date(
+      Date.now() +
+        Number(process.env.PASSWORD_RESET_TOKEN_EXPIRES_MINUTES || 60) *
+          60 *
+          1000,
+    );
+
+    await this.prisma.passwordResetToken.create({
+      data: {
+        tokenHash,
+        userId: user.id,
+        expiresAt: expires,
+      },
+    });
+
+    // NOTE: In prod you must email `raw` token as a reset link. For now we return it (or log).
+    console.log(
+      `Password reset token for ${email}: ${raw} (valid until ${expires.toISOString()})`,
+    );
+
+    return { ok: true };
+  }
+
+  async resetPassword(rawToken: string, newPassword: string) {
+    const tokenHash = crypto
+      .createHash('sha256')
+      .update(rawToken)
+      .digest('hex');
+    const token = await this.prisma.passwordResetToken.findUnique({
+      where: { tokenHash },
+      include: { user: true },
+    });
+    if (!token) throw new BadRequestException('Invalid or expired token');
+    if (token.used) throw new BadRequestException('Token already used');
+    if (token.expiresAt < new Date())
+      throw new BadRequestException('Token expired');
+
+    // update user's password
+    const hashed = await bcrypt.hash(newPassword, 10);
+    await this.prisma.user.update({
+      where: { id: token.userId },
+      data: { password: hashed },
+    });
+
+    // mark token used
+    await this.prisma.passwordResetToken.update({
+      where: { id: token.id },
+      data: { used: true },
+    });
+
+    return { ok: true };
+  }
+}
