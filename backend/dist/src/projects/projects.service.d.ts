@@ -12,32 +12,32 @@ export declare class ProjectsService {
         columns: ({
             tasks: {
                 id: string;
-                description: string | null;
                 createdAt: Date;
                 updatedAt: Date;
-                position: number;
+                description: string | null;
                 title: string;
+                position: number;
+                status: import("@prisma/client").$Enums.TaskStatus;
                 columnId: string;
                 assigneeId: string | null;
-                status: import("@prisma/client").$Enums.TaskStatus;
             }[];
         } & {
             id: string;
             createdAt: Date;
             updatedAt: Date;
-            position: number;
             title: string;
             projectId: string;
+            position: number;
         })[];
     } & {
         id: string;
         name: string;
-        description: string | null;
-        assignedAt: Date;
-        dueDate: Date | null;
         createdAt: Date;
         updatedAt: Date;
         teamId: string | null;
+        description: string | null;
+        assignedAt: Date;
+        dueDate: Date | null;
     }>;
     getProjectWithBoard(projectId: string): Promise<{
         team: {
@@ -49,32 +49,32 @@ export declare class ProjectsService {
         columns: ({
             tasks: {
                 id: string;
-                description: string | null;
                 createdAt: Date;
                 updatedAt: Date;
-                position: number;
+                description: string | null;
                 title: string;
+                position: number;
+                status: import("@prisma/client").$Enums.TaskStatus;
                 columnId: string;
                 assigneeId: string | null;
-                status: import("@prisma/client").$Enums.TaskStatus;
             }[];
         } & {
             id: string;
             createdAt: Date;
             updatedAt: Date;
-            position: number;
             title: string;
             projectId: string;
+            position: number;
         })[];
     } & {
         id: string;
         name: string;
-        description: string | null;
-        assignedAt: Date;
-        dueDate: Date | null;
         createdAt: Date;
         updatedAt: Date;
         teamId: string | null;
+        description: string | null;
+        assignedAt: Date;
+        dueDate: Date | null;
     }>;
     listProjects(userId: string): Promise<({
         team: {
@@ -86,32 +86,32 @@ export declare class ProjectsService {
         columns: ({
             tasks: {
                 id: string;
-                description: string | null;
                 createdAt: Date;
                 updatedAt: Date;
-                position: number;
+                description: string | null;
                 title: string;
+                position: number;
+                status: import("@prisma/client").$Enums.TaskStatus;
                 columnId: string;
                 assigneeId: string | null;
-                status: import("@prisma/client").$Enums.TaskStatus;
             }[];
         } & {
             id: string;
             createdAt: Date;
             updatedAt: Date;
-            position: number;
             title: string;
             projectId: string;
+            position: number;
         })[];
     } & {
         id: string;
         name: string;
-        description: string | null;
-        assignedAt: Date;
-        dueDate: Date | null;
         createdAt: Date;
         updatedAt: Date;
         teamId: string | null;
+        description: string | null;
+        assignedAt: Date;
+        dueDate: Date | null;
     })[]>;
     userIsAdmin(userId: string): Promise<boolean>;
     userMembershipRoleForTeam(userId: string, teamId: string): Promise<string | null>;
@@ -122,28 +122,28 @@ export declare class ProjectsService {
         id: string;
         createdAt: Date;
         updatedAt: Date;
-        position: number;
         title: string;
         projectId: string;
+        position: number;
     }>;
     deleteColumnIfEmpty(columnId: string): Promise<{
         id: string;
         createdAt: Date;
         updatedAt: Date;
-        position: number;
         title: string;
         projectId: string;
+        position: number;
     }>;
     createTask(columnId: string, title: string, description?: string, assigneeId?: string, position?: number): Promise<{
         id: string;
-        description: string | null;
         createdAt: Date;
         updatedAt: Date;
-        position: number;
+        description: string | null;
         title: string;
+        position: number;
+        status: import("@prisma/client").$Enums.TaskStatus;
         columnId: string;
         assigneeId: string | null;
-        status: import("@prisma/client").$Enums.TaskStatus;
     }>;
     updateTask(taskId: string, data: {
         title?: string;
@@ -152,47 +152,47 @@ export declare class ProjectsService {
         status?: string;
     }): import("@prisma/client").Prisma.Prisma__TaskClient<{
         id: string;
-        description: string | null;
         createdAt: Date;
         updatedAt: Date;
-        position: number;
+        description: string | null;
         title: string;
+        position: number;
+        status: import("@prisma/client").$Enums.TaskStatus;
         columnId: string;
         assigneeId: string | null;
-        status: import("@prisma/client").$Enums.TaskStatus;
     }, never, import("@prisma/client/runtime/library").DefaultArgs, import("@prisma/client").Prisma.PrismaClientOptions>;
     moveTask(taskId: string, targetColumnId: string, targetPosition: number): Promise<{
         id: string;
-        description: string | null;
         createdAt: Date;
         updatedAt: Date;
-        position: number;
+        description: string | null;
         title: string;
+        position: number;
+        status: import("@prisma/client").$Enums.TaskStatus;
         columnId: string;
         assigneeId: string | null;
-        status: import("@prisma/client").$Enums.TaskStatus;
     } | null>;
     deleteTask(taskId: string): Promise<{
         id: string;
-        description: string | null;
         createdAt: Date;
         updatedAt: Date;
-        position: number;
+        description: string | null;
         title: string;
+        position: number;
+        status: import("@prisma/client").$Enums.TaskStatus;
         columnId: string;
         assigneeId: string | null;
-        status: import("@prisma/client").$Enums.TaskStatus;
     }>;
     getTaskById(taskId: string): Promise<{
         id: string;
-        description: string | null;
         createdAt: Date;
         updatedAt: Date;
-        position: number;
+        description: string | null;
         title: string;
+        position: number;
+        status: import("@prisma/client").$Enums.TaskStatus;
         columnId: string;
         assigneeId: string | null;
-        status: import("@prisma/client").$Enums.TaskStatus;
     } | null>;
     updateProject(projectId: string, updates: {
         name?: string;
@@ -202,21 +202,21 @@ export declare class ProjectsService {
     }, actorUserId: string): Promise<{
         id: string;
         name: string;
-        description: string | null;
-        assignedAt: Date;
-        dueDate: Date | null;
         createdAt: Date;
         updatedAt: Date;
         teamId: string | null;
+        description: string | null;
+        assignedAt: Date;
+        dueDate: Date | null;
     }>;
     deleteProject(projectId: string, actorUserId: string): Promise<{
         id: string;
         name: string;
-        description: string | null;
-        assignedAt: Date;
-        dueDate: Date | null;
         createdAt: Date;
         updatedAt: Date;
         teamId: string | null;
+        description: string | null;
+        assignedAt: Date;
+        dueDate: Date | null;
     }>;
 }

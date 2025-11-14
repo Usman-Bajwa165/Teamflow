@@ -8,8 +8,8 @@ export declare class TeamsService {
         members: {
             id: string;
             role: string;
-            joinedAt: Date;
             userId: string;
+            joinedAt: Date;
             teamId: string;
         }[];
     } & {
@@ -31,40 +31,40 @@ export declare class TeamsService {
     getTeamMembers(teamId: string): Promise<{
         user: {
             id: string;
-            name: string | null;
-            createdAt: Date;
-            updatedAt: Date;
-            role: string;
             email: string;
             password: string;
+            name: string | null;
+            role: string;
+            createdAt: Date;
+            updatedAt: Date;
             hashedRefreshToken: string | null;
         };
         inOtherTeams: boolean;
         id: string;
         role: string;
-        joinedAt: Date;
         userId: string;
+        joinedAt: Date;
         teamId: string;
     }[]>;
     inviteMemberByEmail(teamId: string, email: string, role?: string): Promise<{
         id: string;
         role: string;
-        joinedAt: Date;
         userId: string;
+        joinedAt: Date;
         teamId: string;
     }>;
     changeMemberRole(teamId: string, memberId: string, newRole: string): Promise<{
         id: string;
         role: string;
-        joinedAt: Date;
         userId: string;
+        joinedAt: Date;
         teamId: string;
     }>;
     removeMember(teamId: string, memberId: string): Promise<{
         id: string;
         role: string;
-        joinedAt: Date;
         userId: string;
+        joinedAt: Date;
         teamId: string;
     }>;
     findTeamById(teamId: string): Promise<{
@@ -77,14 +77,14 @@ export declare class TeamsService {
         members: ({
             user: {
                 id: string;
-                name: string | null;
                 email: string;
+                name: string | null;
             };
         } & {
             id: string;
             role: string;
-            joinedAt: Date;
             userId: string;
+            joinedAt: Date;
             teamId: string;
         })[];
     } & {
@@ -95,22 +95,22 @@ export declare class TeamsService {
     })[]>;
     listAllTeamsWithProjectCount(): Promise<{
         projectCount: number;
+        _count: {
+            projects: number;
+        };
         members: ({
             user: {
                 id: string;
-                name: string | null;
                 email: string;
+                name: string | null;
             };
         } & {
             id: string;
             role: string;
-            joinedAt: Date;
             userId: string;
+            joinedAt: Date;
             teamId: string;
         })[];
-        _count: {
-            projects: number;
-        };
         id: string;
         name: string;
         createdAt: Date;
@@ -126,8 +126,8 @@ export declare class TeamsService {
             role: string;
             user: {
                 id: string;
-                name: string | null;
                 email: string;
+                name: string | null;
             };
         }[];
         projects: {

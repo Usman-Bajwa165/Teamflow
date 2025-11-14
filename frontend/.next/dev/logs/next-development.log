@@ -1,16 +1,11 @@
-[00:00:04.050] Server  LOG      ✓ Ready in 3s
-[00:04:13.405] Server  LOG      ○ Compiling /_not-found/page ...
-[00:04:21.070] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:04:21.275] Browser WARN    Image with src "http://localhost:3000/vercel.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:05:11.211] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:11:23.300] Server  LOG      ✓ Compiled in 761ms
-[00:11:31.537] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:16:49.295] Server  LOG      ✓ Compiled in 302ms
-[00:18:40.599] Server  LOG      ○ Compiling /projects/[id] ...
-[00:25:15.528] Server  LOG      ✓ Compiled in 783ms
-[00:25:18.381] Server  LOG      ✓ Compiled in 807ms
-[00:25:38.098] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:25:38.330] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+[00:00:06.344] Server  LOG      ✓ Ready in 4.5s
+[00:00:40.250] Server  LOG      ○ Compiling / ...
+[00:00:51.458] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:55.489] Browser WARN    Image with src "http://localhost:3000/vercel.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:46.021] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:54.822] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:02.251] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:02.678] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
 
 - A server/client branch `if (typeof window !== 'undefined')`.
 - Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
@@ -27,26 +22,1480 @@ https://react.dev/link/hydration-mismatch
       <ScrollAndFocusHandler segmentPath={[...]}>
         <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
           <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
-            <LoadingBoundary name="projects/" loading={null}>
+            <LoadingBoundary name="users/" loading={null}>
               <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
                 <RedirectBoundary>
                   <RedirectErrorBoundary router={{...}}>
-                    <InnerLayoutRouter url="/projects" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+                    <InnerLayoutRouter url="/admin/users" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
                       <SegmentViewNode type="page" pagePath="/frontend/...">
                         <SegmentTrieNode>
-                        <ClientPageRoot Component={function ProjectsListPage} serverProvidedParams={{...}}>
-                          <ProjectsListPage params={Promise} searchParams={Promise}>
+                        <ClientPageRoot Component={function AdminUsersPage} serverProvidedParams={{...}}>
+                          <AdminUsersPage params={Promise} searchParams={Promise}>
                             <div>
-                              <h2>
-+                             <form onSubmit={function addProject} className="mb-6 space-y-2">
--                             <ul className="space-y-3">
++                             <h2 className="text-2xl mb-4">
+-                             Access denied.
                               ...
                       ...
                     ...
           ...
 
-[00:26:26.746] Browser ERROR   Failed to fetch teams (getMyTeams) — raw error: {"body":"{\"message\":\"Unauthorized\",\"statusCode\":401}","status":401}
-[00:26:26.746] Browser ERROR   Failed to fetch teams (getMyTeams) — raw error: {"body":"{\"message\":\"Unauthorized\",\"statusCode\":401}","status":401}
-[00:26:55.442] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:30:09.846] Server  LOG      ✓ Compiled in 588ms
-[00:30:21.973] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:10.054] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:10.568] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RenderFromTemplateContext>
+      <ScrollAndFocusHandler segmentPath={[...]}>
+        <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+          <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+            <LoadingBoundary name="users/" loading={null}>
+              <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+                <RedirectBoundary>
+                  <RedirectErrorBoundary router={{...}}>
+                    <InnerLayoutRouter url="/admin/users" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+                      <SegmentViewNode type="page" pagePath="/frontend/...">
+                        <SegmentTrieNode>
+                        <ClientPageRoot Component={function AdminUsersPage} serverProvidedParams={{...}}>
+                          <AdminUsersPage params={Promise} searchParams={Promise}>
+                            <div>
++                             <h2 className="text-2xl mb-4">
+-                             Access denied.
+                              ...
+                      ...
+                    ...
+          ...
+
+[00:04:41.922] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:12:26.947] Server  LOG      ✓ Compiled in 493ms
+[00:12:34.013] Server  LOG      ✓ Compiled in 174ms
+[00:13:02.759] Server  LOG      ✓ Compiled in 349ms
+[00:13:03.324] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export createAdminUser doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export createAdminUser was not found in module [project]/frontend/src/lib/api.ts [app-client] (ecmascript).
+Did you mean to import createUserAsAdmin?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:03.325] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export createAdminUser doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export createAdminUser was not found in module [project]/frontend/src/lib/api.ts [app-ssr] (ecmascript).
+Did you mean to import createUserAsAdmin?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:03.325] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export demoteUser doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export demoteUser was not found in module [project]/frontend/src/lib/api.ts [app-client] (ecmascript).
+Did you mean to import deleteUser?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:03.325] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export demoteUser doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export demoteUser was not found in module [project]/frontend/src/lib/api.ts [app-ssr] (ecmascript).
+Did you mean to import deleteUser?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:03.325] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export getAdminUsers doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export getAdminUsers was not found in module [project]/frontend/src/lib/api.ts [app-client] (ecmascript).
+Did you mean to import getAllUsers?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:03.325] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export getAdminUsers doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export getAdminUsers was not found in module [project]/frontend/src/lib/api.ts [app-ssr] (ecmascript).
+Did you mean to import getAllUsers?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:03.325] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export promoteUser doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export promoteUser was not found in module [project]/frontend/src/lib/api.ts [app-client] (ecmascript).
+Did you mean to import updateUserRole?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:03.325] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export promoteUser doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export promoteUser was not found in module [project]/frontend/src/lib/api.ts [app-ssr] (ecmascript).
+Did you mean to import updateUserRole?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:03.325] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export createAdminUser doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export createAdminUser was not found in module [project]/frontend/src/lib/api.ts [app-client] (ecmascript).
+Did you mean to import createUserAsAdmin?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:03.325] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export createAdminUser doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export createAdminUser was not found in module [project]/frontend/src/lib/api.ts [app-ssr] (ecmascript).
+Did you mean to import createUserAsAdmin?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:03.326] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export demoteUser doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export demoteUser was not found in module [project]/frontend/src/lib/api.ts [app-client] (ecmascript).
+Did you mean to import deleteUser?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:03.326] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export demoteUser doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export demoteUser was not found in module [project]/frontend/src/lib/api.ts [app-ssr] (ecmascript).
+Did you mean to import deleteUser?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:03.326] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export getAdminUsers doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export getAdminUsers was not found in module [project]/frontend/src/lib/api.ts [app-client] (ecmascript).
+Did you mean to import getAllUsers?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:03.326] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export getAdminUsers doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export getAdminUsers was not found in module [project]/frontend/src/lib/api.ts [app-ssr] (ecmascript).
+Did you mean to import getAllUsers?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:03.326] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export promoteUser doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export promoteUser was not found in module [project]/frontend/src/lib/api.ts [app-client] (ecmascript).
+Did you mean to import updateUserRole?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:03.326] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export promoteUser doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export promoteUser was not found in module [project]/frontend/src/lib/api.ts [app-ssr] (ecmascript).
+Did you mean to import updateUserRole?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:04.639] Server  LOG      ✓ Compiled in 133ms
+[00:13:05.332] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export createAdminUser doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export createAdminUser was not found in module [project]/frontend/src/lib/api.ts [app-client] (ecmascript).
+Did you mean to import createUserAsAdmin?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:05.333] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export createAdminUser doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export createAdminUser was not found in module [project]/frontend/src/lib/api.ts [app-ssr] (ecmascript).
+Did you mean to import createUserAsAdmin?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:05.333] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export demoteUser doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export demoteUser was not found in module [project]/frontend/src/lib/api.ts [app-client] (ecmascript).
+Did you mean to import deleteUser?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:05.333] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export demoteUser doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export demoteUser was not found in module [project]/frontend/src/lib/api.ts [app-ssr] (ecmascript).
+Did you mean to import deleteUser?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:05.333] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export getAdminUsers doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export getAdminUsers was not found in module [project]/frontend/src/lib/api.ts [app-client] (ecmascript).
+Did you mean to import getAllUsers?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:05.333] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export getAdminUsers doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export getAdminUsers was not found in module [project]/frontend/src/lib/api.ts [app-ssr] (ecmascript).
+Did you mean to import getAllUsers?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:05.333] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export promoteUser doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export promoteUser was not found in module [project]/frontend/src/lib/api.ts [app-client] (ecmascript).
+Did you mean to import updateUserRole?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:05.333] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export promoteUser doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export promoteUser was not found in module [project]/frontend/src/lib/api.ts [app-ssr] (ecmascript).
+Did you mean to import updateUserRole?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:05.334] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export createAdminUser doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export createAdminUser was not found in module [project]/frontend/src/lib/api.ts [app-client] (ecmascript).
+Did you mean to import createUserAsAdmin?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:05.334] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export createAdminUser doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export createAdminUser was not found in module [project]/frontend/src/lib/api.ts [app-ssr] (ecmascript).
+Did you mean to import createUserAsAdmin?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:05.334] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export demoteUser doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export demoteUser was not found in module [project]/frontend/src/lib/api.ts [app-client] (ecmascript).
+Did you mean to import deleteUser?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:05.334] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export demoteUser doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export demoteUser was not found in module [project]/frontend/src/lib/api.ts [app-ssr] (ecmascript).
+Did you mean to import deleteUser?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:05.334] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export getAdminUsers doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export getAdminUsers was not found in module [project]/frontend/src/lib/api.ts [app-client] (ecmascript).
+Did you mean to import getAllUsers?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:05.334] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export getAdminUsers doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export getAdminUsers was not found in module [project]/frontend/src/lib/api.ts [app-ssr] (ecmascript).
+Did you mean to import getAllUsers?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:05.334] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export promoteUser doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export promoteUser was not found in module [project]/frontend/src/lib/api.ts [app-client] (ecmascript).
+Did you mean to import updateUserRole?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:13:05.334] Browser ERROR   ./frontend/src/app/admin/users/page.tsx:5:1
+Export promoteUser doesn't exist in target module
+   3 | import React, { useEffect, useState } from "react";
+   4 | import { useAuth } from "../../../context/AuthContext";
+>  5 | import {
+     | ^^^^^^^^
+>  6 |   getAdminUsers,
+     | ^^^^^^^^^^^^^^^^
+>  7 |   createAdminUser,
+     | ^^^^^^^^^^^^^^^^
+>  8 |   promoteUser,
+     | ^^^^^^^^^^^^^^^^
+>  9 |   demoteUser,
+     | ^^^^^^^^^^^^^^^^
+> 10 |   deleteUser as apiDeleteUser,
+     | ^^^^^^^^^^^^^^^^
+> 11 | } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | type UserItem = {
+  14 |   id: string;
+
+The export promoteUser was not found in module [project]/frontend/src/lib/api.ts [app-ssr] (ecmascript).
+Did you mean to import updateUserRole?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/admin/users/page.tsx [Client Component Browser]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/admin/users/page.tsx [Client Component SSR]
+    ./frontend/src/app/admin/users/page.tsx [Server Component]
+[00:14:05.645] Server  LOG      ✓ Compiled in 121ms
+[00:14:30.379] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:15:39.309] Server  LOG      ✓ Compiled in 120ms
+[00:15:53.308] Server  LOG      ✓ Compiled in 76ms
+[00:16:04.890] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:16:05.269] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RenderFromTemplateContext>
+      <ScrollAndFocusHandler segmentPath={[...]}>
+        <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+          <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+            <LoadingBoundary name="users/" loading={null}>
+              <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+                <RedirectBoundary>
+                  <RedirectErrorBoundary router={{...}}>
+                    <InnerLayoutRouter url="/admin/users" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+                      <SegmentViewNode type="page" pagePath="/frontend/...">
+                        <SegmentTrieNode>
+                        <ClientPageRoot Component={function AdminUsersPage} serverProvidedParams={{...}}>
+                          <AdminUsersPage params={Promise} searchParams={Promise}>
+                            <div>
++                             <h2 className="text-2xl mb-4">
+-                             Access denied.
+                              ...
+                      ...
+                    ...
+          ...
+
+[00:18:05.269] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:18:05.474] Browser WARN    Image with src "http://localhost:3000/vercel.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:18:55.831] Server  LOG      ✓ Compiled in 255ms
+[00:18:55.858] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./frontend/src/app/admin/users/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:18:55.868] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./frontend/src/app/admin/users/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:18:57.671] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:18:58.079] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:19:13.228] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:19:47.691] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:20:29.200] Server  LOG      ○ Compiling /projects/[id] ...
+[00:24:01.009] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:24:12.398] Server  LOG      ✓ Compiled in 852ms
+[00:24:12.402] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./frontend/src/app/admin/users/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:24:12.414] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./frontend/src/app/admin/users/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:24:14.874] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./frontend/src/app/admin/users/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:24:14.875] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./frontend/src/app/admin/users/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:24:14.877] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./frontend/src/app/admin/users/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:24:14.879] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./frontend/src/app/admin/users/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:24:15.915] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:24:16.364] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RenderFromTemplateContext>
+      <ScrollAndFocusHandler segmentPath={[...]}>
+        <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+          <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+            <LoadingBoundary name="users/" loading={null}>
+              <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+                <RedirectBoundary>
+                  <RedirectErrorBoundary router={{...}}>
+                    <InnerLayoutRouter url="/admin/users" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+                      <SegmentViewNode type="page" pagePath="/frontend/...">
+                        <SegmentTrieNode>
+                        <ClientPageRoot Component={function AdminUsersPage} serverProvidedParams={{...}}>
+                          <AdminUsersPage params={Promise} searchParams={Promise}>
+                            <div>
++                             <h2 className="text-2xl mb-4">
+-                             Access denied.
+                              ...
+                      ...
+                    ...
+          ...
+
+[00:24:17.101] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:24:17.480] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:24:18.320] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RenderFromTemplateContext>
+      <ScrollAndFocusHandler segmentPath={[...]}>
+        <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+          <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+            <LoadingBoundary name="users/" loading={null}>
+              <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+                <RedirectBoundary>
+                  <RedirectErrorBoundary router={{...}}>
+                    <InnerLayoutRouter url="/admin/users" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+                      <SegmentViewNode type="page" pagePath="/frontend/...">
+                        <SegmentTrieNode>
+                        <ClientPageRoot Component={function AdminUsersPage} serverProvidedParams={{...}}>
+                          <AdminUsersPage params={Promise} searchParams={Promise}>
+                            <div>
++                             <h2 className="text-2xl mb-4">
+-                             Access denied.
+                              ...
+                      ...
+                    ...
+          ...
+
+[00:24:18.324] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RenderFromTemplateContext>
+      <ScrollAndFocusHandler segmentPath={[...]}>
+        <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+          <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+            <LoadingBoundary name="users/" loading={null}>
+              <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+                <RedirectBoundary>
+                  <RedirectErrorBoundary router={{...}}>
+                    <InnerLayoutRouter url="/admin/users" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+                      <SegmentViewNode type="page" pagePath="/frontend/...">
+                        <SegmentTrieNode>
+                        <ClientPageRoot Component={function AdminUsersPage} serverProvidedParams={{...}}>
+                          <AdminUsersPage params={Promise} searchParams={Promise}>
+                            <div>
++                             <h2 className="text-2xl mb-4">
+-                             Access denied.
+                              ...
+                      ...
+                    ...
+          ...
+
+[00:25:57.479] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:25:57.682] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RenderFromTemplateContext>
+      <ScrollAndFocusHandler segmentPath={[...]}>
+        <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+          <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+            <LoadingBoundary name="users/" loading={null}>
+              <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+                <RedirectBoundary>
+                  <RedirectErrorBoundary router={{...}}>
+                    <InnerLayoutRouter url="/admin/users" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+                      <SegmentViewNode type="page" pagePath="/frontend/...">
+                        <SegmentTrieNode>
+                        <ClientPageRoot Component={function AdminUsersPage} serverProvidedParams={{...}}>
+                          <AdminUsersPage params={Promise} searchParams={Promise}>
+                            <div>
++                             <h2 className="text-2xl mb-4">
+-                             Access denied.
+                              ...
+                      ...
+                    ...
+          ...
+
+[00:27:24.857] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:27:25.105] Browser ERROR   Failed to fetch teams (getMyTeams) — raw error: {"body":"{\"message\":\"Unauthorized\",\"statusCode\":401}","status":401}
+[00:33:23.003] Server  LOG      ✓ Compiled in 1989ms
+[00:33:24.324] Browser ERROR   React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://react.dev/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ AdminUsersPage 1. useContext                 useContext
+2. useState                   useState
+3. useEffect                  useEffect
+4. useState                   useState
+5. useState                   useState
+6. useState                   useState
+7. useState                   useState
+8. useState                   useState
+9. useState                   useState
+10. useState                  useState
+11. useState                  useState
+12. useState                  useState
+13. undefined                 useEffect
+
+[00:33:24.324] Browser ERROR   uncaughtError: Error: Rendered more hooks than during the previous render.
+[00:33:35.849] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:33:36.330] Browser ERROR   Failed to fetch teams (getMyTeams) — raw error: {"body":"{\"message\":\"Unauthorized\",\"statusCode\":401}","status":401}
+[00:33:45.080] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:33:57.635] Browser ERROR   React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://react.dev/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ AdminUsersPage 1. useContext                 useContext
+2. useState                   useState
+3. useEffect                  useEffect
+4. useState                   useState
+5. useState                   useState
+6. useState                   useState
+7. useState                   useState
+8. useState                   useState
+9. useState                   useState
+10. useState                  useState
+11. useState                  useState
+12. useState                  useState
+13. undefined                 useEffect
+
+[00:33:57.635] Browser ERROR   uncaughtError: Error: Rendered more hooks than during the previous render.
+[00:36:15.703] Server  LOG      ✓ Compiled in 506ms
+[00:36:15.724] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:36:17.691] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:36:19.430] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:36:19.670] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:36:20.370] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RenderFromTemplateContext>
+      <ScrollAndFocusHandler segmentPath={[...]}>
+        <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+          <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+            <LoadingBoundary name="users/" loading={null}>
+              <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+                <RedirectBoundary>
+                  <RedirectErrorBoundary router={{...}}>
+                    <InnerLayoutRouter url="/admin/users" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+                      <SegmentViewNode type="page" pagePath="/frontend/...">
+                        <SegmentTrieNode>
+                        <ClientPageRoot Component={function AdminUsersPage} serverProvidedParams={{...}}>
+                          <AdminUsersPage params={Promise} searchParams={Promise}>
+                            <div className="p-6">
+                              <h2
++                               className="text-3xl font-bold mb-4"
+-                               className="text-2xl mb-4"
+                              >
++                               User management
++                             <form onSubmit={function handleCreate} className="mb-6 bg-white shadow rounded p-4">
+-                             <div className="text-red-600">
+                              ...
+                      ...
+                    ...
+          ...
+
+[00:36:20.408] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RenderFromTemplateContext>
+      <ScrollAndFocusHandler segmentPath={[...]}>
+        <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+          <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+            <LoadingBoundary name="users/" loading={null}>
+              <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+                <RedirectBoundary>
+                  <RedirectErrorBoundary router={{...}}>
+                    <InnerLayoutRouter url="/admin/users" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+                      <SegmentViewNode type="page" pagePath="/frontend/...">
+                        <SegmentTrieNode>
+                        <ClientPageRoot Component={function AdminUsersPage} serverProvidedParams={{...}}>
+                          <AdminUsersPage params={Promise} searchParams={Promise}>
+                            <div className="p-6">
+                              <h2
++                               className="text-3xl font-bold mb-4"
+-                               className="text-2xl mb-4"
+                              >
++                               User management
++                             <form onSubmit={function handleCreate} className="mb-6 bg-white shadow rounded p-4">
+-                             <div className="text-red-600">
+                              ...
+                      ...
+                    ...
+          ...
+
+[00:39:02.336] Server  LOG      ✓ Compiled in 661ms
+[00:39:10.321] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:39:55.685] Server  LOG      ✓ Compiled in 2.4s
+[00:40:05.374] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:40:30.786] Server  LOG      ✓ Compiled in 553ms
+[00:40:37.108] Server  LOG      ✓ Compiled in 274ms

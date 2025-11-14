@@ -104,6 +104,19 @@ export async function resetPassword(token: string, newPassword: string) {
     body: JSON.stringify({ token, newPassword }),
   });
 }
+/* Admin - users */
+export async function getAllUsers() {
+  return request('/admin/users', { headers: getAuthHeader() });
+}
+export async function createUserAsAdmin(body: { email: string; password: string; name?: string; role?: string }) {
+  return request('/admin/users', { method: 'POST', headers: getAuthHeader(), body: JSON.stringify(body) });
+}
+export async function updateUserRole(userId: string, role: string) {
+  return request(`/admin/users/${userId}/role`, { method: 'PATCH', headers: getAuthHeader(), body: JSON.stringify({ role }) });
+}
+export async function deleteUser(userId: string) {
+  return request(`/admin/users/${userId}`, { method: 'DELETE', headers: getAuthHeader() });
+}
 
 /* Teams */
 export async function createTeam(name: string) {

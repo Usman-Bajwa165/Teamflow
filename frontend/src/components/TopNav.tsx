@@ -8,13 +8,11 @@ export default function TopNav() {
   const { user, logout } = useAuth();
   const [mounted, setMounted] = useState(false);
 
-  // mark mounted on client after hydration
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Render server-default markup while not mounted to avoid hydration mismatch.
-  // Server will render this same login/register markup (no user-specific content).
+  // Server-like fallback markup (keeps SSR output stable)
   if (!mounted) {
     return (
       <header className="bg-white border-b">
@@ -41,14 +39,15 @@ export default function TopNav() {
     );
   }
 
-  // After mounted, render the real client nav using auth state
+  // Client-rendered nav (uses auth state)
   return (
     <header className="bg-white border-b">
       <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
         <Link href="/" className="font-bold text-lg">
           Teamflow
         </Link>
-        <nav className="space-x-3">
+
+        <nav className="space-x-3 flex items-center">
           <Link href="/teams" className="text-sm">
             Teams
           </Link>
@@ -56,9 +55,16 @@ export default function TopNav() {
             Projects
           </Link>
 
+          {/* Admin-only "Manage users" */}
+          {user?.role === "admin" && (
+            <Link href="/admin/users" className="text-sm ml-3">
+              Manage users
+            </Link>
+          )}
+
           {user ? (
             <>
-              <span className="text-sm mr-3">{user.email}</span>
+              <span className="text-sm ml-4 mr-3">{user.email}</span>
               <button
                 onClick={() => logout()}
                 className="text-sm bg-red-500 text-white px-3 py-1 rounded"

@@ -18,14 +18,20 @@ __turbopack_context__.s([
     ()=>createTask,
     "createTeam",
     ()=>createTeam,
+    "createUserAsAdmin",
+    ()=>createUserAsAdmin,
     "deleteColumn",
     ()=>deleteColumn,
     "deleteProject",
     ()=>deleteProject,
     "deleteTask",
     ()=>deleteTask,
+    "deleteUser",
+    ()=>deleteUser,
     "getAllTeams",
     ()=>getAllTeams,
+    "getAllUsers",
+    ()=>getAllUsers,
     "getMyTeams",
     ()=>getMyTeams,
     "getProject",
@@ -55,7 +61,9 @@ __turbopack_context__.s([
     "updateProject",
     ()=>updateProject,
     "updateTask",
-    ()=>updateTask
+    ()=>updateTask,
+    "updateUserRole",
+    ()=>updateUserRole
 ]);
 const BASE = ("TURBOPACK compile-time value", "http://localhost:4000") || "http://localhost:4000";
 function getAuthHeader() {
@@ -166,6 +174,33 @@ async function resetPassword(token, newPassword) {
             token,
             newPassword
         })
+    });
+}
+async function getAllUsers() {
+    return request('/admin/users', {
+        headers: getAuthHeader()
+    });
+}
+async function createUserAsAdmin(body) {
+    return request('/admin/users', {
+        method: 'POST',
+        headers: getAuthHeader(),
+        body: JSON.stringify(body)
+    });
+}
+async function updateUserRole(userId, role) {
+    return request(`/admin/users/${userId}/role`, {
+        method: 'PATCH',
+        headers: getAuthHeader(),
+        body: JSON.stringify({
+            role
+        })
+    });
+}
+async function deleteUser(userId) {
+    return request(`/admin/users/${userId}`, {
+        method: 'DELETE',
+        headers: getAuthHeader()
     });
 }
 async function createTeam(name) {
@@ -429,12 +464,10 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$context$2
 function TopNav() {
     const { user, logout } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useAuth"])();
     const [mounted, setMounted] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
-    // mark mounted on client after hydration
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         setMounted(true);
     }, []);
-    // Render server-default markup while not mounted to avoid hydration mismatch.
-    // Server will render this same login/register markup (no user-specific content).
+    // Server-like fallback markup (keeps SSR output stable)
     if (!mounted) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
             className: "bg-white border-b",
@@ -447,7 +480,7 @@ function TopNav() {
                         children: "Teamflow"
                     }, void 0, false, {
                         fileName: "[project]/frontend/src/components/TopNav.tsx",
-                        lineNumber: 22,
+                        lineNumber: 20,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -459,7 +492,7 @@ function TopNav() {
                                 children: "Teams"
                             }, void 0, false, {
                                 fileName: "[project]/frontend/src/components/TopNav.tsx",
-                                lineNumber: 26,
+                                lineNumber: 24,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -468,7 +501,7 @@ function TopNav() {
                                 children: "Projects"
                             }, void 0, false, {
                                 fileName: "[project]/frontend/src/components/TopNav.tsx",
-                                lineNumber: 29,
+                                lineNumber: 27,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -477,7 +510,7 @@ function TopNav() {
                                 children: "Login"
                             }, void 0, false, {
                                 fileName: "[project]/frontend/src/components/TopNav.tsx",
-                                lineNumber: 32,
+                                lineNumber: 30,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -486,28 +519,28 @@ function TopNav() {
                                 children: "Register"
                             }, void 0, false, {
                                 fileName: "[project]/frontend/src/components/TopNav.tsx",
-                                lineNumber: 35,
+                                lineNumber: 33,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/frontend/src/components/TopNav.tsx",
-                        lineNumber: 25,
+                        lineNumber: 23,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/frontend/src/components/TopNav.tsx",
-                lineNumber: 21,
+                lineNumber: 19,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/frontend/src/components/TopNav.tsx",
-            lineNumber: 20,
+            lineNumber: 18,
             columnNumber: 7
         }, this);
     }
-    // After mounted, render the real client nav using auth state
+    // Client-rendered nav (uses auth state)
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
         className: "bg-white border-b",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -519,11 +552,11 @@ function TopNav() {
                     children: "Teamflow"
                 }, void 0, false, {
                     fileName: "[project]/frontend/src/components/TopNav.tsx",
-                    lineNumber: 48,
+                    lineNumber: 46,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
-                    className: "space-x-3",
+                    className: "space-x-3 flex items-center",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                             href: "/teams",
@@ -531,7 +564,7 @@ function TopNav() {
                             children: "Teams"
                         }, void 0, false, {
                             fileName: "[project]/frontend/src/components/TopNav.tsx",
-                            lineNumber: 52,
+                            lineNumber: 51,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -540,17 +573,26 @@ function TopNav() {
                             children: "Projects"
                         }, void 0, false, {
                             fileName: "[project]/frontend/src/components/TopNav.tsx",
-                            lineNumber: 55,
+                            lineNumber: 54,
                             columnNumber: 11
+                        }, this),
+                        user?.role === "admin" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                            href: "/admin/users",
+                            className: "text-sm ml-3",
+                            children: "Manage users"
+                        }, void 0, false, {
+                            fileName: "[project]/frontend/src/components/TopNav.tsx",
+                            lineNumber: 60,
+                            columnNumber: 13
                         }, this),
                         user ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    className: "text-sm mr-3",
+                                    className: "text-sm ml-4 mr-3",
                                     children: user.email
                                 }, void 0, false, {
                                     fileName: "[project]/frontend/src/components/TopNav.tsx",
-                                    lineNumber: 61,
+                                    lineNumber: 67,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -559,7 +601,7 @@ function TopNav() {
                                     children: "Logout"
                                 }, void 0, false, {
                                     fileName: "[project]/frontend/src/components/TopNav.tsx",
-                                    lineNumber: 62,
+                                    lineNumber: 68,
                                     columnNumber: 15
                                 }, this)
                             ]
@@ -571,7 +613,7 @@ function TopNav() {
                                     children: "Login"
                                 }, void 0, false, {
                                     fileName: "[project]/frontend/src/components/TopNav.tsx",
-                                    lineNumber: 71,
+                                    lineNumber: 77,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -580,7 +622,7 @@ function TopNav() {
                                     children: "Register"
                                 }, void 0, false, {
                                     fileName: "[project]/frontend/src/components/TopNav.tsx",
-                                    lineNumber: 74,
+                                    lineNumber: 80,
                                     columnNumber: 15
                                 }, this)
                             ]
@@ -588,18 +630,18 @@ function TopNav() {
                     ]
                 }, void 0, true, {
                     fileName: "[project]/frontend/src/components/TopNav.tsx",
-                    lineNumber: 51,
+                    lineNumber: 50,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/frontend/src/components/TopNav.tsx",
-            lineNumber: 47,
+            lineNumber: 45,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/frontend/src/components/TopNav.tsx",
-        lineNumber: 46,
+        lineNumber: 44,
         columnNumber: 5
     }, this);
 }
