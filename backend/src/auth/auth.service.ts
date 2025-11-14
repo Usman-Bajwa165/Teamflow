@@ -9,6 +9,13 @@ import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import * as crypto from 'crypto';
 
+type MinimalUserForTokens = {
+  id: string | number;
+  email?: string;
+  role?: string;
+  name?: string;
+};
+
 @Injectable()
 export class AuthService {
   constructor(
@@ -17,8 +24,41 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  private getAccessTokenPayload(user: any) {
+  private getAccessTokenPayload(user: MinimalUserForTokens) {
     return { sub: user.id, email: user.email, role: user.role };
+  }
+
+  // getTokens is synchronous (jwtService.sign is synchronous). Removing `async`
+  // removes the `require-await` lint warning while callers may still `await` it.
+  getTokens(user: MinimalUserForTokens): {
+    accessToken: string;
+    refreshToken: string;
+  } {
+    const payload = this.getAccessTokenPayload(user);
+
+    // Accept numeric-only env values as numbers, otherwise keep string (e.g. '7d' or '900s')
+    const accessExpires: string | number =
+      process.env.JWT_ACCESS_EXPIRES_IN &&
+      /^\d+$/.test(process.env.JWT_ACCESS_EXPIRES_IN)
+        ? Number(process.env.JWT_ACCESS_EXPIRES_IN)
+        : (process.env.JWT_ACCESS_EXPIRES_IN ?? '900s');
+
+    const refreshExpires: string | number =
+      process.env.JWT_REFRESH_EXPIRES_IN &&
+      /^\d+$/.test(process.env.JWT_REFRESH_EXPIRES_IN)
+        ? Number(process.env.JWT_REFRESH_EXPIRES_IN)
+        : (process.env.JWT_REFRESH_EXPIRES_IN ?? '7d');
+
+    const accessToken = this.jwtService.sign(
+      payload as any,
+      { expiresIn: accessExpires } as any,
+    );
+    const refreshToken = this.jwtService.sign(
+      { sub: user.id } as any,
+      { expiresIn: refreshExpires } as any,
+    );
+
+    return { accessToken, refreshToken };
   }
 
   async register(email: string, password: string, name?: string) {
@@ -35,31 +75,12 @@ export class AuthService {
     return user;
   }
 
-  async getTokens(user: any) {
-    const payload = this.getAccessTokenPayload(user);
-
-    // CASTS: jwt typings are strict about options types; cast to any to allow '7d' / '900s' strings
-    const accessToken = this.jwtService.sign(
-      payload as any,
-      {
-        expiresIn: process.env.JWT_ACCESS_EXPIRES_IN || '900s',
-      } as any,
-    );
-
-    const refreshToken = this.jwtService.sign(
-      { sub: user.id } as any,
-      {
-        expiresIn: process.env.JWT_REFRESH_EXPIRES_IN || '7d',
-      } as any,
-    );
-
-    return { accessToken, refreshToken };
-  }
-
   async login(email: string, password: string) {
     const user = await this.validateUser(email, password);
     if (!user) throw new UnauthorizedException('Invalid credentials');
-    const tokens = await this.getTokens(user);
+
+    // getTokens is synchronous; callers can still `await` it safely
+    const tokens = this.getTokens(user as MinimalUserForTokens);
 
     // hash refresh token before saving
     const hash = await bcrypt.hash(tokens.refreshToken, 10);
@@ -88,7 +109,7 @@ export class AuthService {
     const matches = await bcrypt.compare(refreshToken, user.hashedRefreshToken);
     if (!matches) throw new UnauthorizedException();
 
-    const tokens = await this.getTokens(user);
+    const tokens = this.getTokens(user as MinimalUserForTokens);
     const newHash = await bcrypt.hash(tokens.refreshToken, 10);
     await this.usersService.setRefreshToken(user.id, newHash);
 
@@ -103,13 +124,23 @@ export class AuthService {
     };
   }
 
-  // New helper: verify a refresh token, extract userId and refresh
+  // Verify a refresh token, extract userId and refresh
   async refreshUsingToken(refreshToken: string) {
     try {
-      const decoded: any = this.jwtService.verify(refreshToken as string);
-      const userId = decoded.sub;
+      const decoded = this.jwtService.verify(refreshToken);
+
+      // runtime check: ensure decoded.sub exists and is string|number
+      if (!decoded || typeof decoded !== 'object')
+        throw new UnauthorizedException('Invalid refresh token');
+
+      const maybeSub = (decoded as { sub?: unknown }).sub;
+      if (typeof maybeSub !== 'string' && typeof maybeSub !== 'number') {
+        throw new UnauthorizedException('Invalid refresh token');
+      }
+
+      const userId = String(maybeSub); // ensure string for refreshTokens
       return this.refreshTokens(userId, refreshToken);
-    } catch (err) {
+    } catch {
       throw new UnauthorizedException('Invalid refresh token');
     }
   }

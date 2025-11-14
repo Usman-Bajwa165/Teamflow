@@ -27,6 +27,8 @@ let TeamsController = class TeamsController {
         this.teams = teams;
     }
     async create(req, dto) {
+        if (!dto || !dto.name)
+            throw new common_1.BadRequestException('Team name is required');
         const uid = req.user?.userId;
         if (!uid)
             throw new common_1.UnauthorizedException('Missing authenticated user');
@@ -54,6 +56,7 @@ let TeamsController = class TeamsController {
 exports.TeamsController = TeamsController;
 __decorate([
     (0, common_1.Post)(),
+    (0, common_1.UsePipes)(new common_1.ValidationPipe({ whitelist: true })),
     __param(0, (0, common_1.Req)()),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),

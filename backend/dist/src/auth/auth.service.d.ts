@@ -1,12 +1,22 @@
 import { UsersService } from '../users/users.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { JwtService } from '@nestjs/jwt';
+type MinimalUserForTokens = {
+    id: string | number;
+    email?: string;
+    role?: string;
+    name?: string;
+};
 export declare class AuthService {
     private usersService;
     private prisma;
     private jwtService;
     constructor(usersService: UsersService, prisma: PrismaService, jwtService: JwtService);
     private getAccessTokenPayload;
+    getTokens(user: MinimalUserForTokens): {
+        accessToken: string;
+        refreshToken: string;
+    };
     register(email: string, password: string, name?: string): Promise<{
         id: string;
         email: string;
@@ -24,10 +34,6 @@ export declare class AuthService {
         updatedAt: Date;
         hashedRefreshToken: string | null;
     } | null>;
-    getTokens(user: any): Promise<{
-        accessToken: string;
-        refreshToken: string;
-    }>;
     login(email: string, password: string): Promise<{
         user: {
             id: string;
@@ -74,3 +80,4 @@ export declare class AuthService {
         ok: boolean;
     }>;
 }
+export {};

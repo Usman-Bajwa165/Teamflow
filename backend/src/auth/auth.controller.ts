@@ -13,6 +13,7 @@ import { LoginDto } from './dto/login.dto';
 import { RefreshDto } from './dto/refresh.dto';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { Request } from 'express';
+import { ResetPasswordDto } from './dto/reset-password.dto';
 
 interface JwtRequest extends Request {
   user?: { userId: string; email?: string; role?: string };
@@ -60,10 +61,8 @@ export class AuthController {
   }
 
   @Post('reset-password')
-  async resetPassword(
-    @Body('token') token: string,
-    @Body('newPassword') newPassword: string,
-  ) {
-    return this.auth.resetPassword(token, newPassword);
+  @UsePipes(new ValidationPipe({ whitelist: true }))
+  async resetPassword(@Body() dto: ResetPasswordDto) {
+    return this.auth.resetPassword(dto.token, dto.newPassword);
   }
 }

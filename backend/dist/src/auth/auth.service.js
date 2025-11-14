@@ -61,6 +61,20 @@ let AuthService = class AuthService {
     getAccessTokenPayload(user) {
         return { sub: user.id, email: user.email, role: user.role };
     }
+    getTokens(user) {
+        const payload = this.getAccessTokenPayload(user);
+        const accessExpires = process.env.JWT_ACCESS_EXPIRES_IN &&
+            /^\d+$/.test(process.env.JWT_ACCESS_EXPIRES_IN)
+            ? Number(process.env.JWT_ACCESS_EXPIRES_IN)
+            : (process.env.JWT_ACCESS_EXPIRES_IN ?? '900s');
+        const refreshExpires = process.env.JWT_REFRESH_EXPIRES_IN &&
+            /^\d+$/.test(process.env.JWT_REFRESH_EXPIRES_IN)
+            ? Number(process.env.JWT_REFRESH_EXPIRES_IN)
+            : (process.env.JWT_REFRESH_EXPIRES_IN ?? '7d');
+        const accessToken = this.jwtService.sign(payload, { expiresIn: accessExpires });
+        const refreshToken = this.jwtService.sign({ sub: user.id }, { expiresIn: refreshExpires });
+        return { accessToken, refreshToken };
+    }
     async register(email, password, name) {
         const existing = await this.usersService.findByEmail(email);
         if (existing)
@@ -76,21 +90,11 @@ let AuthService = class AuthService {
             return null;
         return user;
     }
-    async getTokens(user) {
-        const payload = this.getAccessTokenPayload(user);
-        const accessToken = this.jwtService.sign(payload, {
-            expiresIn: process.env.JWT_ACCESS_EXPIRES_IN || '900s',
-        });
-        const refreshToken = this.jwtService.sign({ sub: user.id }, {
-            expiresIn: process.env.JWT_REFRESH_EXPIRES_IN || '7d',
-        });
-        return { accessToken, refreshToken };
-    }
     async login(email, password) {
         const user = await this.validateUser(email, password);
         if (!user)
             throw new common_1.UnauthorizedException('Invalid credentials');
-        const tokens = await this.getTokens(user);
+        const tokens = this.getTokens(user);
         const hash = await bcrypt.hash(tokens.refreshToken, 10);
         await this.usersService.setRefreshToken(user.id, hash);
         return {
@@ -114,7 +118,7 @@ let AuthService = class AuthService {
         const matches = await bcrypt.compare(refreshToken, user.hashedRefreshToken);
         if (!matches)
             throw new common_1.UnauthorizedException();
-        const tokens = await this.getTokens(user);
+        const tokens = this.getTokens(user);
         const newHash = await bcrypt.hash(tokens.refreshToken, 10);
         await this.usersService.setRefreshToken(user.id, newHash);
         return {
@@ -130,10 +134,16 @@ let AuthService = class AuthService {
     async refreshUsingToken(refreshToken) {
         try {
             const decoded = this.jwtService.verify(refreshToken);
-            const userId = decoded.sub;
+            if (!decoded || typeof decoded !== 'object')
+                throw new common_1.UnauthorizedException('Invalid refresh token');
+            const maybeSub = decoded.sub;
+            if (typeof maybeSub !== 'string' && typeof maybeSub !== 'number') {
+                throw new common_1.UnauthorizedException('Invalid refresh token');
+            }
+            const userId = String(maybeSub);
             return this.refreshTokens(userId, refreshToken);
         }
-        catch (err) {
+        catch {
             throw new common_1.UnauthorizedException('Invalid refresh token');
         }
     }

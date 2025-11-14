@@ -17,8 +17,8 @@ export declare class TeamsController {
         members: {
             id: string;
             role: string;
-            joinedAt: Date;
             userId: string;
+            joinedAt: Date;
             teamId: string;
         }[];
     } & {
@@ -40,35 +40,35 @@ export declare class TeamsController {
     members(id: string): Promise<({
         user: {
             id: string;
-            name: string | null;
             email: string;
+            name: string | null;
         };
     } & {
         id: string;
         role: string;
-        joinedAt: Date;
         userId: string;
+        joinedAt: Date;
         teamId: string;
     })[]>;
     invite(id: string, dto: InviteMemberDto): Promise<{
         id: string;
         role: string;
-        joinedAt: Date;
         userId: string;
+        joinedAt: Date;
         teamId: string;
     }>;
     changeRole(id: string, memberId: string, dto: UpdateMemberRoleDto): Promise<{
         id: string;
         role: string;
-        joinedAt: Date;
         userId: string;
+        joinedAt: Date;
         teamId: string;
     }>;
     removeMember(id: string, memberId: string): Promise<{
         id: string;
         role: string;
-        joinedAt: Date;
         userId: string;
+        joinedAt: Date;
         teamId: string;
     }>;
 }

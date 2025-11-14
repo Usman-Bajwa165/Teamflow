@@ -29,11 +29,12 @@ export default tseslint.config(
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-floating-promises': 'warn',
       '@typescript-eslint/no-unsafe-argument': 'warn',
-       // Add these three lines which are spaced to turn off unsafe assignemnt, member access, and call checks
+      "prettier/prettier": ["error", { endOfLine: "auto" }],
+       // Added these four lines which are spaced to turn off unsafe assignemnt, member access, unsafe returns and call checks
         "@typescript-eslint/no-unsafe-assignment": "off",
         "@typescript-eslint/no-unsafe-member-access": "off",
         "@typescript-eslint/no-unsafe-call": "off",
-      "prettier/prettier": ["error", { endOfLine: "auto" }],
+        "@typescript-eslint/no-unsafe-return": "off",
     },
   },
 );

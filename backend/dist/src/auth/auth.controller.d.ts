@@ -3,6 +3,7 @@ import { CreateUserDto } from '../users/dto/create-user.dto';
 import { LoginDto } from './dto/login.dto';
 import { RefreshDto } from './dto/refresh.dto';
 import { Request } from 'express';
+import { ResetPasswordDto } from './dto/reset-password.dto';
 interface JwtRequest extends Request {
     user?: {
         userId: string;
@@ -51,7 +52,7 @@ export declare class AuthController {
         ok: boolean;
         message: string;
     }>;
-    resetPassword(token: string, newPassword: string): Promise<{
+    resetPassword(dto: ResetPasswordDto): Promise<{
         ok: boolean;
     }>;
 }

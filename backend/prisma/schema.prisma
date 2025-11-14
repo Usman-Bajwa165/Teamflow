@@ -19,6 +19,7 @@ model User {
   teamMembers        TeamMember[]
   hashedRefreshToken String? // single refresh token hash (nullable)
   resetTokens        PasswordResetToken[] // relation
+  tasks              Task[]
 }
 
 model Team {
@@ -49,4 +50,44 @@ model PasswordResetToken {
   used      Boolean  @default(false)
 
   @@index([userId])
+}
+
+model Project {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  teamId      String? // optional, later tie projects to teams
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  columns BoardColumn[]
+}
+
+model BoardColumn {
+  id        String  @id @default(uuid())
+  title     String
+  project   Project @relation(fields: [projectId], references: [id])
+  projectId String
+  position  Int     @default(0) // lower = left, higher = right
+
+  tasks     Task[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([projectId, position])
+}
+
+model Task {
+  id          String      @id @default(uuid())
+  title       String
+  description String?
+  column      BoardColumn @relation(fields: [columnId], references: [id])
+  columnId    String
+  position    Int         @default(0) // order within column, lower = top
+  assignee    User?       @relation(fields: [assigneeId], references: [id])
+  assigneeId  String?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@index([columnId, position])
 }

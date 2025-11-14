@@ -1,4 +1,683 @@
-[00:00:04.205] Server  LOG      ✓ Ready in 3.2s
-[00:00:13.792] Server  LOG      ○ Compiling / ...
-[00:00:19.706] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:19.952] Browser WARN    Image with src "http://localhost:3000/vercel.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:07.058] Server  LOG      ✓ Ready in 5.3s
+[00:00:40.116] Server  LOG      ○ Compiling / ...
+[00:00:56.303] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:57.633] Browser WARN    Image with src "http://localhost:3000/vercel.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:19.103] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:27.404] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:08.697] Browser LOG     Open task 12f5a7da-f90a-40a5-b876-8b18c70cc942
+[00:02:09.934] Browser LOG     Open task 12f5a7da-f90a-40a5-b876-8b18c70cc942
+[00:02:18.525] Browser LOG     Open task 13f06b14-6587-4c3f-8c19-673ad264bca8
+[00:02:37.536] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:02.762] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:11.696] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:07:40.015] Server  LOG      ✓ Compiled in 2.6s
+[00:07:41.030] Server  LOG      ✓ Compiled in 819ms
+[00:08:06.444] Server  ERROR    ⨯ ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:08:06.466] Server  ERROR    ⨯ ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:08:06.479] Server  ERROR    ⨯ ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:08:06.486] Server  ERROR    ⨯ ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:08:06.493] Server  ERROR    ⨯ ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:08:06.512] Server  ERROR    ⨯ ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:08:06.520] Server  ERROR    ⨯ ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:08:06.526] Server  ERROR    ⨯ ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:08:06.530] Server  ERROR    ⨯ ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:08:06.535] Server  ERROR    ⨯ ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:08:06.538] Server  ERROR    ⨯ ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:08:06.541] Server  ERROR    ⨯ ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:08:06.543] Server  LOG      ✓ Compiled in 1189ms
+[00:08:07.624] Browser ERROR   ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:08:07.844] Server  ERROR    ⨯ ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:08:07.858] Server  ERROR    ⨯ ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:08:07.865] Server  ERROR    ⨯ ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:08:07.870] Server  ERROR    ⨯ ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:08:07.876] Server  ERROR    ⨯ ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:08:07.881] Server  ERROR    ⨯ ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:08:07.884] Server  ERROR    ⨯ ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:08:07.886] Server  ERROR    ⨯ ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:08:07.901] Server  ERROR    ⨯ ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:08:07.906] Server  ERROR    ⨯ ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:08:07.912] Server  ERROR    ⨯ ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:08:07.919] Server  ERROR    ⨯ ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:08:07.922] Server  LOG      ✓ Compiled in 615ms
+[00:08:08.619] Browser ERROR   ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:08:56.622] Browser ERROR   ./frontend/src/app/projects/[id]/page.tsx:11:1
+Module not found: Can't resolve '../../../src/components/TaskBoard'
+   9 |   moveTask,
+  10 | } from "../../../lib/api";
+> 11 | import TaskBoard, { Column } from "../../../src/components/TaskBoard";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  12 |
+  13 | export default function ProjectBoard() {
+  14 |   const params = useParams();
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/projects/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/projects/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:09:05.438] Server  LOG      ✓ Compiled in 563ms
+[00:09:53.955] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:10:29.676] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:15:32.861] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:16:10.069] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:17:27.329] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:20:14.486] Browser LOG     open task 76280013-afe9-4326-91f9-743af9b8659d
+[00:20:21.544] Browser LOG     open task 76280013-afe9-4326-91f9-743af9b8659d
+[00:20:22.421] Browser LOG     open task 76280013-afe9-4326-91f9-743af9b8659d
+[00:20:22.960] Browser LOG     open task 76280013-afe9-4326-91f9-743af9b8659d
+[00:20:22.960] Browser LOG     open task 76280013-afe9-4326-91f9-743af9b8659d
+[00:20:23.322] Browser LOG     open task 76280013-afe9-4326-91f9-743af9b8659d
+[00:20:23.322] Browser LOG     open task 76280013-afe9-4326-91f9-743af9b8659d
+[00:20:23.671] Browser LOG     open task 76280013-afe9-4326-91f9-743af9b8659d
+[00:20:23.671] Browser LOG     open task 76280013-afe9-4326-91f9-743af9b8659d
+[00:20:24.049] Browser LOG     open task 76280013-afe9-4326-91f9-743af9b8659d
+[00:20:24.049] Browser LOG     open task 76280013-afe9-4326-91f9-743af9b8659d
+[00:20:24.296] Browser LOG     open task 76280013-afe9-4326-91f9-743af9b8659d
+[00:22:09.585] Server  LOG      ✓ Compiled in 1714ms
+[00:22:11.369] Server  LOG      ✓ Compiled in 1374ms
+[00:23:35.586] Server  LOG      ✓ Compiled in 1691ms
+[00:23:47.625] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:27:03.090] Server  LOG      ✓ Compiled in 680ms
+[00:27:04.961] Server  LOG      ✓ Compiled in 622ms
+[00:27:35.000] Server  LOG      ✓ Compiled in 1764ms
+[00:27:40.252] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:29:43.300] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:29:43.725] Browser WARN    Image with src "http://localhost:3000/vercel.svg" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:33:13.402] Server  LOG      ✓ Compiled in 1206ms
+[00:33:24.806] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:33:31.273] Server  LOG      ✓ Compiled in 367ms

@@ -8,6 +8,9 @@ import {
   Req,
   Patch,
   Delete,
+  UsePipes,
+  ValidationPipe,
+  BadRequestException,
   UnauthorizedException,
 } from '@nestjs/common';
 import { TeamsService } from './teams.service';
@@ -29,7 +32,10 @@ export class TeamsController {
   constructor(private teams: TeamsService) {}
 
   @Post()
+  @UsePipes(new ValidationPipe({ whitelist: true }))
   async create(@Req() req: JwtRequest, @Body() dto: CreateTeamDto) {
+    if (!dto || !dto.name)
+      throw new BadRequestException('Team name is required');
     const uid = req.user?.userId;
     if (!uid) throw new UnauthorizedException('Missing authenticated user');
     return this.teams.createTeam(uid, dto.name);

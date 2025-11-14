@@ -19,6 +19,7 @@ const create_user_dto_1 = require("../users/dto/create-user.dto");
 const login_dto_1 = require("./dto/login.dto");
 const refresh_dto_1 = require("./dto/refresh.dto");
 const jwt_auth_guard_1 = require("./guards/jwt-auth.guard");
+const reset_password_dto_1 = require("./dto/reset-password.dto");
 let AuthController = class AuthController {
     auth;
     constructor(auth) {
@@ -46,8 +47,8 @@ let AuthController = class AuthController {
             message: 'If that email exists we sent a reset token (dev: logged to server)',
         };
     }
-    async resetPassword(token, newPassword) {
-        return this.auth.resetPassword(token, newPassword);
+    async resetPassword(dto) {
+        return this.auth.resetPassword(dto.token, dto.newPassword);
     }
 };
 exports.AuthController = AuthController;
@@ -92,10 +93,10 @@ __decorate([
 ], AuthController.prototype, "requestPasswordReset", null);
 __decorate([
     (0, common_1.Post)('reset-password'),
-    __param(0, (0, common_1.Body)('token')),
-    __param(1, (0, common_1.Body)('newPassword')),
+    (0, common_1.UsePipes)(new common_1.ValidationPipe({ whitelist: true })),
+    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:paramtypes", [reset_password_dto_1.ResetPasswordDto]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "resetPassword", null);
 exports.AuthController = AuthController = __decorate([
