@@ -2,17 +2,22 @@
 "[project]/frontend/src/app/projects/[id]/page.tsx [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
+// frontend/src/app/projects/[id]/page.tsx
 __turbopack_context__.s([
     "default",
     ()=>ProjectBoard
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/frontend/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
-// frontend/src/app/projects/[id]/page.tsx
 var __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/frontend/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/frontend/node_modules/next/navigation.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/frontend/src/lib/api.ts [app-client] (ecmascript)");
 (()=>{
     const e = new Error("Cannot find module '../../../src/components/TaskBoard'");
+    e.code = 'MODULE_NOT_FOUND';
+    throw e;
+})();
+(()=>{
+    const e = new Error("Cannot find module '../../../src/components/TaskModal'");
     e.code = 'MODULE_NOT_FOUND';
     throw e;
 })();
@@ -23,14 +28,17 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
+;
 function ProjectBoard() {
     _s();
     const params = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useParams"])();
     const projectId = params.id;
     const [project, setProject] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
-    const [newColTitle, setNewColTitle] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
-    const [newTaskTitles, setNewTaskTitles] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({});
+    const [teamMembers, setTeamMembers] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [msg, setMsg] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [newColTitle, setNewColTitle] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    // modal state
+    const [openTask, setOpenTask] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "ProjectBoard.useEffect": ()=>{
             ({
@@ -48,6 +56,18 @@ function ProjectBoard() {
                             }["ProjectBoard.useEffect"])
                         };
                         setProject(normalized);
+                        // if project has teamId, fetch team members
+                        if (normalized.teamId) {
+                            try {
+                                const members = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getTeamMembers"])(normalized.teamId);
+                                setTeamMembers(members || []);
+                            } catch (err_0) {
+                                // ignore gracefully; teamMembers stays null
+                                setTeamMembers([]);
+                            }
+                        } else {
+                            setTeamMembers(null);
+                        }
                     } catch (err) {
                         setMsg("Failed to load project");
                     }
@@ -76,22 +96,26 @@ function ProjectBoard() {
                     columns: (prev?.columns || []).concat(newCol)
                 }));
             setNewColTitle("");
-        } catch (err_0) {
-            setMsg(err_0?.body?.message || "Failed to create column");
+        } catch (err_1) {
+            setMsg(err_1?.body?.message || "Failed to create column");
         }
     }
-    async function addTask(columnId) {
+    function handleColumnsChange(cols) {
+        setProject((prev_0)=>({
+                ...prev_0 || {},
+                columns: cols
+            }));
+    }
+    async function handleMove(taskId, targetColumnId, targetPosition) {
+        await (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["moveTask"])(taskId, targetColumnId, targetPosition);
+    }
+    async function handleAddTask(columnId, title_0) {
         setMsg(null);
-        const title_0 = (newTaskTitles[columnId] || "").trim();
-        if (!title_0) {
-            setMsg("Task title required");
-            return;
-        }
         try {
             const t = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createTask"])(columnId, title_0);
-            setProject((prev_0)=>({
-                    ...prev_0 || {},
-                    columns: (prev_0?.columns || []).map((c_0)=>c_0.id === columnId ? {
+            setProject((prev_1)=>({
+                    ...prev_1 || {},
+                    columns: (prev_1?.columns || []).map((c_0)=>c_0.id === columnId ? {
                             ...c_0,
                             tasks: [
                                 ...c_0.tasks || [],
@@ -99,32 +123,80 @@ function ProjectBoard() {
                             ]
                         } : c_0)
                 }));
-            setNewTaskTitles((prev_1)=>({
-                    ...prev_1,
-                    [columnId]: ""
-                }));
-        } catch (err_1) {
-            setMsg(err_1?.body?.message || "Failed to create task");
+        } catch (err_2) {
+            setMsg(err_2?.body?.message || "Failed to create task");
+            throw err_2;
         }
     }
-    // controlled columns-change callback used by TaskBoard for optimistic updates & rollback
-    function handleColumnsChange(cols) {
-        setProject((prev_2)=>({
-                ...prev_2 || {},
-                columns: cols
-            }));
+    // open modal
+    function handleOpenTask(taskId_0) {
+        if (!project) return;
+        for (const col_0 of project.columns || []){
+            const t_0 = (col_0.tasks || []).find((x)=>x.id === taskId_0);
+            if (t_0) {
+                setOpenTask({
+                    ...t_0,
+                    columnId: col_0.id
+                });
+                return;
+            }
+        }
     }
-    // forwarded API call; TaskBoard manages optimistic UI via handleColumnsChange
-    async function handleMove(taskId, targetColumnId, targetPosition) {
-        await (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["moveTask"])(taskId, targetColumnId, targetPosition);
-    // optional: re-fetch canonical data here if you want to ensure server canonicality:
-    // const p = await getProject(projectId); setProject({...normalized p...})
+    // modal save handler
+    async function handleSaveTask(updates) {
+        if (!openTask) throw new Error("no task open");
+        const taskId_1 = openTask.id;
+        const updated = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["updateTask"])(taskId_1, updates);
+        setProject((prev_2)=>{
+            const cols_0 = (prev_2?.columns || []).map((c_1)=>({
+                    ...c_1,
+                    tasks: (c_1.tasks || []).map((t_1)=>t_1.id === taskId_1 ? {
+                            ...t_1,
+                            ...updated
+                        } : t_1)
+                }));
+            return {
+                ...prev_2 || {},
+                columns: cols_0
+            };
+        });
+        // after change, re-calc assigned list — optional: we fetch members again if needed
+        return updated;
+    }
+    // modal delete handler
+    async function handleDeleteTask() {
+        if (!openTask) throw new Error("no task open");
+        const taskId_2 = openTask.id;
+        await (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["deleteTask"])(taskId_2);
+        setProject((prev_3)=>{
+            const cols_1 = (prev_3?.columns || []).map((c_2)=>({
+                    ...c_2,
+                    tasks: (c_2.tasks || []).filter((t_2)=>t_2.id !== taskId_2)
+                }));
+            return {
+                ...prev_3 || {},
+                columns: cols_1
+            };
+        });
+    }
+    // compute assigned user ids for this project
+    function computeAssignedUserIds() {
+        if (!project) return [];
+        const ids = [];
+        for (const c_3 of project.columns || []){
+            for (const t_3 of c_3.tasks || []){
+                if (t_3.assigneeId) ids.push(t_3.assigneeId);
+            }
+        }
+        return [
+            ...new Set(ids)
+        ];
     }
     if (!project) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         children: "Loading project..."
     }, void 0, false, {
         fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
-        lineNumber: 95,
+        lineNumber: 168,
         columnNumber: 24
     }, this);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -134,7 +206,7 @@ function ProjectBoard() {
                 children: project.name
             }, void 0, false, {
                 fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
-                lineNumber: 97,
+                lineNumber: 170,
                 columnNumber: 7
             }, this),
             msg && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -142,7 +214,7 @@ function ProjectBoard() {
                 children: msg
             }, void 0, false, {
                 fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
-                lineNumber: 98,
+                lineNumber: 171,
                 columnNumber: 15
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -158,7 +230,7 @@ function ProjectBoard() {
                             className: "px-3 py-2 border rounded flex-1"
                         }, void 0, false, {
                             fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
-                            lineNumber: 102,
+                            lineNumber: 175,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -166,76 +238,52 @@ function ProjectBoard() {
                             children: "Add column"
                         }, void 0, false, {
                             fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
-                            lineNumber: 103,
+                            lineNumber: 176,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
-                    lineNumber: 101,
+                    lineNumber: 174,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
-                lineNumber: 100,
+                lineNumber: 173,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(TaskBoard, {
                 columns: project.columns,
                 onMove: handleMove,
                 onColumnsChange: handleColumnsChange,
-                onOpenTask: (taskId_0)=>console.log("open task", taskId_0)
+                onAddTask: handleAddTask,
+                onOpenTask: handleOpenTask
             }, void 0, false, {
                 fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
-                lineNumber: 109,
+                lineNumber: 182,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "mt-6 grid gap-4 md:grid-cols-3",
-                children: (project.columns || []).map((col_0)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "p-2",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                value: newTaskTitles[col_0.id] || "",
-                                onChange: (e_1)=>setNewTaskTitles((prev_3)=>({
-                                            ...prev_3,
-                                            [col_0.id]: e_1.target.value
-                                        })),
-                                placeholder: `New task in ${col_0.title}`,
-                                className: "w-full px-2 py-1 border rounded mb-2"
-                            }, void 0, false, {
-                                fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
-                                lineNumber: 113,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                onClick: ()=>addTask(col_0.id),
-                                className: "w-full bg-green-600 text-white py-1 rounded",
-                                children: "Add task"
-                            }, void 0, false, {
-                                fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
-                                lineNumber: 117,
-                                columnNumber: 13
-                            }, this)
-                        ]
-                    }, col_0.id, true, {
-                        fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
-                        lineNumber: 112,
-                        columnNumber: 54
-                    }, this))
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(TaskModal, {
+                task: openTask,
+                projectId: project.id,
+                teamMembers: teamMembers ?? [],
+                assignedUserIds: computeAssignedUserIds(),
+                onClose: ()=>setOpenTask(null),
+                onSave: handleSaveTask,
+                onDelete: handleDeleteTask
             }, void 0, false, {
                 fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
-                lineNumber: 111,
+                lineNumber: 184,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
-        lineNumber: 96,
+        lineNumber: 169,
         columnNumber: 10
     }, this);
 }
-_s(ProjectBoard, "vNtkGmHbPX1xa6SZyxU4guds0IE=", false, function() {
+_s(ProjectBoard, "mJxFtioUzGpCczjJCbjL+citsOM=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useParams"]
     ];

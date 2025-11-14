@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TeamRolesGuard = void 0;
 const common_1 = require("@nestjs/common");
 const core_1 = require("@nestjs/core");
-const team_roles_decorator_1 = require("./team-roles.decorator");
 const prisma_service_1 = require("../prisma/prisma.service");
 let TeamRolesGuard = class TeamRolesGuard {
     reflector;
@@ -22,22 +21,40 @@ let TeamRolesGuard = class TeamRolesGuard {
         this.prisma = prisma;
     }
     async canActivate(context) {
-        const requiredRoles = this.reflector.getAllAndOverride(team_roles_decorator_1.TEAM_ROLES_KEY, [context.getHandler(), context.getClass()]);
-        if (!requiredRoles || requiredRoles.length === 0)
-            return true;
         const req = context.switchToHttp().getRequest();
         const user = req.user;
-        if (!user || !user.userId)
+        if (!user) {
             return false;
-        const teamId = req.params?.id || req.params?.teamId || req.body?.teamId;
+        }
+        if (user.role === 'admin')
+            return true;
+        const uid = user.userId ?? user.id ?? user.sub;
+        if (!uid)
+            return false;
+        if (!user.role) {
+            const dbUser = await this.prisma.user.findUnique({
+                where: { id: String(uid) },
+                select: { role: true },
+            });
+            if (dbUser?.role === 'admin')
+                return true;
+            req.user.role = dbUser?.role;
+        }
+        const allowedRoles = this.reflector.get('team_roles', context.getHandler()) || [];
+        if (!allowedRoles.length)
+            return true;
+        const params = req.params || {};
+        const teamId = params.id ?? req.body?.teamId ?? req.query?.teamId;
         if (!teamId)
             return false;
         const member = await this.prisma.teamMember.findFirst({
-            where: { teamId: teamId, userId: user.userId },
+            where: { teamId: String(teamId), userId: String(uid) },
+            select: { role: true },
         });
-        if (!member)
+        if (!member) {
             return false;
-        return requiredRoles.includes(member.role);
+        }
+        return allowedRoles.includes(member.role);
     }
 };
 exports.TeamRolesGuard = TeamRolesGuard;

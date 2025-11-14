@@ -29,15 +29,23 @@ let TeamsController = class TeamsController {
     async create(req, dto) {
         if (!dto || !dto.name)
             throw new common_1.BadRequestException('Team name is required');
-        const uid = req.user?.userId;
+        const uid = String(req.user?.userId ?? req.user?.id ?? req.user?.sub ?? '');
         if (!uid)
             throw new common_1.UnauthorizedException('Missing authenticated user');
         return this.teams.createTeam(uid, dto.name);
     }
     async myTeams(req) {
-        const uid = req.user?.userId;
+        const uidRaw = req.user?.userId ?? req.user?.id ?? req.user?.sub;
+        const uid = uidRaw ? String(uidRaw) : '';
         if (!uid)
             throw new common_1.UnauthorizedException('Missing authenticated user');
+        if (req.user?.role === 'admin') {
+            return this.teams.listAllTeams();
+        }
+        const role = await this.teams.getUserRole(uid);
+        if (role === 'admin') {
+            return this.teams.listAllTeams();
+        }
         return this.teams.getTeamsForUser(uid);
     }
     async members(id) {
@@ -51,6 +59,36 @@ let TeamsController = class TeamsController {
     }
     async removeMember(id, memberId) {
         return this.teams.removeMember(id, memberId);
+    }
+    async listAll(req) {
+        const uid = String(req.user?.userId ?? req.user?.id ?? req.user?.sub ?? '');
+        const role = req.user?.role ?? (await this.teams.getUserRole(uid));
+        if (!uid)
+            throw new common_1.BadRequestException('Missing auth user');
+        if (role !== 'admin')
+            throw new common_1.ForbiddenException('Only global admin can list all teams');
+        return this.teams.listAllTeamsWithProjectCount();
+    }
+    async getTeam(id) {
+        return this.teams.getTeamDetails(id);
+    }
+    async deleteTeamEndpoint(req, id) {
+        if (!id)
+            throw new common_1.BadRequestException('Team id required');
+        const uid = String(req.user?.userId ?? req.user?.id ?? req.user?.sub ?? '');
+        if (!uid)
+            throw new common_1.BadRequestException('Missing authenticated user');
+        const globalRole = req.user?.role ?? (await this.teams.getUserRole(uid));
+        if (globalRole === 'admin') {
+            return this.teams.deleteTeam(id);
+        }
+        const members = await this.teams.getTeamMembers(id);
+        const member = members.find((m) => m.user?.id === uid);
+        if (!member)
+            throw new common_1.ForbiddenException('Not a member of the team');
+        if (member.role !== 'owner')
+            throw new common_1.ForbiddenException('Only team owner may delete the team');
+        return this.teams.deleteTeam(id);
     }
 };
 exports.TeamsController = TeamsController;
@@ -110,6 +148,29 @@ __decorate([
     __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", Promise)
 ], TeamsController.prototype, "removeMember", null);
+__decorate([
+    (0, common_1.Get)(),
+    __param(0, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], TeamsController.prototype, "listAll", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], TeamsController.prototype, "getTeam", null);
+__decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Req)()),
+    __param(1, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, String]),
+    __metadata("design:returntype", Promise)
+], TeamsController.prototype, "deleteTeamEndpoint", null);
 exports.TeamsController = TeamsController = __decorate([
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Controller)('teams'),

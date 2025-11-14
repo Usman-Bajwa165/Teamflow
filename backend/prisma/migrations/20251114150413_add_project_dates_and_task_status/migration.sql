@@ -1,0 +1,9 @@
+-- CreateEnum
+CREATE TYPE "TaskStatus" AS ENUM ('TODO', 'IN_PROGRESS', 'FINISHED');
+
+-- AlterTable
+ALTER TABLE "Project" ADD COLUMN     "assignedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN     "dueDate" TIMESTAMP(3);
+
+-- AlterTable
+ALTER TABLE "Task" ADD COLUMN     "status" "TaskStatus" NOT NULL DEFAULT 'TODO';

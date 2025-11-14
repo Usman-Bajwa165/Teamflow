@@ -14,11 +14,13 @@ const class_validator_1 = require("class-validator");
 class CreateProjectDto {
     name;
     description;
+    teamId;
+    dueDate;
 }
 exports.CreateProjectDto = CreateProjectDto;
 __decorate([
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(2),
+    (0, class_validator_1.Length)(2, 200),
     __metadata("design:type", String)
 ], CreateProjectDto.prototype, "name", void 0);
 __decorate([
@@ -26,4 +28,13 @@ __decorate([
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], CreateProjectDto.prototype, "description", void 0);
+__decorate([
+    (0, class_validator_1.IsUUID)(),
+    __metadata("design:type", String)
+], CreateProjectDto.prototype, "teamId", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsDateString)(),
+    __metadata("design:type", String)
+], CreateProjectDto.prototype, "dueDate", void 0);
 //# sourceMappingURL=create-project.dto.js.map

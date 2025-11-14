@@ -7,7 +7,7 @@ __turbopack_context__.s([
     ()=>TeamsPage
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/frontend/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
-// frontend/app/teams/page.tsx
+// frontend/src/app/teams/page.tsx
 var __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/frontend/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/frontend/src/lib/api.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/frontend/src/context/AuthContext.tsx [app-client] (ecmascript)");
@@ -32,8 +32,52 @@ function TeamsPage() {
                 "TeamsPage.useEffect": async ()=>{
                     try {
                         const res = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getMyTeams"])();
-                        setTeams(res);
+                        // res may be:
+                        // - an array of membership objects { team: {...}, role: 'member', ... }
+                        // - an array of team objects (when admin) { id, name, members, ... }
+                        const normalized = (res || []).map({
+                            "TeamsPage.useEffect.normalized": (m)=>{
+                                // If object has `.team` then it's a membership row
+                                if (m && typeof m === "object" && m.team && typeof m.team === "object") {
+                                    return {
+                                        id: m.team.id ?? null,
+                                        name: m.team.name ?? "—",
+                                        role: m.role ?? "member",
+                                        raw: m
+                                    };
+                                }
+                                // If object looks like a team (has members/projects or name)
+                                if (m && typeof m === "object" && (m.members || m.projects || m.name)) {
+                                    return {
+                                        id: m.id ?? null,
+                                        name: m.name ?? "—",
+                                        role: "admin",
+                                        // when admin listing teams, role isn't per-team; treat as admin view
+                                        raw: m
+                                    };
+                                }
+                                // fallback: if it's a membership-like object with id/name at top-level
+                                if (m && typeof m === "object" && (m.id || m.name)) {
+                                    return {
+                                        id: m.id ?? null,
+                                        name: m.name ?? "—",
+                                        role: m.role ?? "member",
+                                        raw: m
+                                    };
+                                }
+                                // last resort: unknown shape
+                                console.warn("Unknown team item shape:", m);
+                                return {
+                                    id: null,
+                                    name: "—",
+                                    role: "member",
+                                    raw: m
+                                };
+                            }
+                        }["TeamsPage.useEffect.normalized"]);
+                        setTeams(normalized);
                     } catch (e) {
+                        console.error("Failed to fetch teams (getMyTeams) — raw error:", e);
                         setMsg("Failed to fetch teams");
                     }
                 }
@@ -52,10 +96,42 @@ function TeamsPage() {
         try {
             await (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createTeam"])(name.trim());
             setName("");
-            // Re-fetch to get the same shape as getMyTeams()
             const res_0 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getMyTeams"])();
-            setTeams(res_0 || []);
+            const normalized_0 = (res_0 || []).map((m_0)=>{
+                if (m_0 && m_0.team) {
+                    return {
+                        id: m_0.team.id ?? null,
+                        name: m_0.team.name ?? "—",
+                        role: m_0.role ?? "member",
+                        raw: m_0
+                    };
+                }
+                if (m_0 && (m_0.members || m_0.projects || m_0.name)) {
+                    return {
+                        id: m_0.id ?? null,
+                        name: m_0.name ?? "—",
+                        role: "admin",
+                        raw: m_0
+                    };
+                }
+                if (m_0 && (m_0.id || m_0.name)) {
+                    return {
+                        id: m_0.id ?? null,
+                        name: m_0.name ?? "—",
+                        role: m_0.role ?? "member",
+                        raw: m_0
+                    };
+                }
+                return {
+                    id: null,
+                    name: "—",
+                    role: "member",
+                    raw: m_0
+                };
+            });
+            setTeams(normalized_0 || []);
         } catch (err) {
+            console.error("createTeam error:", err);
             const errMsg = err?.body?.message || "Failed to create team";
             setMsg(errMsg);
         }
@@ -67,7 +143,7 @@ function TeamsPage() {
                 children: "My teams"
             }, void 0, false, {
                 fileName: "[project]/frontend/src/app/teams/page.tsx",
-                lineNumber: 45,
+                lineNumber: 128,
                 columnNumber: 7
             }, this),
             msg && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -75,7 +151,7 @@ function TeamsPage() {
                 children: msg
             }, void 0, false, {
                 fileName: "[project]/frontend/src/app/teams/page.tsx",
-                lineNumber: 46,
+                lineNumber: 129,
                 columnNumber: 15
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -89,7 +165,7 @@ function TeamsPage() {
                         className: "px-3 py-2 border rounded flex-1"
                     }, void 0, false, {
                         fileName: "[project]/frontend/src/app/teams/page.tsx",
-                        lineNumber: 48,
+                        lineNumber: 131,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -97,13 +173,13 @@ function TeamsPage() {
                         children: "Create"
                     }, void 0, false, {
                         fileName: "[project]/frontend/src/app/teams/page.tsx",
-                        lineNumber: 49,
+                        lineNumber: 132,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/frontend/src/app/teams/page.tsx",
-                lineNumber: 47,
+                lineNumber: 130,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -113,70 +189,77 @@ function TeamsPage() {
                         children: "No teams yet"
                     }, void 0, false, {
                         fileName: "[project]/frontend/src/app/teams/page.tsx",
-                        lineNumber: 55,
+                        lineNumber: 138,
                         columnNumber: 32
                     }, this),
-                    teams.map((m)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                    teams.map((t)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                             className: "p-3 border rounded flex justify-between items-center",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "font-semibold",
-                                            children: m?.team?.name ?? "—"
+                                            children: t.name
                                         }, void 0, false, {
                                             fileName: "[project]/frontend/src/app/teams/page.tsx",
-                                            lineNumber: 58,
+                                            lineNumber: 141,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "text-sm text-gray-600",
                                             children: [
                                                 "Role: ",
-                                                m?.role ?? "member"
+                                                t.role
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/frontend/src/app/teams/page.tsx",
-                                            lineNumber: 59,
+                                            lineNumber: 142,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/frontend/src/app/teams/page.tsx",
-                                    lineNumber: 57,
+                                    lineNumber: 140,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                        href: `/teams/${m?.team?.id}`,
+                                    children: t.id ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                        href: `/teams/${t.id}`,
                                         className: "text-sm text-blue-600",
                                         children: "Open"
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/src/app/teams/page.tsx",
-                                        lineNumber: 64,
-                                        columnNumber: 15
+                                        lineNumber: 145,
+                                        columnNumber: 23
+                                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        className: "text-sm text-gray-400",
+                                        children: "No id"
+                                    }, void 0, false, {
+                                        fileName: "[project]/frontend/src/app/teams/page.tsx",
+                                        lineNumber: 147,
+                                        columnNumber: 27
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/frontend/src/app/teams/page.tsx",
-                                    lineNumber: 63,
+                                    lineNumber: 144,
                                     columnNumber: 13
                                 }, this)
                             ]
-                        }, m?.team?.id || m?.membershipId || Math.random(), true, {
+                        }, t.id ?? Math.random(), true, {
                             fileName: "[project]/frontend/src/app/teams/page.tsx",
-                            lineNumber: 56,
+                            lineNumber: 139,
                             columnNumber: 25
                         }, this))
                 ]
             }, void 0, true, {
                 fileName: "[project]/frontend/src/app/teams/page.tsx",
-                lineNumber: 54,
+                lineNumber: 137,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/frontend/src/app/teams/page.tsx",
-        lineNumber: 44,
+        lineNumber: 127,
         columnNumber: 10
     }, this);
 }

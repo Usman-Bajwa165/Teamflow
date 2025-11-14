@@ -28,6 +28,7 @@ model Team {
   createdAt DateTime     @default(now())
   updatedAt DateTime     @updatedAt
   members   TeamMember[]
+  projects  Project[]
 }
 
 model TeamMember {
@@ -53,14 +54,16 @@ model PasswordResetToken {
 }
 
 model Project {
-  id          String   @id @default(uuid())
+  id          String       @id @default(uuid())
   name        String
   description String?
-  teamId      String? // optional, later tie projects to teams
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  columns BoardColumn[]
+  teamId      String?      
+  team        Team?        @relation(fields: [teamId], references: [id])
+  assignedAt  DateTime     @default(now())
+  dueDate     DateTime?
+  columns     BoardColumn[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
 }
 
 model BoardColumn {
@@ -86,8 +89,15 @@ model Task {
   position    Int         @default(0) // order within column, lower = top
   assignee    User?       @relation(fields: [assigneeId], references: [id])
   assigneeId  String?
+  status     TaskStatus  @default(TODO)
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
 
   @@index([columnId, position])
+}
+
+enum TaskStatus {
+  TODO
+  IN_PROGRESS
+  FINISHED
 }

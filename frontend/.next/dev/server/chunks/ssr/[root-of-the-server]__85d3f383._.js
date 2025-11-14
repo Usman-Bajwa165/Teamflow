@@ -18,12 +18,20 @@ __turbopack_context__.s([
     ()=>createTask,
     "createTeam",
     ()=>createTeam,
+    "deleteColumn",
+    ()=>deleteColumn,
+    "deleteProject",
+    ()=>deleteProject,
     "deleteTask",
     ()=>deleteTask,
+    "getAllTeams",
+    ()=>getAllTeams,
     "getMyTeams",
     ()=>getMyTeams,
     "getProject",
     ()=>getProject,
+    "getTeamDetails",
+    ()=>getTeamDetails,
     "getTeamMembers",
     ()=>getTeamMembers,
     "inviteToTeam",
@@ -44,6 +52,8 @@ __turbopack_context__.s([
     ()=>requestPasswordReset,
     "resetPassword",
     ()=>resetPassword,
+    "updateProject",
+    ()=>updateProject,
     "updateTask",
     ()=>updateTask
 ]);
@@ -85,6 +95,7 @@ async function request(path, opts = {}) {
         credentials: "omit"
     };
     const res = await fetch(`${BASE}${path}`, fetchOpts);
+    // inside request()
     const text = await res.text();
     try {
         const json = text ? JSON.parse(text) : null;
@@ -94,10 +105,22 @@ async function request(path, opts = {}) {
         };
         return json;
     } catch (_err) {
-        if (!res.ok) throw {
-            status: res.status,
-            body: text
-        };
+        // Helpful detection: if the server returned an Express-style "Cannot GET /path" HTML/text,
+        // it's likely the request hit a non-API server (wrong port / proxy). Add a hint.
+        if (!res.ok) {
+            const bodyStr = typeof text === 'string' ? text : JSON.stringify(text);
+            if (bodyStr && bodyStr.includes('Cannot GET /')) {
+                throw {
+                    status: res.status,
+                    body: text,
+                    hint: 'Request appears to have hit a non-API server (wrong port). Make sure backend runs on port 4000 and frontend on a different port (e.g. 3000).'
+                };
+            }
+            throw {
+                status: res.status,
+                body: text
+            };
+        }
         return null;
     }
 }
@@ -154,8 +177,18 @@ async function createTeam(name) {
         })
     });
 }
+async function getTeamDetails(teamId) {
+    return request(`/teams/${teamId}`, {
+        headers: getAuthHeader()
+    });
+}
+async function getAllTeams() {
+    return request('/teams', {
+        headers: getAuthHeader()
+    });
+}
 async function getMyTeams() {
-    return request("/teams/my", {
+    return request('/teams/my', {
         headers: getAuthHeader()
     });
 }
@@ -174,13 +207,15 @@ async function getTeamMembers(teamId) {
         headers: getAuthHeader()
     });
 }
-async function createProject(name, description) {
-    return request("/projects", {
-        method: "POST",
+async function createProject(name, description, teamId, dueDate) {
+    return request('/projects', {
+        method: 'POST',
         headers: getAuthHeader(),
         body: JSON.stringify({
             name,
-            description
+            description,
+            teamId,
+            dueDate
         })
     });
 }
@@ -196,6 +231,12 @@ async function createColumn(projectId, title) {
         body: JSON.stringify({
             title
         })
+    });
+}
+async function deleteColumn(columnId) {
+    return request(`/projects/columns/${columnId}`, {
+        method: 'DELETE',
+        headers: getAuthHeader()
     });
 }
 async function createTask(columnId, title, description) {
@@ -220,7 +261,7 @@ async function moveTask(taskId, targetColumnId, targetPosition) {
 }
 async function updateTask(taskId, data) {
     return request(`/projects/tasks/${taskId}`, {
-        method: "PATCH",
+        method: 'PATCH',
         headers: getAuthHeader(),
         body: JSON.stringify(data)
     });
@@ -233,6 +274,19 @@ async function deleteTask(taskId) {
 }
 async function listProjects() {
     return request('/projects', {
+        headers: getAuthHeader()
+    });
+}
+async function updateProject(projectId, updates) {
+    return request(`/projects/${projectId}`, {
+        method: "PATCH",
+        headers: getAuthHeader(),
+        body: JSON.stringify(updates)
+    });
+}
+async function deleteProject(projectId) {
+    return request(`/projects/${projectId}`, {
+        method: "DELETE",
         headers: getAuthHeader()
     });
 }

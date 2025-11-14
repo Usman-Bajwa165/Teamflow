@@ -15,6 +15,7 @@ class UpdateTaskDto {
     title;
     description;
     assigneeId;
+    status;
 }
 exports.UpdateTaskDto = UpdateTaskDto;
 __decorate([
@@ -32,4 +33,9 @@ __decorate([
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], UpdateTaskDto.prototype, "assigneeId", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], UpdateTaskDto.prototype, "status", void 0);
 //# sourceMappingURL=update-task.dto.js.map

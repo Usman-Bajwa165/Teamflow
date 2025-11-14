@@ -8,30 +8,30 @@ import { Request } from 'express';
 interface JwtRequest extends Request {
     user?: {
         userId: string;
+        role?: string;
     };
 }
 export declare class ProjectsController {
     private projects;
     constructor(projects: ProjectsService);
-    createProject(dto: CreateProjectDto, req: JwtRequest): import("@prisma/client").Prisma.Prisma__ProjectClient<{
-        id: string;
-        name: string;
-        createdAt: Date;
-        updatedAt: Date;
-        teamId: string | null;
-        description: string | null;
-    }, never, import("@prisma/client/runtime/library").DefaultArgs, import("@prisma/client").Prisma.PrismaClientOptions>;
-    listProjects(): import("@prisma/client").Prisma.PrismaPromise<({
+    createProject(dto: CreateProjectDto, req: JwtRequest): Promise<{
+        team: {
+            id: string;
+            name: string;
+            createdAt: Date;
+            updatedAt: Date;
+        } | null;
         columns: ({
             tasks: {
                 id: string;
+                description: string | null;
                 createdAt: Date;
                 updatedAt: Date;
-                description: string | null;
                 position: number;
                 title: string;
                 columnId: string;
                 assigneeId: string | null;
+                status: import("@prisma/client").$Enums.TaskStatus;
             }[];
         } & {
             id: string;
@@ -44,22 +44,68 @@ export declare class ProjectsController {
     } & {
         id: string;
         name: string;
+        description: string | null;
+        assignedAt: Date;
+        dueDate: Date | null;
         createdAt: Date;
         updatedAt: Date;
         teamId: string | null;
+    }>;
+    listProjects(req: JwtRequest): Promise<({
+        team: {
+            id: string;
+            name: string;
+            createdAt: Date;
+            updatedAt: Date;
+        } | null;
+        columns: ({
+            tasks: {
+                id: string;
+                description: string | null;
+                createdAt: Date;
+                updatedAt: Date;
+                position: number;
+                title: string;
+                columnId: string;
+                assigneeId: string | null;
+                status: import("@prisma/client").$Enums.TaskStatus;
+            }[];
+        } & {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            position: number;
+            title: string;
+            projectId: string;
+        })[];
+    } & {
+        id: string;
+        name: string;
         description: string | null;
+        assignedAt: Date;
+        dueDate: Date | null;
+        createdAt: Date;
+        updatedAt: Date;
+        teamId: string | null;
     })[]>;
     getProject(id: string): Promise<{
+        team: {
+            id: string;
+            name: string;
+            createdAt: Date;
+            updatedAt: Date;
+        } | null;
         columns: ({
             tasks: {
                 id: string;
+                description: string | null;
                 createdAt: Date;
                 updatedAt: Date;
-                description: string | null;
                 position: number;
                 title: string;
                 columnId: string;
                 assigneeId: string | null;
+                status: import("@prisma/client").$Enums.TaskStatus;
             }[];
         } & {
             id: string;
@@ -72,12 +118,14 @@ export declare class ProjectsController {
     } & {
         id: string;
         name: string;
+        description: string | null;
+        assignedAt: Date;
+        dueDate: Date | null;
         createdAt: Date;
         updatedAt: Date;
         teamId: string | null;
-        description: string | null;
     }>;
-    createColumn(id: string, dto: CreateColumnDto): Promise<{
+    createColumn(id: string, dto: CreateColumnDto, req: JwtRequest): Promise<{
         id: string;
         createdAt: Date;
         updatedAt: Date;
@@ -85,45 +133,86 @@ export declare class ProjectsController {
         title: string;
         projectId: string;
     }>;
-    createTask(columnId: string, dto: CreateTaskDto): Promise<{
+    deleteColumn(columnId: string, req: JwtRequest): Promise<{
         id: string;
         createdAt: Date;
         updatedAt: Date;
-        description: string | null;
         position: number;
         title: string;
-        columnId: string;
-        assigneeId: string | null;
+        projectId: string;
     }>;
-    moveTask(taskId: string, dto: MoveTaskDto): Promise<{
+    createTask(columnId: string, dto: CreateTaskDto, req: JwtRequest): Promise<{
         id: string;
+        description: string | null;
         createdAt: Date;
         updatedAt: Date;
-        description: string | null;
         position: number;
         title: string;
         columnId: string;
         assigneeId: string | null;
+        status: import("@prisma/client").$Enums.TaskStatus;
+    }>;
+    moveTask(taskId: string, dto: MoveTaskDto, req: JwtRequest): Promise<{
+        id: string;
+        description: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+        position: number;
+        title: string;
+        columnId: string;
+        assigneeId: string | null;
+        status: import("@prisma/client").$Enums.TaskStatus;
     } | null>;
-    updateTask(taskId: string, dto: UpdateTaskDto): import("@prisma/client").Prisma.Prisma__TaskClient<{
+    updateTask(taskId: string, dto: UpdateTaskDto): Promise<{
         id: string;
+        description: string | null;
         createdAt: Date;
         updatedAt: Date;
-        description: string | null;
         position: number;
         title: string;
         columnId: string;
         assigneeId: string | null;
-    }, never, import("@prisma/client/runtime/library").DefaultArgs, import("@prisma/client").Prisma.PrismaClientOptions>;
-    deleteTask(taskId: string): import("@prisma/client").Prisma.Prisma__TaskClient<{
+        status: import("@prisma/client").$Enums.TaskStatus;
+    }>;
+    deleteTask(taskId: string, req: JwtRequest): Promise<{
         id: string;
+        description: string | null;
         createdAt: Date;
         updatedAt: Date;
-        description: string | null;
         position: number;
         title: string;
         columnId: string;
         assigneeId: string | null;
-    }, never, import("@prisma/client/runtime/library").DefaultArgs, import("@prisma/client").Prisma.PrismaClientOptions>;
+        status: import("@prisma/client").$Enums.TaskStatus;
+    }>;
+    updateProject(id: string, body: {
+        name?: string;
+        description?: string;
+        teamId?: string | null;
+        dueDate?: string | null;
+    }, req: Request & {
+        user?: any;
+    }): Promise<{
+        id: string;
+        name: string;
+        description: string | null;
+        assignedAt: Date;
+        dueDate: Date | null;
+        createdAt: Date;
+        updatedAt: Date;
+        teamId: string | null;
+    }>;
+    deleteProject(id: string, req: Request & {
+        user?: any;
+    }): Promise<{
+        id: string;
+        name: string;
+        description: string | null;
+        assignedAt: Date;
+        dueDate: Date | null;
+        createdAt: Date;
+        updatedAt: Date;
+        teamId: string | null;
+    }>;
 }
 export {};

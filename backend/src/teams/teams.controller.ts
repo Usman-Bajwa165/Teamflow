@@ -1,3 +1,4 @@
+// backend/src/teams/teams.controller.ts
 import {
   Body,
   Controller,
@@ -12,6 +13,7 @@ import {
   ValidationPipe,
   BadRequestException,
   UnauthorizedException,
+  ForbiddenException,
 } from '@nestjs/common';
 import { TeamsService } from './teams.service';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
@@ -23,7 +25,14 @@ import { Request } from 'express';
 import { UpdateMemberRoleDto } from './dto/update-member-role.dto';
 
 interface JwtRequest extends Request {
-  user?: { userId: string; email?: string; role?: string };
+  // widened shape: token middleware may provide userId OR id OR sub
+  user?: {
+    userId?: string;
+    id?: string;
+    sub?: string;
+    email?: string;
+    role?: string;
+  };
 }
 
 @UseGuards(JwtAuthGuard)
@@ -36,15 +45,29 @@ export class TeamsController {
   async create(@Req() req: JwtRequest, @Body() dto: CreateTeamDto) {
     if (!dto || !dto.name)
       throw new BadRequestException('Team name is required');
-    const uid = req.user?.userId;
+    const uid = String(req.user?.userId ?? req.user?.id ?? req.user?.sub ?? '');
     if (!uid) throw new UnauthorizedException('Missing authenticated user');
     return this.teams.createTeam(uid, dto.name);
   }
 
   @Get('my')
   async myTeams(@Req() req: JwtRequest) {
-    const uid = req.user?.userId;
+    const uidRaw = req.user?.userId ?? req.user?.id ?? req.user?.sub;
+    const uid = uidRaw ? String(uidRaw) : '';
     if (!uid) throw new UnauthorizedException('Missing authenticated user');
+
+    // if token already contains role 'admin', return all
+    if (req.user?.role === 'admin') {
+      return this.teams.listAllTeams();
+    }
+
+    // else check DB role (resiliency)
+    const role = await this.teams.getUserRole(uid);
+    if (role === 'admin') {
+      return this.teams.listAllTeams();
+    }
+
+    // normal user => their teams
     return this.teams.getTeamsForUser(uid);
   }
 
@@ -81,5 +104,42 @@ export class TeamsController {
     @Param('memberId') memberId: string,
   ) {
     return this.teams.removeMember(id, memberId);
+  }
+
+  // GET /teams (admin-only)
+  @Get()
+  async listAll(@Req() req: JwtRequest) {
+    const uid = String(req.user?.userId ?? req.user?.id ?? req.user?.sub ?? '');
+    const role = req.user?.role ?? (await this.teams.getUserRole(uid));
+    if (!uid) throw new BadRequestException('Missing auth user');
+    if (role !== 'admin')
+      throw new ForbiddenException('Only global admin can list all teams');
+    return this.teams.listAllTeamsWithProjectCount();
+  }
+  @Get(':id')
+  async getTeam(@Param('id') id: string) {
+    return this.teams.getTeamDetails(id);
+  }
+  @UseGuards(JwtAuthGuard)
+  @Delete(':id')
+  async deleteTeamEndpoint(@Req() req: JwtRequest, @Param('id') id: string) {
+    if (!id) throw new BadRequestException('Team id required');
+    const uid = String(req.user?.userId ?? req.user?.id ?? req.user?.sub ?? '');
+    if (!uid) throw new BadRequestException('Missing authenticated user');
+
+    // allow if global admin
+    const globalRole = req.user?.role ?? (await this.teams.getUserRole(uid));
+    if (globalRole === 'admin') {
+      return this.teams.deleteTeam(id);
+    }
+
+    // else check if user is owner of the team
+    const members = await this.teams.getTeamMembers(id);
+    const member = members.find((m) => m.user?.id === uid);
+    if (!member) throw new ForbiddenException('Not a member of the team');
+    if (member.role !== 'owner')
+      throw new ForbiddenException('Only team owner may delete the team');
+
+    return this.teams.deleteTeam(id);
   }
 }

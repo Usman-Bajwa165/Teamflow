@@ -12,4 +12,8 @@ export class UpdateTaskDto {
   @IsOptional()
   @IsString()
   assigneeId?: string;
+
+  @IsOptional()
+  @IsString()
+  status?: string;
 }

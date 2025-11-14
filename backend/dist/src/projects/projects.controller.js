@@ -26,41 +26,105 @@ let ProjectsController = class ProjectsController {
     constructor(projects) {
         this.projects = projects;
     }
-    createProject(dto, req) {
-        if (!dto || !dto.name)
-            throw new common_1.BadRequestException('Project name is required');
-        return this.projects.createProject(dto.name, dto.description);
+    async createProject(dto, req) {
+        const uid = req.user?.userId;
+        const role = req.user?.role;
+        if (!uid)
+            throw new common_1.BadRequestException('Missing auth user');
+        if (role !== 'admin')
+            throw new common_1.ForbiddenException('Only global admin can create projects');
+        return this.projects.createProject(uid, dto.name, dto.description, dto.teamId, dto.dueDate);
     }
-    listProjects() {
-        return this.projects.listProjects();
+    async listProjects(req) {
+        const uid = req.user?.userId;
+        if (!uid)
+            throw new common_1.BadRequestException('Missing auth user');
+        return this.projects.listProjects(uid);
     }
     async getProject(id) {
         return this.projects.getProjectWithBoard(id);
     }
-    async createColumn(id, dto) {
-        if (!dto || !dto.title)
-            throw new common_1.BadRequestException('Column title is required');
+    async createColumn(id, dto, req) {
+        const uid = req.user?.userId;
+        if (!uid)
+            throw new common_1.BadRequestException('Missing auth user');
+        const allowed = await this.projects.userCanManageProject(uid, id);
+        if (!allowed)
+            throw new common_1.ForbiddenException('Only team owner/admin or global admin can add columns');
         return this.projects.createColumn(id, dto.title, dto.position);
     }
-    async createTask(columnId, dto) {
-        if (!dto || !dto.title)
-            throw new common_1.BadRequestException('Task title is required');
+    async deleteColumn(columnId, req) {
+        const uid = req.user?.userId;
+        if (!uid)
+            throw new common_1.BadRequestException('Missing auth user');
+        const projectId = await this.projects.getProjectIdFromColumn(columnId);
+        const allowed = await this.projects.userCanManageProject(uid, projectId);
+        if (!allowed)
+            throw new common_1.ForbiddenException('Only team owner/admin or global admin can delete columns');
+        return this.projects.deleteColumnIfEmpty(columnId);
+    }
+    async createTask(columnId, dto, req) {
+        const uid = req.user?.userId;
+        if (!uid)
+            throw new common_1.BadRequestException('Missing auth user');
+        const projectId = await this.projects.getProjectIdFromColumn(columnId);
+        const allowed = await this.projects.userCanManageProject(uid, projectId);
+        if (!allowed)
+            throw new common_1.ForbiddenException('Only team owner/admin or global admin can add tasks');
         return this.projects.createTask(columnId, dto.title, dto.description, dto.assigneeId, dto.position);
     }
-    async moveTask(taskId, dto) {
+    async moveTask(taskId, dto, req) {
+        const uid = req.user?.userId;
+        if (!uid)
+            throw new common_1.BadRequestException('Missing auth user');
+        const projectId = await this.projects.getProjectIdFromTask(taskId);
+        const allowed = await this.projects.userCanManageProject(uid, projectId);
+        if (!allowed)
+            throw new common_1.ForbiddenException('Only team owner/admin or global admin can move tasks');
         if (!dto || !dto.targetColumnId)
             throw new common_1.BadRequestException('targetColumnId is required');
         return this.projects.moveTask(taskId, dto.targetColumnId, dto.targetPosition);
     }
-    updateTask(taskId, dto) {
-        return this.projects.updateTask(taskId, {
-            title: dto.title,
-            description: dto.description,
-            assigneeId: dto.assigneeId,
-        });
+    async updateTask(taskId, dto) {
+        const payload = {};
+        if (dto.title !== undefined)
+            payload.title = dto.title;
+        if (dto.description !== undefined)
+            payload.description = dto.description;
+        if (Object.prototype.hasOwnProperty.call(dto, 'assigneeId')) {
+            payload.assigneeId = dto.assigneeId;
+        }
+        if (dto.status !== undefined)
+            payload.status = dto.status;
+        return this.projects.updateTask(taskId, payload);
     }
-    deleteTask(taskId) {
+    async deleteTask(taskId, req) {
+        const uid = req.user?.userId;
+        if (!uid)
+            throw new common_1.BadRequestException('Missing auth user');
+        const projectId = await this.projects.getProjectIdFromTask(taskId);
+        const allowed = await this.projects.userCanManageProject(uid, projectId);
+        if (!allowed)
+            throw new common_1.ForbiddenException('Only team owner/admin or global admin can delete tasks');
         return this.projects.deleteTask(taskId);
+    }
+    async updateProject(id, body, req) {
+        const uid = req.user?.userId ?? req.user?.id ?? req.user?.sub;
+        if (!uid)
+            throw new common_1.BadRequestException('Missing authenticated user');
+        const updates = {
+            name: body.name,
+            description: body.description,
+            teamId: body.teamId ?? null,
+            dueDate: body.dueDate ? new Date(body.dueDate) : null,
+        };
+        return this.projects.updateProject(id, updates, String(uid));
+    }
+    async deleteProject(id, req) {
+        const uid = req.user?.userId ?? req.user?.id ?? req.user?.sub;
+        if (!uid)
+            throw new common_1.BadRequestException('Missing authenticated user');
+        return this.projects.deleteProject(id, String(uid));
     }
 };
 exports.ProjectsController = ProjectsController;
@@ -71,13 +135,14 @@ __decorate([
     __param(1, (0, common_1.Req)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_project_dto_1.CreateProjectDto, Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ProjectsController.prototype, "createProject", null);
 __decorate([
     (0, common_1.Get)(),
+    __param(0, (0, common_1.Req)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
 ], ProjectsController.prototype, "listProjects", null);
 __decorate([
     (0, common_1.Get)(':id'),
@@ -91,17 +156,27 @@ __decorate([
     (0, common_1.UsePipes)(new common_1.ValidationPipe({ whitelist: true })),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
+    __param(2, (0, common_1.Req)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, create_column_dto_1.CreateColumnDto]),
+    __metadata("design:paramtypes", [String, create_column_dto_1.CreateColumnDto, Object]),
     __metadata("design:returntype", Promise)
 ], ProjectsController.prototype, "createColumn", null);
+__decorate([
+    (0, common_1.Delete)('/columns/:columnId'),
+    __param(0, (0, common_1.Param)('columnId')),
+    __param(1, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], ProjectsController.prototype, "deleteColumn", null);
 __decorate([
     (0, common_1.Post)('/columns/:columnId/tasks'),
     (0, common_1.UsePipes)(new common_1.ValidationPipe({ whitelist: true })),
     __param(0, (0, common_1.Param)('columnId')),
     __param(1, (0, common_1.Body)()),
+    __param(2, (0, common_1.Req)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, create_task_dto_1.CreateTaskDto]),
+    __metadata("design:paramtypes", [String, create_task_dto_1.CreateTaskDto, Object]),
     __metadata("design:returntype", Promise)
 ], ProjectsController.prototype, "createTask", null);
 __decorate([
@@ -109,8 +184,9 @@ __decorate([
     (0, common_1.UsePipes)(new common_1.ValidationPipe({ whitelist: true })),
     __param(0, (0, common_1.Param)('taskId')),
     __param(1, (0, common_1.Body)()),
+    __param(2, (0, common_1.Req)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, move_task_dto_1.MoveTaskDto]),
+    __metadata("design:paramtypes", [String, move_task_dto_1.MoveTaskDto, Object]),
     __metadata("design:returntype", Promise)
 ], ProjectsController.prototype, "moveTask", null);
 __decorate([
@@ -120,15 +196,34 @@ __decorate([
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, update_task_dto_1.UpdateTaskDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ProjectsController.prototype, "updateTask", null);
 __decorate([
     (0, common_1.Delete)('/tasks/:taskId'),
     __param(0, (0, common_1.Param)('taskId')),
+    __param(1, (0, common_1.Req)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
 ], ProjectsController.prototype, "deleteTask", null);
+__decorate([
+    (0, common_1.Patch)(':id'),
+    (0, common_1.UsePipes)(new common_1.ValidationPipe({ whitelist: true })),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
+    __param(2, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, Object]),
+    __metadata("design:returntype", Promise)
+], ProjectsController.prototype, "updateProject", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], ProjectsController.prototype, "deleteProject", null);
 exports.ProjectsController = ProjectsController = __decorate([
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Controller)('projects'),

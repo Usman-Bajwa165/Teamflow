@@ -44,13 +44,26 @@ async function request(path: string, opts: RequestInit = {}) {
 
   const res = await fetch(`${BASE}${path}`, fetchOpts);
 
+// inside request()
   const text = await res.text();
   try {
     const json = text ? JSON.parse(text) : null;
     if (!res.ok) throw { status: res.status, body: json || text };
     return json;
   } catch (_err) {
-    if (!res.ok) throw { status: res.status, body: text };
+    // Helpful detection: if the server returned an Express-style "Cannot GET /path" HTML/text,
+    // it's likely the request hit a non-API server (wrong port / proxy). Add a hint.
+    if (!res.ok) {
+      const bodyStr = typeof text === 'string' ? text : JSON.stringify(text);
+      if (bodyStr && bodyStr.includes('Cannot GET /')) {
+        throw {
+          status: res.status,
+          body: text,
+          hint: 'Request appears to have hit a non-API server (wrong port). Make sure backend runs on port 4000 and frontend on a different port (e.g. 3000).',
+        };
+      }
+      throw { status: res.status, body: text };
+    }
     return null;
   }
 }
@@ -100,8 +113,14 @@ export async function createTeam(name: string) {
     body: JSON.stringify({ name }),
   });
 }
+export async function getTeamDetails(teamId: string) {
+  return request(`/teams/${teamId}`, { headers: getAuthHeader() });
+}
+export async function getAllTeams() {
+  return request('/teams', { headers: getAuthHeader() });
+}
 export async function getMyTeams() {
-  return request("/teams/my", { headers: getAuthHeader() });
+  return request('/teams/my', { headers: getAuthHeader() });
 }
 export async function inviteToTeam(
   teamId: string,
@@ -115,17 +134,18 @@ export async function inviteToTeam(
   });
 }
 export async function getTeamMembers(teamId: string) {
-  return request(`/teams/${teamId}/members`, { headers: getAuthHeader() });
+  return request(`/teams/${teamId}/members`, {  headers: getAuthHeader() });
 }
 
 /* Projects & Board */
-export async function createProject(name: string, description?: string) {
-  return request("/projects", {
-    method: "POST",
+export async function createProject(name: string, description?: string, teamId?: string, dueDate?: string) {
+  return request('/projects', {
+    method: 'POST',
     headers: getAuthHeader(),
-    body: JSON.stringify({ name, description }),
+    body: JSON.stringify({ name, description, teamId, dueDate }),
   });
 }
+
 export async function getProject(projectId: string) {
   return request(`/projects/${projectId}`, { headers: getAuthHeader() });
 }
@@ -135,6 +155,9 @@ export async function createColumn(projectId: string, title: string) {
     headers: getAuthHeader(),
     body: JSON.stringify({ title }),
   });
+}
+export async function deleteColumn(columnId: string) {
+  return request(`/projects/columns/${columnId}`, { method: 'DELETE', headers: getAuthHeader() });
 }
 export async function createTask(
   columnId: string,
@@ -158,12 +181,9 @@ export async function moveTask(
     body: JSON.stringify({ targetColumnId, targetPosition }),
   });
 }
-export async function updateTask(
-  taskId: string,
-  data: Record<string, unknown>
-) {
+export async function updateTask(taskId: string, data: Record<string, unknown>) {
   return request(`/projects/tasks/${taskId}`, {
-    method: "PATCH",
+    method: 'PATCH',
     headers: getAuthHeader(),
     body: JSON.stringify(data),
   });
@@ -177,4 +197,22 @@ export async function deleteTask(taskId: string) {
 
 export async function listProjects() {
   return request('/projects', { headers: getAuthHeader() });
+}
+
+export async function updateProject(
+  projectId: string,
+  updates: { name?: string; description?: string; teamId?: string | null; dueDate?: string | null }
+) {
+  return request(`/projects/${projectId}`, {
+    method: "PATCH",
+    headers: getAuthHeader(),
+    body: JSON.stringify(updates),
+  });
+}
+
+export async function deleteProject(projectId: string) {
+  return request(`/projects/${projectId}`, {
+    method: "DELETE",
+    headers: getAuthHeader(),
+  });
 }
