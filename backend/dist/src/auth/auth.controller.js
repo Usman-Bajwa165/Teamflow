@@ -40,6 +40,9 @@ let AuthController = class AuthController {
             return { ok: false };
         return this.auth.logout(uid);
     }
+    async validateResetToken(token) {
+        return this.auth.validateResetToken(token);
+    }
     async requestPasswordReset(email) {
         await this.auth.createPasswordReset(email);
         return {
@@ -84,6 +87,13 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "logout", null);
+__decorate([
+    (0, common_1.Post)('validate-reset-token'),
+    __param(0, (0, common_1.Body)('token')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "validateResetToken", null);
 __decorate([
     (0, common_1.Post)('request-password-reset'),
     __param(0, (0, common_1.Body)('email')),

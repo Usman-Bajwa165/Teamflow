@@ -13,6 +13,7 @@ const auth_service_1 = require("./auth.service");
 const users_module_1 = require("../users/users.module");
 const prisma_module_1 = require("../prisma/prisma.module");
 const auth_controller_1 = require("./auth.controller");
+const mailer_module_1 = require("../mailer/mailer.module");
 const jwt_strategy_1 = require("./strategies/jwt.strategy");
 let AuthModule = class AuthModule {
 };
@@ -22,6 +23,7 @@ exports.AuthModule = AuthModule = __decorate([
         imports: [
             users_module_1.UsersModule,
             prisma_module_1.PrismaModule,
+            mailer_module_1.MailerModule,
             jwt_1.JwtModule.register({
                 secret: process.env.JWT_SECRET || 'default_secret',
                 signOptions: {

@@ -49,14 +49,17 @@ const prisma_service_1 = require("../prisma/prisma.service");
 const bcrypt = __importStar(require("bcrypt"));
 const jwt_1 = require("@nestjs/jwt");
 const crypto = __importStar(require("crypto"));
+const mailer_service_1 = require("../mailer/mailer.service");
 let AuthService = class AuthService {
     usersService;
     prisma;
     jwtService;
-    constructor(usersService, prisma, jwtService) {
+    mailer;
+    constructor(usersService, prisma, jwtService, mailer) {
         this.usersService = usersService;
         this.prisma = prisma;
         this.jwtService = jwtService;
+        this.mailer = mailer;
     }
     getAccessTokenPayload(user) {
         return { sub: user.id, email: user.email, role: user.role };
@@ -149,8 +152,9 @@ let AuthService = class AuthService {
     }
     async createPasswordReset(email) {
         const user = await this.usersService.findByEmail(email);
-        if (!user)
-            return;
+        if (!user) {
+            throw new common_1.BadRequestException('Email not found. Please register first.');
+        }
         const raw = crypto.randomBytes(32).toString('hex');
         const tokenHash = crypto.createHash('sha256').update(raw).digest('hex');
         const expires = new Date(Date.now() +
@@ -164,8 +168,30 @@ let AuthService = class AuthService {
                 expiresAt: expires,
             },
         });
-        console.log(`Password reset token for ${email}: ${raw} (valid until ${expires.toISOString()})`);
-        return { ok: true };
+        await this.mailer.sendPasswordReset(user.email, raw);
+        return {
+            ok: true,
+            message: 'Password reset email sent (check inbox).',
+        };
+    }
+    async validateResetToken(rawToken) {
+        if (!rawToken)
+            return { valid: false, reason: 'missing' };
+        const tokenHash = crypto
+            .createHash('sha256')
+            .update(rawToken)
+            .digest('hex');
+        const token = await this.prisma.passwordResetToken.findUnique({
+            where: { tokenHash },
+            include: { user: true },
+        });
+        if (!token)
+            return { valid: false, reason: 'invalid' };
+        if (token.used)
+            return { valid: false, reason: 'used' };
+        if (token.expiresAt < new Date())
+            return { valid: false, reason: 'expired' };
+        return { valid: true };
     }
     async resetPassword(rawToken, newPassword) {
         const tokenHash = crypto
@@ -199,6 +225,7 @@ exports.AuthService = AuthService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [users_service_1.UsersService,
         prisma_service_1.PrismaService,
-        jwt_1.JwtService])
+        jwt_1.JwtService,
+        mailer_service_1.MailerService])
 ], AuthService);
 //# sourceMappingURL=auth.service.js.map

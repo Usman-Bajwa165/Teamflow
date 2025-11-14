@@ -50,6 +50,11 @@ export class AuthController {
     return this.auth.logout(uid);
   }
 
+  @Post('validate-reset-token')
+  async validateResetToken(@Body('token') token: string) {
+    return this.auth.validateResetToken(token);
+  }
+
   @Post('request-password-reset')
   async requestPasswordReset(@Body('email') email: string) {
     await this.auth.createPasswordReset(email);

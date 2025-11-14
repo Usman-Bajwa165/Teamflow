@@ -98,6 +98,13 @@ export async function requestPasswordReset(email: string) {
     body: JSON.stringify({ email }),
   });
 }
+export async function validateResetToken(token: string) {
+  return request('/auth/validate-reset-token', {
+    method: 'POST',
+    body: JSON.stringify({ token }),
+  });
+}
+
 export async function resetPassword(token: string, newPassword: string) {
   return request("/auth/reset-password", {
     method: "POST",

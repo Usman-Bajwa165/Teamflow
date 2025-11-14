@@ -8,6 +8,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import * as crypto from 'crypto';
+import { MailerService } from '../mailer/mailer.service';
 
 type MinimalUserForTokens = {
   id: string | number;
@@ -22,6 +23,7 @@ export class AuthService {
     private usersService: UsersService,
     private prisma: PrismaService,
     private jwtService: JwtService,
+    private mailer: MailerService,
   ) {}
 
   private getAccessTokenPayload(user: MinimalUserForTokens) {
@@ -148,7 +150,10 @@ export class AuthService {
   // Password reset (create token and store its SHA256 hash)
   async createPasswordReset(email: string) {
     const user = await this.usersService.findByEmail(email);
-    if (!user) return; // don't reveal user existence
+    if (!user) {
+      // per your earlier request, show explicit message
+      throw new BadRequestException('Email not found. Please register first.');
+    }
 
     const raw = crypto.randomBytes(32).toString('hex');
     const tokenHash = crypto.createHash('sha256').update(raw).digest('hex');
@@ -168,12 +173,33 @@ export class AuthService {
       },
     });
 
-    // NOTE: In prod you must email `raw` token as a reset link. For now we return it (or log).
-    console.log(
-      `Password reset token for ${email}: ${raw} (valid until ${expires.toISOString()})`,
-    );
+    // Send real email (no terminal logging)
+    await this.mailer.sendPasswordReset(user.email, raw);
 
-    return { ok: true };
+    return {
+      ok: true,
+      message: 'Password reset email sent (check inbox).',
+    };
+  }
+
+  async validateResetToken(rawToken: string) {
+    if (!rawToken) return { valid: false, reason: 'missing' };
+
+    const tokenHash = crypto
+      .createHash('sha256')
+      .update(rawToken)
+      .digest('hex');
+    const token = await this.prisma.passwordResetToken.findUnique({
+      where: { tokenHash },
+      include: { user: true },
+    });
+
+    if (!token) return { valid: false, reason: 'invalid' };
+    if (token.used) return { valid: false, reason: 'used' };
+    if (token.expiresAt < new Date())
+      return { valid: false, reason: 'expired' };
+
+    return { valid: true };
   }
 
   async resetPassword(rawToken: string, newPassword: string) {

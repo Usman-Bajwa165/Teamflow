@@ -1,6 +1,7 @@
 import { UsersService } from '../users/users.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { JwtService } from '@nestjs/jwt';
+import { MailerService } from '../mailer/mailer.service';
 type MinimalUserForTokens = {
     id: string | number;
     email?: string;
@@ -11,7 +12,8 @@ export declare class AuthService {
     private usersService;
     private prisma;
     private jwtService;
-    constructor(usersService: UsersService, prisma: PrismaService, jwtService: JwtService);
+    private mailer;
+    constructor(usersService: UsersService, prisma: PrismaService, jwtService: JwtService, mailer: MailerService);
     private getAccessTokenPayload;
     getTokens(user: MinimalUserForTokens): {
         accessToken: string;
@@ -75,7 +77,15 @@ export declare class AuthService {
     }>;
     createPasswordReset(email: string): Promise<{
         ok: boolean;
-    } | undefined>;
+        message: string;
+    }>;
+    validateResetToken(rawToken: string): Promise<{
+        valid: boolean;
+        reason: string;
+    } | {
+        valid: boolean;
+        reason?: undefined;
+    }>;
     resetPassword(rawToken: string, newPassword: string): Promise<{
         ok: boolean;
     }>;

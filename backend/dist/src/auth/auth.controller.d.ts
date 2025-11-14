@@ -48,6 +48,13 @@ export declare class AuthController {
     logout(req: JwtRequest): Promise<{
         ok: boolean;
     }>;
+    validateResetToken(token: string): Promise<{
+        valid: boolean;
+        reason: string;
+    } | {
+        valid: boolean;
+        reason?: undefined;
+    }>;
     requestPasswordReset(email: string): Promise<{
         ok: boolean;
         message: string;
