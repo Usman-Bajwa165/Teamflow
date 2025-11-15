@@ -1,4 +1,4 @@
-"use client";
+'use client';
 // frontend/src/components/TaskModal.tsx
 import React, { useEffect, useState } from "react";
 
@@ -14,14 +14,14 @@ type TeamMember = {
   id: string;
   role?: string;
   user?: { id: string; name?: string | null; email?: string | null };
-  busyElsewhere?: boolean;
+  busyElsewhere?: boolean | number | null;
 };
 
 type Props = {
   task: Task | null;
   projectId?: string | null;
   teamMembers?: TeamMember[];
-  assignedUserIds?: string[];
+  assignedUserIds?: string[]; // users assigned in THIS project
   onClose: () => void;
   onSave: (updates: {
     title?: string;
@@ -49,7 +49,6 @@ export default function TaskModal({
   const [err, setErr] = useState<string | null>(null);
 
   // initialize local editable state when task changes
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (!task) return;
     setTitle(task.title ?? "");
@@ -61,14 +60,14 @@ export default function TaskModal({
 
   if (!task) return null;
 
-  // Build options: filter out members who already have a task in this same project,
-  // except allow current assignee to remain selectable.
+  // Build options: map members -> { user, member }, filter out members who already have
+  // a task in THIS project (assignedUserIds) except allow current assignee to remain selectable.
   const options = (teamMembers || [])
     .map((m) => {
       const user = m.user ?? { id: m.id, name: undefined, email: undefined };
       return { member: m, user };
     })
-    .filter(({ user, member }) => {
+    .filter(({ user }) => {
       const isAssignedInThisProject = (assignedUserIds || []).includes(user.id);
       const isCurrentAssignee = task.assigneeId === user.id;
       if (isAssignedInThisProject && !isCurrentAssignee) return false;
@@ -79,12 +78,20 @@ export default function TaskModal({
     setErr(null);
     setSaving(true);
     try {
+      // normalize assigneeId: treat "", "null", undefined as null
+      let assigneeForPayload: string | null = assigneeId ?? null;
+      if (assigneeForPayload === "" || assigneeForPayload === "null") assigneeForPayload = null;
+
+      // If task marked FINISHED we also clear assignee (as requested)
+      if (status === "FINISHED") assigneeForPayload = null;
+
       const payload = {
         title: title.trim() || undefined,
         description: description.trim() || undefined,
-        assigneeId: assigneeId || null,
+        assigneeId: assigneeForPayload,
         status,
       };
+
       const result = await onSave(payload);
       setSaving(false);
       onClose();
@@ -110,6 +117,12 @@ export default function TaskModal({
       setErr(msg);
     }
   }
+
+  // helper to display label and indicator (🔴) when busyElsewhere
+  const optionLabel = (user: { id?: string; name?: string | null; email?: string | null }, busy?: boolean) => {
+    const nameOrEmailOrId = (user.name && user.name.trim()) || (user.email && user.email.trim()) || user.id || 'Unknown';
+    return busy ? `🔴 ${nameOrEmailOrId} (busy elsewhere)` : nameOrEmailOrId;
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
@@ -148,20 +161,23 @@ export default function TaskModal({
         <label className="block mb-2 text-sm">Assignee</label>
         <select
           value={assigneeId ?? ""}
-          onChange={(e) => setAssigneeId(e.target.value || null)}
+          onChange={(e) => {
+            const v = e.target.value;
+            setAssigneeId(v === "" ? null : v);
+          }}
           className="w-full px-3 py-2 border rounded mb-4"
         >
           <option value="">Unassigned</option>
           {options.map(({ user, member }) => {
-            const busyElsewhere = !!member.busyElsewhere;
-            const label = `${user.name ?? user.email ?? user.id}${
-              busyElsewhere ? " (busy elsewhere)" : ""
-            }`;
+            const busyElsewhere = !!(member as any).busyElsewhere;
+            const label = optionLabel(user, busyElsewhere);
+
+            // inline style is a hint; some browsers ignore option styling — emoji ensures visibility
             return (
               <option
                 key={user.id}
                 value={user.id}
-                style={busyElsewhere ? { backgroundColor: "#ffecec" } : undefined}
+                style={busyElsewhere ? { backgroundColor: "#fff0f0" } : undefined}
               >
                 {label}
               </option>

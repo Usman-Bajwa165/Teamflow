@@ -1,53 +1,3230 @@
-[00:00:08.141] Server  LOG      ✓ Ready in 6s
-[00:00:18.096] Server  LOG      ○ Compiling /login ...
-[00:00:35.226] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:59.495] Browser ERROR   createTeam error: {"body":"{\"message\":\"Unauthorized\",\"statusCode\":401}","status":401}
-[00:03:51.638] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:05:56.699] Server  LOG      ✓ Compiled in 273ms
-[00:06:31.866] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:09:00.979] Server  LOG      ✓ Compiled in 182ms
-[00:09:01.965] Browser ERROR   ./frontend/src/app/reset/page.tsx:1:6
-Parsing ecmascript source code failed
-> 1 | http://localhost:3000/reset?token=f30ba62dbd88b42a42e79fa0f2cd692a873d5028abcacd42957099cf587fd15b
-    |      ^
+[00:00:03.686] Server  LOG      ✓ Ready in 2.7s
+[00:00:28.134] Server  LOG      ○ Compiling / ...
+[00:00:39.461] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:48.590] Server  LOG      ✓ Compiled in 669ms
+[00:02:59.136] Server  LOG      ✓ Compiled in 388ms
+[00:03:15.238] Server  LOG      ✓ Compiled in 741ms
+[00:03:54.865] Server  LOG      ○ Compiling /projects/[id] ...
+[00:06:26.111] Server  LOG      ✓ Compiled in 693ms
+[00:15:08.364] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
 
-Expression expected
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.367] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.370] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.372] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.375] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.377] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.379] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.382] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.385] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.387] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.388] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.390] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.395] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.396] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.398] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.400] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.404] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.406] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.408] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.409] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.412] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.415] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.418] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.420] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.423] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.425] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.427] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.429] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.432] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.434] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.436] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.440] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.444] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.446] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.448] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.450] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.455] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.457] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.459] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.461] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.465] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.467] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.469] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.473] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.478] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.481] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.483] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.487] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.489] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.491] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.493] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.496] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.498] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.500] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.503] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.505] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.509] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.511] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.513] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.515] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.518] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.522] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.525] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.528] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.530] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.531] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.534] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.536] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.538] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.540] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.541] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.545] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.547] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.549] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.553] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.556] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.558] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.560] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.562] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.564] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.567] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.570] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.573] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.575] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.578] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.579] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.581] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.584] Server  ERROR    ⨯ ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:15:08.586] Server  LOG      ✓ Compiled in 298ms
+[00:15:09.690] Browser ERROR   ./frontend/src/components/ClientRoot.tsx:5:1
+Module not found: Can't resolve './BackButton'
+  3 | import { AuthProvider } from "../context/AuthContext";
+  4 | import TopNav from "./TopNav";
+> 5 | import BackButton from "./BackButton";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | export default function ClientRoot({ children }: { children: React.ReactNode }) {
+  8 |   return (
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:15:32.430] Server  LOG      ✓ Compiled in 411ms
+[00:15:34.365] Server  ERROR    ⨯ Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+[00:15:34.466] Server  LOG      ✓ Compiled in 713ms
+[00:15:34.467] Browser ERROR   uncaughtError: Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `ClientRoot`.
+[00:15:34.496] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:15:34.938] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:15:51.332] Server  LOG      ✓ Compiled in 165ms
+[00:16:07.491] Server  LOG      ✓ Compiled in 232ms
+[00:16:30.611] Server  LOG      ✓ Compiled in 146ms
+[00:16:55.680] Server  LOG      ✓ Compiled in 510ms
+[00:17:34.717] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:18:30.003] Server  LOG      ✓ Compiled in 147ms
+[00:18:56.980] Server  LOG      ✓ Compiled in 107ms
+[00:19:02.946] Server  LOG      ✓ Compiled in 153ms
+[00:19:42.969] Server  LOG      ✓ Compiled in 78ms
+[00:19:58.458] Server  LOG      ✓ Compiled in 86ms
+[00:20:11.656] Server  LOG      ✓ Compiled in 76ms
+[00:20:17.754] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:20:24.103] Server  LOG      ✓ Compiled in 75ms
+[00:21:28.269] Server  LOG      ✓ Compiled in 112ms
+[00:21:45.812] Server  LOG      ✓ Compiled in 122ms
+[00:21:47.694] Browser ERROR   ./frontend/src/components/ClientRoot.tsx:15:11
+Parsing ecmascript source code failed
+  13 |         <div style={{margin:-100,}>
+  14 |           <BackButton />
+> 15 |           {children}
+     |           ^
+  16 |         </div>
+  17 |       </div>
+  18 |     </AuthProvider>
+
+Expected '</', got '{'
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+[00:21:47.694] Browser ERROR   ./frontend/src/components/ClientRoot.tsx:15:11
+Parsing ecmascript source code failed
+  13 |         <div style={{margin:-100}>
+  14 |           <BackButton />
+> 15 |           {children}
+     |           ^
+  16 |         </div>
+  17 |       </div>
+  18 |     </AuthProvider>
+
+Expected '</', got '{'
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+[00:21:48.698] Browser ERROR   ./frontend/src/components/ClientRoot.tsx:13:33
+Parsing ecmascript source code failed
+  11 |         <TopNav />
+  12 |         {/* container now controls horizontal spacing so page content is not double-padded */}
+> 13 |         <div style={{margin:-100{}}>
+     |                                 ^
+  14 |           <BackButton />
+  15 |           {children}
+  16 |         </div>
+
+Expected '</', got '{'
+
+Import trace:
+  Server Component:
+    ./frontend/src/components/ClientRoot.tsx
+    ./frontend/src/app/layout.tsx
+[00:21:51.545] Server  LOG      ✓ Compiled in 395ms
+[00:21:52.681] Browser ERROR   %s a style property during rerender (%s) when a conflicting property is set (%s) can lead to styling bugs. To avoid this, don't mix shorthand and non-shorthand properties for the same value; instead, replace the shorthand with separate values. Removing marginLeft margin
+[00:21:52.681] Browser ERROR   %s a style property during rerender (%s) when a conflicting property is set (%s) can lead to styling bugs. To avoid this, don't mix shorthand and non-shorthand properties for the same value; instead, replace the shorthand with separate values. Removing marginRight margin
+[00:22:51.935] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:23:34.292] Server  LOG      ✓ Compiled in 123ms
+[00:27:28.931] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:31:23.544] Server  LOG      ✓ Compiled in 309ms
+[00:31:34.119] Server  LOG      ✓ Compiled in 180ms
+[00:31:44.573] Server  LOG      ✓ Compiled in 117ms
+[00:31:51.073] Server  LOG      ✓ Compiled in 79ms
+[00:32:28.024] Server  LOG      ✓ Compiled in 952ms
+[00:32:46.095] Server  LOG      ✓ Compiled in 110ms
+[00:33:01.910] Server  LOG      ✓ Compiled in 406ms
+[00:33:43.370] Server  LOG      ✓ Compiled in 1359ms
+[00:37:23.670] Server  LOG      ✓ Compiled in 2.4s
+[00:38:04.861] Server  LOG      ✓ Compiled in 896ms
+[00:39:04.207] Server  LOG      ✓ Compiled in 793ms
+[00:39:32.272] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:39:32.575] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <ScrollAndFocusHandler segmentPath={[...]}>
+      <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+        <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+          <LoadingBoundary name="projects/" loading={null}>
+            <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <InnerLayoutRouter url="/projects" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+                    <SegmentViewNode type="page" pagePath="/frontend/...">
+                      <SegmentTrieNode>
+                      <ClientPageRoot Component={function ProjectsListPage} serverProvidedParams={{...}}>
+                        <ProjectsListPage params={Promise} searchParams={Promise}>
+                          <div className="pt-4">
+                            <div className="flex items...">
+                              <div>
++                             <div>
+                            ...
+                    ...
+                  ...
+        ...
+
+[00:39:50.339] Server  LOG      ✓ Compiled in 417ms
+[00:40:07.403] Server  LOG      ✓ Compiled in 461ms
+[00:40:14.870] Server  LOG      ✓ Compiled in 410ms
+[00:41:45.125] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./frontend/src/app/dashboard/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:41:45.127] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./frontend/src/app/dashboard/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:41:45.129] Server  LOG      ✓ Compiled in 375ms
+[00:41:47.159] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:41:47.251] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:41:48.692] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <ScrollAndFocusHandler segmentPath={[...]}>
+      <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+        <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+          <LoadingBoundary name="projects/" loading={null}>
+            <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <InnerLayoutRouter url="/projects" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+                    <SegmentViewNode type="page" pagePath="/frontend/...">
+                      <SegmentTrieNode>
+                      <ClientPageRoot Component={function ProjectsListPage} serverProvidedParams={{...}}>
+                        <ProjectsListPage params={Promise} searchParams={Promise}>
+                          <div className="pt-4">
+                            <div className="flex items...">
+                              <div>
++                             <div>
+                            ...
+                    ...
+                  ...
+        ...
+
+[00:42:09.910] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./frontend/src/app/dashboard/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:42:09.912] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./frontend/src/app/dashboard/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:42:09.925] Server  LOG      ✓ Compiled in 308ms
+[00:42:10.913] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:44:11.446] Server  LOG      ✓ Compiled in 340ms
+[00:44:11.474] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./frontend/src/app/dashboard/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:44:12.633] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:44:55.250] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./frontend/src/app/dashboard/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:44:55.257] Server  LOG      ✓ Compiled in 190ms
+[00:44:56.608] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:45:26.901] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./frontend/src/app/dashboard/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:45:26.904] Server  LOG      ✓ Compiled in 336ms
+[00:45:27.711] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:47:40.340] Server  LOG      ✓ Compiled in 775ms
+[00:47:40.366] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./frontend/src/app/dashboard/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:47:43.320] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:48:24.925] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:48:52.796] Server  LOG      ○ Compiling /teams/[id] ...
+[00:49:10.041] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:49:29.785] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:50:59.466] Server  LOG      ✓ Compiled in 653ms
+[00:50:59.501] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./frontend/src/app/dashboard/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:51:01.068] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./frontend/src/app/dashboard/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[00:51:04.895] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:51:05.035] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:52:51.011] Server  LOG      ✓ Compiled in 1904ms
+[00:53:04.786] Server  LOG      ✓ Compiled in 1207ms
+[00:53:23.833] Server  LOG      ✓ Compiled in 1287ms
+[00:53:33.327] Server  LOG      ✓ Compiled in 819ms
+[00:53:43.251] Server  LOG      ✓ Compiled in 781ms
+[00:54:40.816] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:54:41.271] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <ScrollAndFocusHandler segmentPath={[...]}>
+      <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+        <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+          <LoadingBoundary name="projects/" loading={null}>
+            <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <InnerLayoutRouter url="/projects" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+                    <SegmentViewNode type="page" pagePath="/frontend/...">
+                      <SegmentTrieNode>
+                      <ClientPageRoot Component={function ProjectsListPage} serverProvidedParams={{...}}>
+                        <ProjectsListPage params={Promise} searchParams={Promise}>
+                          <div className="pt-4">
+                            <div className="flex items...">
+                              <div>
++                             <div>
+                            ...
+                    ...
+                  ...
+        ...
+
+[00:54:54.157] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:55:20.263] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:03:09.058] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:03:09.452] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <ScrollAndFocusHandler segmentPath={[...]}>
+      <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+        <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+          <LoadingBoundary name="projects/" loading={null}>
+            <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <InnerLayoutRouter url="/projects" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+                    <SegmentViewNode type="page" pagePath="/frontend/...">
+                      <SegmentTrieNode>
+                      <ClientPageRoot Component={function ProjectsListPage} serverProvidedParams={{...}}>
+                        <ProjectsListPage params={Promise} searchParams={Promise}>
+                          <div className="pt-4">
+                            <div className="flex items...">
+                              <div>
++                             <div>
+                            ...
+                    ...
+                  ...
+        ...
+
+[01:04:13.219] Server  LOG      ✓ Compiled in 419ms
+[01:05:01.887] Server  LOG      ✓ Compiled in 505ms
+[01:05:25.816] Server  LOG      ✓ Compiled in 680ms
+[01:05:39.060] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:06:38.321] Server  LOG      ✓ Compiled in 575ms
+[01:07:21.721] Browser ERROR   Failed to fetch teams (getMyTeams) — raw error: {"body":"{\"message\":\"Unauthorized\",\"statusCode\":401}","status":401}
+[01:07:21.721] Browser ERROR   Failed to fetch teams (getMyTeams) — raw error: {"body":"{\"message\":\"Unauthorized\",\"statusCode\":401}","status":401}
+[01:07:24.973] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:07:25.178] Browser ERROR   Failed to fetch teams (getMyTeams) — raw error: {"body":"{\"message\":\"Unauthorized\",\"statusCode\":401}","status":401}
+[01:15:38.131] Server  LOG      ✓ Compiled in 4.4s
+[01:15:47.379] Server  LOG      ✓ Compiled in 711ms
+[01:15:55.138] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:20:18.860] Server  LOG      ✓ Compiled in 3.9s
+[01:20:32.193] Server  LOG      ✓ Compiled in 854ms
+[01:20:43.029] Server  LOG      ✓ Compiled in 1191ms
+[01:21:07.860] Server  LOG      ✓ Compiled in 713ms
+[01:21:20.323] Server  LOG      ✓ Compiled in 480ms
+[01:21:32.650] Server  LOG      ✓ Compiled in 1346ms
+[01:21:48.725] Server  LOG      ✓ Compiled in 787ms
+[01:21:59.132] Server  LOG      ✓ Compiled in 596ms
+[01:22:23.808] Server  LOG      ✓ Compiled in 704ms
+[01:22:45.807] Server  LOG      ✓ Compiled in 513ms
+[01:23:11.236] Server  LOG      ✓ Compiled in 468ms
+[01:23:37.820] Server  LOG      ✓ Compiled in 843ms
+[01:23:47.946] Server  LOG      ✓ Compiled in 1042ms
+[01:24:09.298] Server  LOG      ✓ Compiled in 665ms
+[01:24:15.936] Server  LOG      ✓ Compiled in 393ms
+[01:24:23.460] Server  LOG      ✓ Compiled in 346ms
+[01:24:31.246] Server  LOG      ✓ Compiled in 707ms
+[01:24:40.436] Server  LOG      ✓ Compiled in 1357ms
+[01:24:43.610] Server  LOG      ✓ Compiled in 699ms
+[01:24:59.673] Server  LOG      ✓ Compiled in 544ms
+[01:25:17.718] Server  LOG      ✓ Compiled in 343ms
+[01:25:42.727] Server  LOG      ✓ Compiled in 1451ms
+[01:26:04.777] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:26:43.782] Server  LOG      ✓ Compiled in 396ms
+[01:26:50.675] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:27:20.787] Server  LOG      ✓ Compiled in 612ms
+[01:27:37.950] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:28:42.980] Server  LOG      ✓ Compiled in 1388ms
+[01:28:49.032] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:29:21.195] Server  LOG      ✓ Compiled in 181ms
+[01:30:17.926] Server  LOG      ✓ Compiled in 730ms
+[01:30:24.703] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:31:27.362] Server  LOG      ✓ Compiled in 329ms
+[01:31:45.413] Server  LOG      ✓ Compiled in 323ms
+[01:31:53.541] Server  LOG      ✓ Compiled in 169ms
+[01:32:11.136] Server  LOG      ✓ Compiled in 304ms
+[01:32:19.366] Server  LOG      ✓ Compiled in 225ms
+[01:34:01.273] Server  LOG      ✓ Compiled in 750ms
+[01:34:03.792] Server  LOG      ✓ Compiled in 732ms
+[01:35:31.829] Server  LOG      ✓ Compiled in 335ms
+[01:35:45.639] Server  LOG      ✓ Compiled in 184ms
+[01:37:02.179] Server  LOG      ✓ Compiled in 276ms
+[01:37:40.771] Server  LOG      ✓ Compiled in 184ms
+[01:37:50.800] Server  LOG      ✓ Compiled in 417ms
+[01:37:54.296] Server  LOG      ✓ Compiled in 419ms
+[01:38:00.853] Server  LOG      ✓ Compiled in 163ms
+[01:38:25.392] Server  LOG      ✓ Compiled in 474ms
+[01:38:49.334] Server  LOG      ✓ Compiled in 173ms
+[01:39:12.534] Server  LOG      ✓ Compiled in 349ms
+[01:39:35.304] Server  LOG      ✓ Compiled in 138ms
+[01:44:41.129] Server  ERROR    ⨯ ./frontend/src/app/teams/[id]/page.tsx:5:1
+Module not found: Can't resolve '../../context/AuthContext'
+  3 | import React, { useEffect, useState } from "react";
+  4 | import { getMyTeams, createTeam } from "../../lib/api";
+> 5 | import { useAuth } from "../../context/AuthContext";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import Link from "next/link";
+  7 |
+  8 | type TeamListItem = {
+
+
 
 Import traces:
   Client Component Browser:
-    ./frontend/src/app/reset/page.tsx [Client Component Browser]
-    ./frontend/src/app/reset/page.tsx [Server Component]
+    ./frontend/src/app/teams/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/[id]/page.tsx [Server Component]
 
   Client Component SSR:
-    ./frontend/src/app/reset/page.tsx [Client Component SSR]
-    ./frontend/src/app/reset/page.tsx [Server Component]
-[00:09:01.968] Browser ERROR   ./frontend/src/app/reset/page.tsx:1:6
-Parsing ecmascript source code failed
-> 1 | http://localhost:3000/reset?token=f30ba62dbd88b42a42e79fa0f2cd692a873d5028abcacd42957099cf587fd15b
-    |      ^
+    ./frontend/src/app/teams/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/[id]/page.tsx [Server Component]
 
-Expression expected
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:44:41.138] Server  ERROR    ⨯ ./frontend/src/app/teams/[id]/page.tsx:5:1
+Module not found: Can't resolve '../../context/AuthContext'
+  3 | import React, { useEffect, useState } from "react";
+  4 | import { getMyTeams, createTeam } from "../../lib/api";
+> 5 | import { useAuth } from "../../context/AuthContext";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import Link from "next/link";
+  7 |
+  8 | type TeamListItem = {
+
+
 
 Import traces:
   Client Component Browser:
-    ./frontend/src/app/reset/page.tsx [Client Component Browser]
-    ./frontend/src/app/reset/page.tsx [Server Component]
+    ./frontend/src/app/teams/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/[id]/page.tsx [Server Component]
 
   Client Component SSR:
-    ./frontend/src/app/reset/page.tsx [Client Component SSR]
-    ./frontend/src/app/reset/page.tsx [Server Component]
-[00:09:11.699] Server  LOG      ✓ Compiled in 534ms
-[00:09:43.865] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:10:37.950] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:12:16.829] Server  LOG      ✓ Compiled in 261ms
-[00:12:53.451] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:15:17.229] Server  LOG      ✓ Compiled in 304ms
-[00:15:33.936] Server  LOG      ✓ Compiled in 413ms
-[00:16:02.036] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:19:07.992] Server  LOG      ✓ Compiled in 209ms
-[00:19:43.692] Server  LOG      ✓ Compiled in 270ms
-[00:22:19.378] Server  LOG      ✓ Compiled in 384ms
-[00:22:36.456] Server  LOG      ✓ Compiled in 431ms
-[00:23:41.886] Server  LOG      ✓ Compiled in 448ms
-[00:24:06.102] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:25:11.640] Server  LOG      ✓ Compiled in 305ms
+    ./frontend/src/app/teams/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:44:41.168] Server  ERROR    ⨯ ./frontend/src/app/teams/[id]/page.tsx:5:1
+Module not found: Can't resolve '../../context/AuthContext'
+  3 | import React, { useEffect, useState } from "react";
+  4 | import { getMyTeams, createTeam } from "../../lib/api";
+> 5 | import { useAuth } from "../../context/AuthContext";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import Link from "next/link";
+  7 |
+  8 | type TeamListItem = {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:44:41.215] Server  ERROR    ⨯ ./frontend/src/app/teams/[id]/page.tsx:5:1
+Module not found: Can't resolve '../../context/AuthContext'
+  3 | import React, { useEffect, useState } from "react";
+  4 | import { getMyTeams, createTeam } from "../../lib/api";
+> 5 | import { useAuth } from "../../context/AuthContext";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import Link from "next/link";
+  7 |
+  8 | type TeamListItem = {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:44:41.227] Server  ERROR    ⨯ ./frontend/src/app/teams/[id]/page.tsx:4:1
+Module not found: Can't resolve '../../lib/api'
+  2 | // frontend/src/app/teams/page.tsx
+  3 | import React, { useEffect, useState } from "react";
+> 4 | import { getMyTeams, createTeam } from "../../lib/api";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { useAuth } from "../../context/AuthContext";
+  6 | import Link from "next/link";
+  7 |
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:44:41.274] Server  ERROR    ⨯ ./frontend/src/app/teams/[id]/page.tsx:4:1
+Module not found: Can't resolve '../../lib/api'
+  2 | // frontend/src/app/teams/page.tsx
+  3 | import React, { useEffect, useState } from "react";
+> 4 | import { getMyTeams, createTeam } from "../../lib/api";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { useAuth } from "../../context/AuthContext";
+  6 | import Link from "next/link";
+  7 |
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:44:41.282] Server  ERROR    ⨯ ./frontend/src/app/teams/[id]/page.tsx:4:1
+Module not found: Can't resolve '../../lib/api'
+  2 | // frontend/src/app/teams/page.tsx
+  3 | import React, { useEffect, useState } from "react";
+> 4 | import { getMyTeams, createTeam } from "../../lib/api";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { useAuth } from "../../context/AuthContext";
+  6 | import Link from "next/link";
+  7 |
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:44:41.312] Server  ERROR    ⨯ ./frontend/src/app/teams/[id]/page.tsx:4:1
+Module not found: Can't resolve '../../lib/api'
+  2 | // frontend/src/app/teams/page.tsx
+  3 | import React, { useEffect, useState } from "react";
+> 4 | import { getMyTeams, createTeam } from "../../lib/api";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { useAuth } from "../../context/AuthContext";
+  6 | import Link from "next/link";
+  7 |
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:44:41.323] Server  ERROR    ⨯ ./frontend/src/app/teams/[id]/page.tsx:4:1
+Module not found: Can't resolve '../../lib/api'
+  2 | // frontend/src/app/teams/page.tsx
+  3 | import React, { useEffect, useState } from "react";
+> 4 | import { getMyTeams, createTeam } from "../../lib/api";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { useAuth } from "../../context/AuthContext";
+  6 | import Link from "next/link";
+  7 |
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:44:41.332] Server  ERROR    ⨯ ./frontend/src/app/teams/[id]/page.tsx:4:1
+Module not found: Can't resolve '../../lib/api'
+  2 | // frontend/src/app/teams/page.tsx
+  3 | import React, { useEffect, useState } from "react";
+> 4 | import { getMyTeams, createTeam } from "../../lib/api";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { useAuth } from "../../context/AuthContext";
+  6 | import Link from "next/link";
+  7 |
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:44:41.371] Server  LOG      ✓ Compiled in 697ms
+[01:44:41.699] Browser ERROR   ./frontend/src/app/teams/[id]/page.tsx:5:1
+Module not found: Can't resolve '../../context/AuthContext'
+  3 | import React, { useEffect, useState } from "react";
+  4 | import { getMyTeams, createTeam } from "../../lib/api";
+> 5 | import { useAuth } from "../../context/AuthContext";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import Link from "next/link";
+  7 |
+  8 | type TeamListItem = {
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[01:44:41.699] Browser ERROR   ./frontend/src/app/teams/[id]/page.tsx:4:1
+Module not found: Can't resolve '../../lib/api'
+  2 | // frontend/src/app/teams/page.tsx
+  3 | import React, { useEffect, useState } from "react";
+> 4 | import { getMyTeams, createTeam } from "../../lib/api";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { useAuth } from "../../context/AuthContext";
+  6 | import Link from "next/link";
+  7 |
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/[id]/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/[id]/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/[id]/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/[id]/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[01:44:59.912] Server  LOG      ✓ Compiled in 450ms
+[01:45:38.503] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./frontend/src/app/teams/page.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[01:45:38.528] Server  LOG      ✓ Compiled in 465ms
+[01:45:39.786] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:45:40.684] Browser ERROR   Failed to fetch teams (getMyTeams) — raw error: {"body":"{\"message\":\"Unauthorized\",\"statusCode\":401}","status":401}
+[01:45:49.781] Server  ERROR    ⨯ ./frontend/src/app/teams/page.tsx:6:1
+Module not found: Can't resolve '../../../context/AuthContext'
+  4 | import { useParams, useRouter } from "next/navigation";
+  5 | import Link from "next/link";
+> 6 | import { useAuth } from "../../../context/AuthContext";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+  8 |
+  9 | type UserBase = {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:45:49.833] Server  ERROR    ⨯ ./frontend/src/app/teams/page.tsx:6:1
+Module not found: Can't resolve '../../../context/AuthContext'
+  4 | import { useParams, useRouter } from "next/navigation";
+  5 | import Link from "next/link";
+> 6 | import { useAuth } from "../../../context/AuthContext";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+  8 |
+  9 | type UserBase = {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:45:49.846] Server  ERROR    ⨯ ./frontend/src/app/teams/page.tsx:6:1
+Module not found: Can't resolve '../../../context/AuthContext'
+  4 | import { useParams, useRouter } from "next/navigation";
+  5 | import Link from "next/link";
+> 6 | import { useAuth } from "../../../context/AuthContext";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+  8 |
+  9 | type UserBase = {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:45:49.886] Server  ERROR    ⨯ ./frontend/src/app/teams/page.tsx:6:1
+Module not found: Can't resolve '../../../context/AuthContext'
+  4 | import { useParams, useRouter } from "next/navigation";
+  5 | import Link from "next/link";
+> 6 | import { useAuth } from "../../../context/AuthContext";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+  8 |
+  9 | type UserBase = {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:45:49.926] Server  ERROR    ⨯ ./frontend/src/app/teams/page.tsx:7:1
+Module not found: Can't resolve '../../../lib/api'
+   5 | import Link from "next/link";
+   6 | import { useAuth } from "../../../context/AuthContext";
+>  7 | import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | type UserBase = {
+  10 |   id: string;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:45:49.947] Server  ERROR    ⨯ ./frontend/src/app/teams/page.tsx:7:1
+Module not found: Can't resolve '../../../lib/api'
+   5 | import Link from "next/link";
+   6 | import { useAuth } from "../../../context/AuthContext";
+>  7 | import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | type UserBase = {
+  10 |   id: string;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:45:49.991] Server  ERROR    ⨯ ./frontend/src/app/teams/page.tsx:7:1
+Module not found: Can't resolve '../../../lib/api'
+   5 | import Link from "next/link";
+   6 | import { useAuth } from "../../../context/AuthContext";
+>  7 | import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | type UserBase = {
+  10 |   id: string;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:45:50.044] Server  ERROR    ⨯ ./frontend/src/app/teams/page.tsx:7:1
+Module not found: Can't resolve '../../../lib/api'
+   5 | import Link from "next/link";
+   6 | import { useAuth } from "../../../context/AuthContext";
+>  7 | import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | type UserBase = {
+  10 |   id: string;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:45:50.101] Server  ERROR    ⨯ ./frontend/src/app/teams/page.tsx:6:1
+Module not found: Can't resolve '../../../context/AuthContext'
+  4 | import { useParams, useRouter } from "next/navigation";
+  5 | import Link from "next/link";
+> 6 | import { useAuth } from "../../../context/AuthContext";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+  8 |
+  9 | type UserBase = {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:45:50.132] Server  ERROR    ⨯ ./frontend/src/app/teams/page.tsx:6:1
+Module not found: Can't resolve '../../../context/AuthContext'
+  4 | import { useParams, useRouter } from "next/navigation";
+  5 | import Link from "next/link";
+> 6 | import { useAuth } from "../../../context/AuthContext";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+  8 |
+  9 | type UserBase = {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:45:50.152] Server  ERROR    ⨯ ./frontend/src/app/teams/page.tsx:6:1
+Module not found: Can't resolve '../../../context/AuthContext'
+  4 | import { useParams, useRouter } from "next/navigation";
+  5 | import Link from "next/link";
+> 6 | import { useAuth } from "../../../context/AuthContext";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+  8 |
+  9 | type UserBase = {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:45:50.181] Server  ERROR    ⨯ ./frontend/src/app/teams/page.tsx:6:1
+Module not found: Can't resolve '../../../context/AuthContext'
+  4 | import { useParams, useRouter } from "next/navigation";
+  5 | import Link from "next/link";
+> 6 | import { useAuth } from "../../../context/AuthContext";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+  8 |
+  9 | type UserBase = {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:45:50.238] Server  ERROR    ⨯ ./frontend/src/app/teams/page.tsx:7:1
+Module not found: Can't resolve '../../../lib/api'
+   5 | import Link from "next/link";
+   6 | import { useAuth } from "../../../context/AuthContext";
+>  7 | import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | type UserBase = {
+  10 |   id: string;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:45:50.274] Server  ERROR    ⨯ ./frontend/src/app/teams/page.tsx:7:1
+Module not found: Can't resolve '../../../lib/api'
+   5 | import Link from "next/link";
+   6 | import { useAuth } from "../../../context/AuthContext";
+>  7 | import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | type UserBase = {
+  10 |   id: string;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:45:50.302] Server  ERROR    ⨯ ./frontend/src/app/teams/page.tsx:7:1
+Module not found: Can't resolve '../../../lib/api'
+   5 | import Link from "next/link";
+   6 | import { useAuth } from "../../../context/AuthContext";
+>  7 | import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | type UserBase = {
+  10 |   id: string;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:45:50.342] Server  ERROR    ⨯ ./frontend/src/app/teams/page.tsx:7:1
+Module not found: Can't resolve '../../../lib/api'
+   5 | import Link from "next/link";
+   6 | import { useAuth } from "../../../context/AuthContext";
+>  7 | import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | type UserBase = {
+  10 |   id: string;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:45:50.385] Server  ERROR    ⨯ ./frontend/src/app/teams/page.tsx:6:1
+Module not found: Can't resolve '../../../context/AuthContext'
+  4 | import { useParams, useRouter } from "next/navigation";
+  5 | import Link from "next/link";
+> 6 | import { useAuth } from "../../../context/AuthContext";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+  8 |
+  9 | type UserBase = {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:45:50.443] Server  ERROR    ⨯ ./frontend/src/app/teams/page.tsx:6:1
+Module not found: Can't resolve '../../../context/AuthContext'
+  4 | import { useParams, useRouter } from "next/navigation";
+  5 | import Link from "next/link";
+> 6 | import { useAuth } from "../../../context/AuthContext";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+  8 |
+  9 | type UserBase = {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:45:50.473] Server  ERROR    ⨯ ./frontend/src/app/teams/page.tsx:6:1
+Module not found: Can't resolve '../../../context/AuthContext'
+  4 | import { useParams, useRouter } from "next/navigation";
+  5 | import Link from "next/link";
+> 6 | import { useAuth } from "../../../context/AuthContext";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+  8 |
+  9 | type UserBase = {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:45:50.516] Server  ERROR    ⨯ ./frontend/src/app/teams/page.tsx:6:1
+Module not found: Can't resolve '../../../context/AuthContext'
+  4 | import { useParams, useRouter } from "next/navigation";
+  5 | import Link from "next/link";
+> 6 | import { useAuth } from "../../../context/AuthContext";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+  8 |
+  9 | type UserBase = {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:45:50.537] Server  ERROR    ⨯ ./frontend/src/app/teams/page.tsx:7:1
+Module not found: Can't resolve '../../../lib/api'
+   5 | import Link from "next/link";
+   6 | import { useAuth } from "../../../context/AuthContext";
+>  7 | import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | type UserBase = {
+  10 |   id: string;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:45:50.594] Server  ERROR    ⨯ ./frontend/src/app/teams/page.tsx:7:1
+Module not found: Can't resolve '../../../lib/api'
+   5 | import Link from "next/link";
+   6 | import { useAuth } from "../../../context/AuthContext";
+>  7 | import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | type UserBase = {
+  10 |   id: string;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:45:50.689] Server  ERROR    ⨯ ./frontend/src/app/teams/page.tsx:7:1
+Module not found: Can't resolve '../../../lib/api'
+   5 | import Link from "next/link";
+   6 | import { useAuth } from "../../../context/AuthContext";
+>  7 | import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | type UserBase = {
+  10 |   id: string;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:45:50.724] Server  ERROR    ⨯ ./frontend/src/app/teams/page.tsx:7:1
+Module not found: Can't resolve '../../../lib/api'
+   5 | import Link from "next/link";
+   6 | import { useAuth } from "../../../context/AuthContext";
+>  7 | import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | type UserBase = {
+  10 |   id: string;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:45:50.788] Server  LOG      ✓ Compiled in 1521ms
+[01:45:51.695] Browser ERROR   ./frontend/src/app/teams/page.tsx:6:1
+Module not found: Can't resolve '../../../context/AuthContext'
+  4 | import { useParams, useRouter } from "next/navigation";
+  5 | import Link from "next/link";
+> 6 | import { useAuth } from "../../../context/AuthContext";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+  8 |
+  9 | type UserBase = {
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[01:45:51.695] Browser ERROR   ./frontend/src/app/teams/page.tsx:7:1
+Module not found: Can't resolve '../../../lib/api'
+   5 | import Link from "next/link";
+   6 | import { useAuth } from "../../../context/AuthContext";
+>  7 | import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | type UserBase = {
+  10 |   id: string;
+
+Import traces:
+  Client Component Browser:
+    ./frontend/src/app/teams/page.tsx [Client Component Browser]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./frontend/src/app/teams/page.tsx [Client Component SSR]
+    ./frontend/src/app/teams/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[01:46:02.722] Browser ERROR   Failed to fetch teams (getMyTeams) — raw error: {"body":"{\"message\":\"Unauthorized\",\"statusCode\":401}","status":401}
+[01:46:25.523] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:47:17.199] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:47:17.662] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <ScrollAndFocusHandler segmentPath={[...]}>
+      <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+        <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+          <LoadingBoundary name="projects/" loading={null}>
+            <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <InnerLayoutRouter url="/projects" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+                    <SegmentViewNode type="page" pagePath="/frontend/...">
+                      <SegmentTrieNode>
+                      <ClientPageRoot Component={function ProjectsListPage} serverProvidedParams={{...}}>
+                        <ProjectsListPage params={Promise} searchParams={Promise}>
+                          <div className="pt-4">
+                            <div className="flex items...">
+                              <div>
++                             <div>
+                            ...
+                    ...
+                  ...
+        ...
+
+[01:47:19.626] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:47:19.804] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <ScrollAndFocusHandler segmentPath={[...]}>
+      <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+        <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+          <LoadingBoundary name="projects/" loading={null}>
+            <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <InnerLayoutRouter url="/projects" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+                    <SegmentViewNode type="page" pagePath="/frontend/...">
+                      <SegmentTrieNode>
+                      <ClientPageRoot Component={function ProjectsListPage} serverProvidedParams={{...}}>
+                        <ProjectsListPage params={Promise} searchParams={Promise}>
+                          <div className="pt-4">
+                            <div className="flex items...">
+                              <div>
++                             <div>
+                            ...
+                    ...
+                  ...
+        ...
+
+[01:47:58.915] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:48:20.157] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:48:20.459] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <ScrollAndFocusHandler segmentPath={[...]}>
+      <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+        <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+          <LoadingBoundary name="projects/" loading={null}>
+            <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <InnerLayoutRouter url="/projects" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+                    <SegmentViewNode type="page" pagePath="/frontend/...">
+                      <SegmentTrieNode>
+                      <ClientPageRoot Component={function ProjectsListPage} serverProvidedParams={{...}}>
+                        <ProjectsListPage params={Promise} searchParams={Promise}>
+                          <div className="pt-4">
+                            <div className="flex items...">
+                              <div>
++                             <div>
+                            ...
+                    ...
+                  ...
+        ...
+
+[01:54:43.081] Server  LOG      ✓ Compiled in 318ms
+[01:55:05.766] Server  LOG      ✓ Compiled in 1033ms
+[01:55:12.240] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:55:12.520] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RenderFromTemplateContext>
+      <ScrollAndFocusHandler segmentPath={[...]}>
+        <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+          <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+            <LoadingBoundary name="teams/" loading={null}>
+              <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+                <RedirectBoundary>
+                  <RedirectErrorBoundary router={{...}}>
+                    <InnerLayoutRouter url="/teams" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+                      <SegmentViewNode type="page" pagePath="/frontend/...">
+                        <SegmentTrieNode>
+                        <ClientPageRoot Component={function TeamsPage} serverProvidedParams={{...}}>
+                          <TeamsPage params={Promise} searchParams={Promise}>
+                            <div className="space-y-6">
+                              <header>
+                              <section
++                               className="bg-white shadow rounded p-4"
+-                               className={null}
+                              >
++                               <form onSubmit={function addTeam} className="flex gap-3 items-center">
+-                               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                              ...
+                      ...
+                    ...
+          ...
+
+[01:57:02.745] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:57:02.921] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RenderFromTemplateContext>
+      <ScrollAndFocusHandler segmentPath={[...]}>
+        <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+          <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+            <LoadingBoundary name="teams/" loading={null}>
+              <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+                <RedirectBoundary>
+                  <RedirectErrorBoundary router={{...}}>
+                    <InnerLayoutRouter url="/teams" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+                      <SegmentViewNode type="page" pagePath="/frontend/...">
+                        <SegmentTrieNode>
+                        <ClientPageRoot Component={function TeamsPage} serverProvidedParams={{...}}>
+                          <TeamsPage params={Promise} searchParams={Promise}>
+                            <div className="space-y-6">
+                              <header>
+                              <section
++                               className="bg-white shadow rounded p-4"
+-                               className={null}
+                              >
++                               <form onSubmit={function addTeam} className="flex gap-3 items-center">
+-                               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                              ...
+                      ...
+                    ...
+          ...
+
+[02:01:55.742] Server  LOG      ✓ Compiled in 559ms
+[02:02:06.432] Server  LOG      ✓ Compiled in 413ms
+[02:03:06.537] Server  LOG      ✓ Compiled in 213ms
+[02:03:10.501] Browser ERROR   Failed to fetch teams (getMyTeams) — raw error: {"body":"{\"message\":\"Unauthorized\",\"statusCode\":401}","status":401}
+[02:03:10.501] Browser ERROR   Failed to fetch teams (getMyTeams) — raw error: {"body":"{\"message\":\"Unauthorized\",\"statusCode\":401}","status":401}
+[02:03:17.316] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:04:44.536] Server  LOG      ✓ Compiled in 110ms
+[02:05:59.115] Server  LOG      ✓ Compiled in 213ms
+[02:06:13.051] Server  LOG      ✓ Compiled in 154ms
+[02:06:29.458] Server  LOG      ✓ Compiled in 188ms
+[02:06:44.708] Server  LOG      ✓ Compiled in 388ms
+[02:11:15.822] Server  LOG      ✓ Compiled in 645ms
+[02:13:23.801] Server  LOG      ✓ Compiled in 350ms
+[02:13:32.097] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:14:10.324] Server  LOG      ✓ Compiled in 195ms
+[02:17:04.640] Server  LOG      ✓ Compiled in 393ms
+[02:18:01.302] Server  LOG      ✓ Compiled in 251ms
+[02:18:22.253] Server  LOG      ✓ Compiled in 208ms
+[02:18:34.112] Server  LOG      ✓ Compiled in 228ms
+[02:20:47.301] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:23:36.662] Server  LOG      ✓ Compiled in 405ms
+[02:28:37.158] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:28:53.687] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold

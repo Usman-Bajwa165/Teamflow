@@ -876,7 +876,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$
 var __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/frontend/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
-"use client";
+'use client';
 ;
 function TaskModal({ task, teamMembers = [], assignedUserIds = [], onClose, onSave, onDelete }) {
     _s();
@@ -888,7 +888,6 @@ function TaskModal({ task, teamMembers = [], assignedUserIds = [], onClose, onSa
     const [deleting, setDeleting] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [err, setErr] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     // initialize local editable state when task changes
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "TaskModal.useEffect": ()=>{
             if (!task) return;
@@ -902,8 +901,8 @@ function TaskModal({ task, teamMembers = [], assignedUserIds = [], onClose, onSa
         task
     ]);
     if (!task) return null;
-    // Build options: filter out members who already have a task in this same project,
-    // except allow current assignee to remain selectable.
+    // Build options: map members -> { user, member }, filter out members who already have
+    // a task in THIS project (assignedUserIds) except allow current assignee to remain selectable.
     const options = (teamMembers || []).map((m)=>{
         const user = m.user ?? {
             id: m.id,
@@ -914,9 +913,9 @@ function TaskModal({ task, teamMembers = [], assignedUserIds = [], onClose, onSa
             member: m,
             user
         };
-    }).filter(({ user, member })=>{
-        const isAssignedInThisProject = (assignedUserIds || []).includes(user.id);
-        const isCurrentAssignee = task.assigneeId === user.id;
+    }).filter(({ user: user_0 })=>{
+        const isAssignedInThisProject = (assignedUserIds || []).includes(user_0.id);
+        const isCurrentAssignee = task.assigneeId === user_0.id;
         if (isAssignedInThisProject && !isCurrentAssignee) return false;
         return true;
     });
@@ -924,10 +923,15 @@ function TaskModal({ task, teamMembers = [], assignedUserIds = [], onClose, onSa
         setErr(null);
         setSaving(true);
         try {
+            // normalize assigneeId: treat "", "null", undefined as null
+            let assigneeForPayload = assigneeId ?? null;
+            if (assigneeForPayload === "" || assigneeForPayload === "null") assigneeForPayload = null;
+            // If task marked FINISHED we also clear assignee (as requested)
+            if (status === "FINISHED") assigneeForPayload = null;
             const payload = {
                 title: title.trim() || undefined,
                 description: description.trim() || undefined,
-                assigneeId: assigneeId || null,
+                assigneeId: assigneeForPayload,
                 status
             };
             const result = await onSave(payload);
@@ -948,12 +952,17 @@ function TaskModal({ task, teamMembers = [], assignedUserIds = [], onClose, onSa
             await onDelete();
             setDeleting(false);
             onClose();
-        } catch (e) {
+        } catch (e_0) {
             setDeleting(false);
-            const msg = e?.body?.message ?? e?.message ?? "Delete failed";
-            setErr(msg);
+            const msg_0 = e_0?.body?.message ?? e_0?.message ?? "Delete failed";
+            setErr(msg_0);
         }
     }
+    // helper to display label and indicator (🔴) when busyElsewhere
+    const optionLabel = (user_1, busy)=>{
+        const nameOrEmailOrId = user_1.name && user_1.name.trim() || user_1.email && user_1.email.trim() || user_1.id || 'Unknown';
+        return busy ? `🔴 ${nameOrEmailOrId} (busy elsewhere)` : nameOrEmailOrId;
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "fixed inset-0 z-50 flex items-center justify-center",
         children: [
@@ -962,7 +971,7 @@ function TaskModal({ task, teamMembers = [], assignedUserIds = [], onClose, onSa
                 onClick: onClose
             }, void 0, false, {
                 fileName: "[project]/frontend/src/components/TaskModal.tsx",
-                lineNumber: 120,
+                lineNumber: 134,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -973,7 +982,7 @@ function TaskModal({ task, teamMembers = [], assignedUserIds = [], onClose, onSa
                         children: "Edit task"
                     }, void 0, false, {
                         fileName: "[project]/frontend/src/components/TaskModal.tsx",
-                        lineNumber: 122,
+                        lineNumber: 136,
                         columnNumber: 9
                     }, this),
                     err && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -981,7 +990,7 @@ function TaskModal({ task, teamMembers = [], assignedUserIds = [], onClose, onSa
                         children: err
                     }, void 0, false, {
                         fileName: "[project]/frontend/src/components/TaskModal.tsx",
-                        lineNumber: 124,
+                        lineNumber: 138,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -989,16 +998,16 @@ function TaskModal({ task, teamMembers = [], assignedUserIds = [], onClose, onSa
                         children: "Title"
                     }, void 0, false, {
                         fileName: "[project]/frontend/src/components/TaskModal.tsx",
-                        lineNumber: 126,
+                        lineNumber: 140,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                         value: title,
-                        onChange: (e)=>setTitle(e.target.value),
+                        onChange: (e_1)=>setTitle(e_1.target.value),
                         className: "w-full px-3 py-2 border rounded mb-3"
                     }, void 0, false, {
                         fileName: "[project]/frontend/src/components/TaskModal.tsx",
-                        lineNumber: 127,
+                        lineNumber: 141,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -1006,17 +1015,17 @@ function TaskModal({ task, teamMembers = [], assignedUserIds = [], onClose, onSa
                         children: "Description"
                     }, void 0, false, {
                         fileName: "[project]/frontend/src/components/TaskModal.tsx",
-                        lineNumber: 129,
+                        lineNumber: 143,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
                         value: description,
-                        onChange: (e)=>setDescription(e.target.value),
+                        onChange: (e_2)=>setDescription(e_2.target.value),
                         className: "w-full px-3 py-2 border rounded mb-3",
                         rows: 5
                     }, void 0, false, {
                         fileName: "[project]/frontend/src/components/TaskModal.tsx",
-                        lineNumber: 130,
+                        lineNumber: 144,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -1024,12 +1033,12 @@ function TaskModal({ task, teamMembers = [], assignedUserIds = [], onClose, onSa
                         children: "Status"
                     }, void 0, false, {
                         fileName: "[project]/frontend/src/components/TaskModal.tsx",
-                        lineNumber: 132,
+                        lineNumber: 146,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
                         value: status ?? "TODO",
-                        onChange: (e)=>setStatus(e.target.value),
+                        onChange: (e_3)=>setStatus(e_3.target.value),
                         className: "w-full px-3 py-2 border rounded mb-3",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1037,7 +1046,7 @@ function TaskModal({ task, teamMembers = [], assignedUserIds = [], onClose, onSa
                                 children: "TODO"
                             }, void 0, false, {
                                 fileName: "[project]/frontend/src/components/TaskModal.tsx",
-                                lineNumber: 134,
+                                lineNumber: 148,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1045,7 +1054,7 @@ function TaskModal({ task, teamMembers = [], assignedUserIds = [], onClose, onSa
                                 children: "IN_PROGRESS"
                             }, void 0, false, {
                                 fileName: "[project]/frontend/src/components/TaskModal.tsx",
-                                lineNumber: 135,
+                                lineNumber: 149,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1053,13 +1062,13 @@ function TaskModal({ task, teamMembers = [], assignedUserIds = [], onClose, onSa
                                 children: "FINISHED"
                             }, void 0, false, {
                                 fileName: "[project]/frontend/src/components/TaskModal.tsx",
-                                lineNumber: 136,
+                                lineNumber: 150,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/frontend/src/components/TaskModal.tsx",
-                        lineNumber: 133,
+                        lineNumber: 147,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -1067,12 +1076,15 @@ function TaskModal({ task, teamMembers = [], assignedUserIds = [], onClose, onSa
                         children: "Assignee"
                     }, void 0, false, {
                         fileName: "[project]/frontend/src/components/TaskModal.tsx",
-                        lineNumber: 139,
+                        lineNumber: 153,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
                         value: assigneeId ?? "",
-                        onChange: (e)=>setAssigneeId(e.target.value || null),
+                        onChange: (e_4)=>{
+                            const v = e_4.target.value;
+                            setAssigneeId(v === "" ? null : v);
+                        },
                         className: "w-full px-3 py-2 border rounded mb-4",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1080,28 +1092,29 @@ function TaskModal({ task, teamMembers = [], assignedUserIds = [], onClose, onSa
                                 children: "Unassigned"
                             }, void 0, false, {
                                 fileName: "[project]/frontend/src/components/TaskModal.tsx",
-                                lineNumber: 141,
+                                lineNumber: 158,
                                 columnNumber: 11
                             }, this),
-                            options.map(({ user, member })=>{
+                            options.map(({ user: user_2, member })=>{
                                 const busyElsewhere = !!member.busyElsewhere;
-                                const label = `${user.name ?? user.email ?? user.id}${busyElsewhere ? " (busy elsewhere)" : ""}`;
+                                const label = optionLabel(user_2, busyElsewhere);
+                                // inline style is a hint; some browsers ignore option styling — emoji ensures visibility
                                 return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                    value: user.id,
+                                    value: user_2.id,
                                     style: busyElsewhere ? {
-                                        backgroundColor: "#ffecec"
+                                        backgroundColor: "#fff0f0"
                                     } : undefined,
                                     children: label
-                                }, user.id, false, {
+                                }, user_2.id, false, {
                                     fileName: "[project]/frontend/src/components/TaskModal.tsx",
-                                    lineNumber: 148,
+                                    lineNumber: 167,
                                     columnNumber: 18
                                 }, this);
                             })
                         ]
                     }, void 0, true, {
                         fileName: "[project]/frontend/src/components/TaskModal.tsx",
-                        lineNumber: 140,
+                        lineNumber: 154,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1117,7 +1130,7 @@ function TaskModal({ task, teamMembers = [], assignedUserIds = [], onClose, onSa
                                         children: saving ? "Saving..." : "Save"
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/src/components/TaskModal.tsx",
-                                        lineNumber: 158,
+                                        lineNumber: 177,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1127,13 +1140,13 @@ function TaskModal({ task, teamMembers = [], assignedUserIds = [], onClose, onSa
                                         children: "Cancel"
                                     }, void 0, false, {
                                         fileName: "[project]/frontend/src/components/TaskModal.tsx",
-                                        lineNumber: 161,
+                                        lineNumber: 180,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/frontend/src/components/TaskModal.tsx",
-                                lineNumber: 157,
+                                lineNumber: 176,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1144,30 +1157,30 @@ function TaskModal({ task, teamMembers = [], assignedUserIds = [], onClose, onSa
                                     children: deleting ? "Deleting..." : "Delete"
                                 }, void 0, false, {
                                     fileName: "[project]/frontend/src/components/TaskModal.tsx",
-                                    lineNumber: 167,
+                                    lineNumber: 186,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/frontend/src/components/TaskModal.tsx",
-                                lineNumber: 166,
+                                lineNumber: 185,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/frontend/src/components/TaskModal.tsx",
-                        lineNumber: 156,
+                        lineNumber: 175,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/frontend/src/components/TaskModal.tsx",
-                lineNumber: 121,
+                lineNumber: 135,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/frontend/src/components/TaskModal.tsx",
-        lineNumber: 119,
+        lineNumber: 133,
         columnNumber: 10
     }, this);
 }
@@ -1193,7 +1206,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$
 var __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/frontend/src/lib/api.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$components$2f$TaskBoard$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/frontend/src/components/TaskBoard.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$components$2f$TaskModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/frontend/src/components/TaskModal.tsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/frontend/src/context/AuthContext.tsx [app-client] (ecmascript)"); // adjust path if different
+var __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/frontend/src/context/AuthContext.tsx [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
@@ -1203,11 +1216,24 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
+function formatDateShort(dateStr) {
+    if (!dateStr) return "—";
+    try {
+        const d = new Date(dateStr);
+        return new Intl.DateTimeFormat("en-GB", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+        }).format(d);
+    } catch  {
+        return dateStr;
+    }
+}
 function ProjectBoard() {
     _s();
     const params = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useParams"])();
     const projectId = params.id;
-    const { user } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAuth"])(); // expects { id, role } in auth context; if your useAuth differs, adapt
+    const { user } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAuth"])();
     const [project, setProject] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [teamMembers, setTeamMembers] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [msg, setMsg] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
@@ -1270,20 +1296,23 @@ function ProjectBoard() {
                 ...col,
                 tasks: col?.tasks || []
             };
-            setProject((prev)=>({
-                    ...prev || {},
-                    columns: (prev?.columns || []).concat(newCol)
-                }));
+            setProject((prev)=>prev ? {
+                    ...prev,
+                    columns: [
+                        ...prev.columns,
+                        newCol
+                    ]
+                } : prev);
             setNewColTitle("");
         } catch (err_0) {
             setMsg(err_0?.body?.message || "Failed to create column");
         }
     }
     function handleColumnsChange(cols) {
-        setProject((prev_0)=>({
-                ...prev_0 || {},
+        setProject((prev_0)=>prev_0 ? {
+                ...prev_0,
                 columns: cols
-            }));
+            } : prev_0);
     }
     async function handleMove(taskId, targetColumnId, targetPosition) {
         try {
@@ -1297,16 +1326,20 @@ function ProjectBoard() {
         setMsg(null);
         try {
             const t = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createTask"])(columnId, title_0);
-            setProject((prev_1)=>({
-                    ...prev_1 || {},
-                    columns: (prev_1?.columns || []).map((c_0)=>c_0.id === columnId ? {
-                            ...c_0,
-                            tasks: [
-                                ...c_0.tasks || [],
-                                t
-                            ]
-                        } : c_0)
-                }));
+            setProject((prev_1)=>{
+                if (!prev_1) return prev_1;
+                const cols_0 = prev_1.columns.map((c_0)=>c_0.id === columnId ? {
+                        ...c_0,
+                        tasks: [
+                            ...c_0.tasks || [],
+                            t
+                        ]
+                    } : c_0);
+                return {
+                    ...prev_1,
+                    columns: cols_0
+                };
+            });
         } catch (err_2) {
             setMsg(err_2?.body?.message || "Failed to create task");
             throw err_2;
@@ -1332,7 +1365,8 @@ function ProjectBoard() {
         try {
             const updated = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["updateTask"])(taskId_1, updates);
             setProject((prev_2)=>{
-                const cols_0 = (prev_2?.columns || []).map((c_1)=>({
+                if (!prev_2) return prev_2;
+                const cols_1 = prev_2.columns.map((c_1)=>({
                         ...c_1,
                         tasks: (c_1.tasks || []).map((t_1)=>t_1.id === taskId_1 ? {
                                 ...t_1,
@@ -1340,11 +1374,11 @@ function ProjectBoard() {
                             } : t_1)
                     }));
                 return {
-                    ...prev_2 || {},
-                    columns: cols_0
+                    ...prev_2,
+                    columns: cols_1
                 };
             });
-            // refresh team members (to update any busy flags)
+            // refresh members
             if (project?.teamId) {
                 try {
                     const members_0 = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getTeamMembers"])(project.teamId);
@@ -1369,13 +1403,14 @@ function ProjectBoard() {
         try {
             await (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["deleteTask"])(taskId_2);
             setProject((prev_4)=>{
-                const cols_1 = (prev_4?.columns || []).map((c_2)=>({
+                if (!prev_4) return prev_4;
+                const cols_2 = prev_4.columns.map((c_2)=>({
                         ...c_2,
                         tasks: (c_2.tasks || []).filter((t_2)=>t_2.id !== taskId_2)
                     }));
                 return {
-                    ...prev_4 || {},
-                    columns: cols_1
+                    ...prev_4,
+                    columns: cols_2
                 };
             });
             setOpenTask(null);
@@ -1384,10 +1419,8 @@ function ProjectBoard() {
             throw err_4;
         }
     }
-    // delete column handler
     async function handleDeleteColumn(columnId_0) {
         setMsg(null);
-        // find column and ensure empty
         const col_1 = (project?.columns || []).find((c_3)=>c_3.id === columnId_0);
         if (!col_1) {
             setMsg("Column not found");
@@ -1401,9 +1434,10 @@ function ProjectBoard() {
         try {
             await (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["deleteColumn"])(columnId_0);
             setProject((prev_5)=>{
+                if (!prev_5) return prev_5;
                 return {
-                    ...prev_5 || {},
-                    columns: (prev_5?.columns || []).filter((c_4)=>c_4.id !== columnId_0)
+                    ...prev_5,
+                    columns: prev_5.columns.filter((c_4)=>c_4.id !== columnId_0)
                 };
             });
         } catch (err_5) {
@@ -1422,12 +1456,10 @@ function ProjectBoard() {
             ...new Set(ids)
         ];
     }
-    // compute isManager: global admin or team owner/admin membership
     const isManager = __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].useMemo({
         "ProjectBoard.useMemo[isManager]": ()=>{
             if (!user) return false;
             if (user.role === "admin") return true;
-            // check teamMembers for a member entry for current user with owner/admin role
             const m = (teamMembers || []).find({
                 "ProjectBoard.useMemo[isManager].m": (x_0)=>(x_0.user?.id ?? x_0.id) === user.id && [
                         "owner",
@@ -1441,36 +1473,195 @@ function ProjectBoard() {
         teamMembers
     ]);
     if (!project) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        className: "pt-20 max-w-6xl mx-auto px-4",
         children: "Loading project..."
     }, void 0, false, {
         fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
-        lineNumber: 239,
+        lineNumber: 252,
         columnNumber: 24
     }, this);
+    const totalTasks = project.columns?.reduce((acc, c_6)=>acc + (c_6.tasks?.length || 0), 0) ?? 0;
+    const finishedTasks = project.columns?.reduce((acc_0, c_7)=>acc_0 + (c_7.tasks?.filter((t_4)=>t_4.status === "FINISHED").length || 0), 0) ?? 0;
+    const progress = totalTasks === 0 ? 0 : Math.round(finishedTasks / totalTasks * 100);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "w-full",
         children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                className: "text-2xl font-bold mb-4",
-                children: project.name
-            }, void 0, false, {
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "flex justify-between items-start",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "text-center",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                className: "text-3xl font-bold text-slate-900",
+                                children: project.name
+                            }, void 0, false, {
+                                fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
+                                lineNumber: 259,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "text-sm text-slate-500 mt-1",
+                                children: project.description
+                            }, void 0, false, {
+                                fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
+                                lineNumber: 260,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex items-center gap-3 mt-3 text-sm",
+                                children: [
+                                    project.team && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        className: "px-2 py-1 bg-slate-100 rounded text-slate-700",
+                                        children: project.team.name
+                                    }, void 0, false, {
+                                        fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
+                                        lineNumber: 262,
+                                        columnNumber: 30
+                                    }, this),
+                                    project.dueDate && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        className: "text-sm text-slate-600",
+                                        children: [
+                                            "Due ",
+                                            formatDateShort(project.dueDate)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
+                                        lineNumber: 263,
+                                        columnNumber: 33
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        className: "text-sm text-slate-600",
+                                        children: [
+                                            "Tasks: ",
+                                            totalTasks
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
+                                        lineNumber: 264,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
+                                lineNumber: 261,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
+                        lineNumber: 258,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "min-w-[220px] bg-white border rounded p-4 shadow-sm",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "text-sm text-slate-500",
+                                children: "Progress"
+                            }, void 0, false, {
+                                fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
+                                lineNumber: 269,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "mt-2 flex items-center gap-3",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "w-full bg-slate-100 h-3 rounded overflow-hidden",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            style: {
+                                                width: `${progress}%`
+                                            },
+                                            className: "h-3 bg-indigo-600 rounded"
+                                        }, void 0, false, {
+                                            fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
+                                            lineNumber: 272,
+                                            columnNumber: 15
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
+                                        lineNumber: 271,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "text-sm font-medium",
+                                        children: [
+                                            progress,
+                                            "%"
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
+                                        lineNumber: 276,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
+                                lineNumber: 270,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "mt-3 text-sm",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        children: [
+                                            "Members: ",
+                                            teamMembers.length
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
+                                        lineNumber: 280,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        children: [
+                                            "Status: ",
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "ml-2 font-medium",
+                                                children: project.status ?? "Active"
+                                            }, void 0, false, {
+                                                fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
+                                                lineNumber: 281,
+                                                columnNumber: 26
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
+                                        lineNumber: 281,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
+                                lineNumber: 279,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
+                        lineNumber: 268,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
                 fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
-                lineNumber: 241,
+                lineNumber: 257,
                 columnNumber: 7
             }, this),
             msg && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "mb-3 text-red-600",
+                className: "mb-3 text-rose-600",
                 children: msg
             }, void 0, false, {
                 fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
-                lineNumber: 242,
+                lineNumber: 286,
                 columnNumber: 15
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "mb-4",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
                     onSubmit: addColumn,
-                    className: "flex gap-2",
+                    className: "flex gap-2 items-center",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                             value: newColTitle,
@@ -1479,39 +1670,46 @@ function ProjectBoard() {
                             className: "px-3 py-2 border rounded flex-1"
                         }, void 0, false, {
                             fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
-                            lineNumber: 246,
+                            lineNumber: 290,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                            className: "bg-slate-600 text-white px-3 py-2 rounded",
+                            className: "bg-indigo-600 text-white px-4 py-2 rounded",
                             children: "Add column"
                         }, void 0, false, {
                             fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
-                            lineNumber: 247,
+                            lineNumber: 291,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
-                    lineNumber: 245,
+                    lineNumber: 289,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
-                lineNumber: 244,
+                lineNumber: 288,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$components$2f$TaskBoard$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                columns: project.columns,
-                onMove: handleMove,
-                onColumnsChange: handleColumnsChange,
-                onAddTask: handleAddTask,
-                onOpenTask: handleOpenTask,
-                onDeleteColumn: handleDeleteColumn,
-                isManager: isManager
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "bg-white border rounded p-4 shadow-sm",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$components$2f$TaskBoard$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                    columns: project.columns,
+                    onMove: handleMove,
+                    onColumnsChange: handleColumnsChange,
+                    onAddTask: handleAddTask,
+                    onOpenTask: handleOpenTask,
+                    onDeleteColumn: handleDeleteColumn,
+                    isManager: isManager
+                }, void 0, false, {
+                    fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
+                    lineNumber: 296,
+                    columnNumber: 9
+                }, this)
             }, void 0, false, {
                 fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
-                lineNumber: 253,
+                lineNumber: 295,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$components$2f$TaskModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1524,13 +1722,13 @@ function ProjectBoard() {
                 onDelete: handleDeleteTask
             }, void 0, false, {
                 fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
-                lineNumber: 255,
+                lineNumber: 299,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/frontend/src/app/projects/[id]/page.tsx",
-        lineNumber: 240,
+        lineNumber: 256,
         columnNumber: 10
     }, this);
 }

@@ -38,7 +38,6 @@ __turbopack_context__.n(__TURBOPACK__imported__module__$5b$project$5d2f$frontend
 "[project]/frontend/src/app/layout.tsx [app-rsc] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-// frontend/src/app/layout.tsx
 __turbopack_context__.s([
     "default",
     ()=>RootLayout,
@@ -51,43 +50,36 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$component
 ;
 ;
 const metadata = {
-    title: 'Teamflow',
-    description: 'Teamflow - collaborative projects'
+    title: "Teamflow",
+    description: "Teamflow - collaborative projects"
 };
 function RootLayout({ children }) {
-    // IMPORTANT:
-    // TopNav is fixed with height h-16 (64px). We add padding-top to the main container
-    // so content does not sit under the navbar. We also make main the scrollable area
-    // (overflow-y-auto) so the navbar never moves and only body/main scrolls.
-    //
-    // If you ever want only a sub-area to scroll (e.g. right panel), remove overflow on main
-    // and apply `max-h-[...] overflow-y-auto` to the specific container.
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("html", {
         lang: "en",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("body", {
             className: "min-h-screen bg-slate-50",
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$src$2f$components$2f$ClientRoot$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
-                    className: "w-full px-4 pt-16 pb-6 min-h-[calc(100vh-4rem)] overflow-y-auto",
+                    className: "w-full pt-16 pb-6 min-h-[calc(100vh-4rem)] overflow-y-auto",
                     children: children
                 }, void 0, false, {
                     fileName: "[project]/frontend/src/app/layout.tsx",
-                    lineNumber: 24,
+                    lineNumber: 16,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/frontend/src/app/layout.tsx",
-                lineNumber: 22,
+                lineNumber: 14,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/frontend/src/app/layout.tsx",
-            lineNumber: 21,
+            lineNumber: 13,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/frontend/src/app/layout.tsx",
-        lineNumber: 20,
+        lineNumber: 12,
         columnNumber: 5
     }, this);
 }

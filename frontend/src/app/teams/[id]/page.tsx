@@ -1,30 +1,40 @@
 "use client";
 // frontend/src/app/teams/[id]/page.tsx
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "../../../context/AuthContext";
-import { getTeamDetails as apiGetTeamDetails } from "../../../lib/api";
+import {
+  getTeamDetails as apiGetTeamDetails,
+  getProject,
+} from "../../../lib/api";
 
 type UserBase = {
   id: string;
   email: string;
   name?: string | null;
-  // optional helpers some admin endpoints return:
   _count?: { teamMembers?: number };
-  teamIds?: string[]; // if backend provides array of team ids
+  teamIds?: string[];
 };
 type TeamMember = {
   id: string;
   role: "owner" | "admin" | "member" | string;
   user: UserBase;
 };
+type ProjectShort = {
+  id: string;
+  name?: string;
+  description?: string;
+  columns?: any[];
+  tasks?: any[];
+};
+
 type Team = {
   id: string;
   name: string;
   ownerId?: string | null;
   members?: TeamMember[];
-  projects?: { id: string; name?: string; description?: string }[];
+  projects?: ProjectShort[];
 };
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE ?? "http://localhost:4000";
@@ -35,12 +45,10 @@ export default function TeamPage() {
   const teamId = Array.isArray(params?.id) ? params.id[0] : params?.id;
   const { user } = useAuth();
 
-  // local state
   const [team, setTeam] = useState<Team | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [msg, setMsg] = useState<string | null>(null);
 
-  // invite state
   const [inviteEmail, setInviteEmail] = useState<string>("");
   const [inviteRole, setInviteRole] = useState<"member" | "admin" | "owner">(
     "member"
@@ -51,11 +59,9 @@ export default function TeamPage() {
   const [processingMemberId, setProcessingMemberId] = useState<string | null>(
     null
   );
-
-  // delete-confirm UI state
+  const [deleting, setDeleting] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [deleteNameInput, setDeleteNameInput] = useState("");
-  const [deleting, setDeleting] = useState(false);
 
   if (!teamId) return <div>Invalid team id</div>;
 
@@ -68,34 +74,50 @@ export default function TeamPage() {
     };
   }
 
-  // 1) load team (always)
-  useEffect(() => {
-    let mounted = true;
-    (async () => {
-      setMsg(null);
-      setLoading(true);
-      try {
-        const data = await apiGetTeamDetails(String(teamId));
-        if (!mounted) return;
-        setTeam(data as Team);
-      } catch (err: unknown) {
-        const e = err as { status?: number; body?: any } | Error;
-        setMsg(
-          (e as any)?.body?.message ||
-            (e as Error).message ||
-            "Failed to load team"
-        );
-      } finally {
-        if (mounted) setLoading(false);
+  async function loadTeam() {
+    setMsg(null);
+    setLoading(true);
+    try {
+      const data = await apiGetTeamDetails(String(teamId));
+      setTeam(data as Team);
+
+      const projs = (data as any)?.projects;
+      if (Array.isArray(projs) && projs.length > 0) {
+        try {
+          const detailed = await Promise.all(
+            projs.map(async (p: any) => {
+              if (!p?.id) return p;
+              try {
+                const full = await getProject(p.id);
+                return full;
+              } catch {
+                return p;
+              }
+            })
+          );
+          setTeam((prev) => ({ ...(prev || {}), projects: detailed }));
+        } catch {
+          // ignore
+        }
       }
-    })();
-    return () => {
-      mounted = false;
-    };
+    } catch (err: unknown) {
+      const e = err as { status?: number; body?: any } | Error;
+      setMsg(
+        (e as any)?.body?.message ||
+          (e as Error).message ||
+          "Failed to load team"
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    loadTeam();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [teamId]);
 
-  // 2) load users list ONLY if the signed-in user is a global admin.
-  // This avoids hitting /admin/users (404) for non-admin users.
+  // admin users list (only if global admin)
   useEffect(() => {
     let mounted = true;
     (async () => {
@@ -107,17 +129,15 @@ export default function TeamPage() {
         });
         if (!mounted) return;
         if (!res.ok) {
-          // don't print to console — fail silently (admins can still manually invite)
           setUsersList(null);
           return;
         }
         const json = await res.json();
-        // Expecting an array; if server returns wrapper, try to extract.
         let arr: UserBase[] = [];
         if (Array.isArray(json)) arr = json as UserBase[];
         else if (Array.isArray(json.users)) arr = json.users;
         else if (Array.isArray(json.data)) arr = json.data;
-        else arr = json as UserBase[]; // best-effort
+        else arr = json as UserBase[];
         if (mounted) setUsersList(arr);
       } catch {
         if (mounted) setUsersList(null);
@@ -136,29 +156,59 @@ export default function TeamPage() {
     myRoleInTeam === "owner" ||
     myRoleInTeam === "admin";
 
-  const ownerName =
-    team?.members?.find((m) => m.role === "owner")?.user?.name ??
-    team?.members?.find((m) => m.role === "owner")?.user?.email ??
-    team?.ownerId ??
-    "—";
+  const ownerName = useMemo(() => {
+    const owner = team?.members?.find((m) => m.role === "owner");
+    return owner?.user?.name ?? owner?.user?.email ?? team?.ownerId ?? "—";
+  }, [team]);
 
-  async function reloadTeam() {
-    setMsg(null);
-    setLoading(true);
-    try {
-      const data = await apiGetTeamDetails(String(teamId));
-      setTeam(data as Team);
-    } catch (err: unknown) {
-      const e = err as { status?: number; body?: any } | Error;
-      setMsg(
-        (e as any)?.body?.message ||
-          (e as Error).message ||
-          "Failed to reload team"
-      );
-    } finally {
-      setLoading(false);
-    }
-  }
+  // collect all tasks across team's projects
+  const allProjectTasks = useMemo(() => {
+    const tasks: any[] = [];
+    (team?.projects || []).forEach((p: any) => {
+      if (Array.isArray(p.tasks) && p.tasks.length)
+        tasks.push(
+          ...p.tasks.map((t: any) => ({
+            ...t,
+            projectId: p.id,
+            projectName: p.name,
+          }))
+        );
+      else if (Array.isArray(p.columns)) {
+        p.columns.forEach((c: any) => {
+          if (Array.isArray(c.tasks))
+            tasks.push(
+              ...c.tasks.map((t: any) => ({
+                ...t,
+                projectId: p.id,
+                projectName: p.name,
+              }))
+            );
+        });
+      }
+    });
+    return tasks;
+  }, [team]);
+
+  // map userId => tasks array
+  const memberTaskMap = useMemo(() => {
+    const map = new Map<string, any[]>();
+    (team?.members || []).forEach((m) => map.set(m.user.id, []));
+    allProjectTasks.forEach((t) => {
+      const aId = t.assigneeId ?? t.assignee?.id;
+      if (aId && map.has(aId)) {
+        map.get(aId)!.push(t);
+      }
+    });
+    return map;
+  }, [team, allProjectTasks]);
+
+  const totalMembers = team?.members?.length ?? 0;
+  const totalProjects = team?.projects?.length ?? 0;
+  const totalTasks = allProjectTasks.length;
+  const availableMembers =
+    team?.members?.filter(
+      (m) => (memberTaskMap.get(m.user.id) || []).length === 0
+    ).length ?? 0;
 
   async function handleInvite(e?: React.FormEvent) {
     e?.preventDefault();
@@ -210,7 +260,7 @@ export default function TeamPage() {
       setInviteEmail("");
       setSelectedUserId(null);
       setInviteRole("member");
-      await reloadTeam();
+      await loadTeam();
       setMsg("Invitation/added successfully.");
     } catch (err: unknown) {
       setMsg((err as Error).message || "Network error");
@@ -238,7 +288,7 @@ export default function TeamPage() {
         const txt = await r.text().catch(() => "");
         throw new Error(txt || `Failed (${r.status})`);
       }
-      await reloadTeam();
+      await loadTeam();
       setMsg("Role updated.");
     } catch (err: unknown) {
       setMsg((err as Error).message || "Failed to update role");
@@ -277,7 +327,7 @@ export default function TeamPage() {
         const txt = await r.text().catch(() => "");
         throw new Error(txt || `Failed (${r.status})`);
       }
-      await reloadTeam();
+      await loadTeam();
       setMsg("Member removed.");
     } catch (err: unknown) {
       setMsg((err as Error).message || "Failed to remove");
@@ -318,7 +368,6 @@ export default function TeamPage() {
   }
 
   function userIsInOtherTeam(u: UserBase) {
-    // best-effort detection: when backend returned _count or teamIds
     const count =
       typeof u._count?.teamMembers === "number"
         ? u._count!.teamMembers
@@ -327,49 +376,66 @@ export default function TeamPage() {
       ? ((u as any).teamIds as string[])
       : undefined;
     const alreadyInThis = team?.members?.some((m) => m.user?.id === u.id);
-    if (typeof count === "number") {
-      return count > 0 && !alreadyInThis;
-    }
-    if (Array.isArray(teamIds)) {
-      return teamIds.length > 0 && !alreadyInThis;
-    }
+    if (typeof count === "number") return count > 0 && !alreadyInThis;
+    if (Array.isArray(teamIds)) return teamIds.length > 0 && !alreadyInThis;
     return false;
   }
 
-  return (
-    <div>
-      <div className="mb-4">
-        <Link href="/teams" className="text-sm text-blue-600">
-          ← Back to teams
-        </Link>
-      </div>
+  function computeProgressForTasks(tasks: any[]) {
+    if (!tasks || tasks.length === 0) return { percent: 0, total: 0, done: 0 };
+    const total = tasks.length;
+    const done = tasks.filter(
+      (t) => String(t.status || "").toUpperCase() === "FINISHED"
+    ).length;
+    const percent = Math.round((done / total) * 100);
+    return { percent, total, done };
+  }
 
-      {loading && <div>Loading team...</div>}
-      {msg && <div className="mb-3 text-red-600">{msg}</div>}
+  return (
+    <div className="space-y-6">
+      {loading && <div className="text-sm text-gray-600">Loading team...</div>}
+      {msg && <div className="text-sm text-red-600">{msg}</div>}
 
       {!loading && team && (
         <>
-          <div className="mb-4">
-            <h2 className="text-2xl font-bold mb-1">{team.name}</h2>
+          <header className="bg-white rounded shadow p-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
             <div>
-              <strong>Owner:</strong> {ownerName}
+              <h2 className="text-2xl font-bold">{team.name}</h2>
+              <div className="text-sm text-gray-600 mt-1">
+                Owner: <span className="font-medium">{ownerName}</span>
+              </div>
             </div>
-            <div>
-              <strong>Members:</strong> {team.members?.length ?? 0}
-            </div>
-          </div>
 
+            <div className="flex gap-3">
+              <div className="bg-gray-50 p-3 rounded text-center min-w-[110px]">
+                <div className="text-xs text-gray-500">Members</div>
+                <div className="text-lg font-semibold">{totalMembers}</div>
+              </div>
+              <div className="bg-gray-50 p-3 rounded text-center min-w-[110px]">
+                <div className="text-xs text-gray-500">Projects</div>
+                <div className="text-lg font-semibold">{totalProjects}</div>
+              </div>
+              <div className="bg-gray-50 p-3 rounded text-center min-w-[140px]">
+                <div className="text-xs text-gray-500">Tasks (team)</div>
+                <div className="text-lg font-semibold">{totalTasks}</div>
+                <div className="text-xs text-gray-400 mt-1">
+                  Available: {String(availableMembers)}
+                </div>
+              </div>
+            </div>
+          </header>
+
+          {/* Manage / invite */}
           {canManage && (
-            <div className="mb-4 p-3 border rounded">
-              <h3 className="font-semibold mb-2">Add / invite member</h3>
+            <section className="bg-white p-4 rounded shadow">
+              <h3 className="font-semibold mb-3">Add / invite member</h3>
 
               {usersList ? (
                 <div className="flex gap-2 flex-wrap items-center">
                   <select
                     value={selectedUserId ?? ""}
                     onChange={(e) => setSelectedUserId(e.target.value || null)}
-                    className="px-3 py-2 border rounded"
-                    style={{ minWidth: 300 }}
+                    className="px-3 py-2 border rounded min-w-[280px]"
                   >
                     <option value="">
                       -- Select a user (or leave blank to enter email) --
@@ -390,7 +456,7 @@ export default function TeamPage() {
                               backgroundColor: disabled
                                 ? "#f0f0f0"
                                 : inOther
-                                ? "#ffecec"
+                                ? "#fff0f0"
                                 : undefined,
                               color: inOther ? "#900" : undefined,
                             }}
@@ -410,7 +476,7 @@ export default function TeamPage() {
                     value={inviteEmail}
                     onChange={(e) => setInviteEmail(e.target.value)}
                     placeholder="Or enter email manually"
-                    className="px-3 py-2 border rounded flex-1"
+                    className="px-3 py-2 border rounded flex-1 min-w-[220px]"
                   />
 
                   <select
@@ -463,114 +529,208 @@ export default function TeamPage() {
                   </button>
                 </form>
               )}
-            </div>
+            </section>
           )}
 
-          <h3 className="text-lg mb-2">Members</h3>
-          <ul className="space-y-2 mb-4">
-            {team.members?.map((m) => (
-              <li
-                key={m.id}
-                className="p-3 border rounded flex justify-between items-center"
-              >
-                <div>
-                  <div className="font-semibold">
-                    {m.user?.name ?? m.user?.email}{" "}
-                    <span className="ml-2 text-sm text-gray-600">
-                      ({m.user?.email})
-                    </span>
+          {/* Members & workload (including per-member task list) */}
+          <section className="bg-white p-4 rounded shadow">
+            <h3 className="text-lg font-semibold mb-3">Members & workload</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {(team.members || []).map((m) => {
+                const tasksForMember = memberTaskMap.get(m.user.id) || [];
+                const prog = computeProgressForTasks(tasksForMember);
+                const available = tasksForMember.length === 0;
+
+                const showPromote = m.role === "member" || m.role === "admin";
+                const showDemote = m.role === "owner" || m.role === "admin";
+                const promoteLabel =
+                  m.role === "member"
+                    ? "Promote"
+                    : m.role === "admin"
+                    ? "Make owner"
+                    : "Promote";
+
+                return (
+                  <div
+                    key={m.id}
+                    className="p-3 border rounded flex flex-col md:flex-row md:items-start md:justify-between gap-3"
+                  >
+                    <div className="flex-1 min-w-0">
+                      {/* top row: name + email (left), role (right) */}
+                      <div className="flex items-center justify-between">
+                        <div className="min-w-0">
+                          <div className="flex items-baseline gap-3">
+                            <div className="font-semibold truncate">
+                              {m.user?.name ?? m.user?.email}
+                            </div>
+                            <div className="text-sm text-gray-500 truncate">
+                              ({m.user?.email})
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="text-right ml-4 flex items-center gap-2">
+                          <div className=" font-bold mr-2">
+                            Role
+                          </div>
+                          <div className="text-sm text-gray-500 truncate mr-10">
+                            {m.role}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* tasks list */}
+                      <div className="mt-3">
+                        <div className="text-xs text-gray-500">
+                          Tasks assigned ({tasksForMember.length})
+                        </div>
+                        {tasksForMember.length === 0 ? (
+                          <div className="text-sm text-gray-500 mt-1">
+                            No tasks
+                          </div>
+                        ) : (
+                          <ul className="mt-2 space-y-1">
+                            {tasksForMember.map((t: any) => (
+                              <li key={t.id} className="text-sm text-slate-700">
+                                <span className="font-medium">
+                                  {t.projectName ?? t.projectId}
+                                </span>
+                                <span className="mx-2 text-gray-400">—</span>
+                                <span>{t.title ?? "Untitled task"}</span>
+                                <span className="ml-2 text-xs text-gray-400">
+                                  ({String(t.status || "TODO")})
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* actions (right column) */}
+                    <div className="md:w-56 flex flex-col items-end gap-3">
+                      <div className="flex gap-2">
+                        {canManage ? (
+                          <>
+                            {showPromote && (
+                              <button
+                                className="px-2 py-1 border rounded text-sm min-w-24 text-center"
+                                onClick={() => {
+                                  const next =
+                                    m.role === "member"
+                                      ? "admin"
+                                      : m.role === "admin"
+                                      ? "owner"
+                                      : undefined;
+                                  if (!next) return;
+                                  changeMemberRole(m.id, next);
+                                }}
+                                disabled={!!processingMemberId}
+                              >
+                                {processingMemberId === m.id
+                                  ? "…"
+                                  : promoteLabel}
+                              </button>
+                            )}
+
+                            {showDemote && (
+                              <button
+                                className="px-2 py-1 border rounded text-sm"
+                                onClick={() => demoteMember(m)}
+                                disabled={!!processingMemberId}
+                              >
+                                {processingMemberId === m.id ? "…" : "Demote"}
+                              </button>
+                            )}
+
+                            <button
+                              className="px-2 py-1 bg-red-600 text-white rounded text-sm"
+                              onClick={() => {
+                                if (m.user.id === myUserId) {
+                                  alert("You cannot remove yourself.");
+                                  return;
+                                }
+                                removeMember(m.id);
+                              }}
+                              disabled={
+                                !!processingMemberId || m.user.id === myUserId
+                              }
+                            >
+                              {processingMemberId === m.id ? "…" : "Remove"}
+                            </button>
+                          </>
+                        ) : (
+                          <div className="text-sm text-gray-500">View only</div>
+                        )}
+                      </div>
+                    </div>
                   </div>
-                  <div className="text-sm text-gray-600">Role: {m.role}</div>
-                </div>
+                );
+              })}
 
-                <div className="flex items-center gap-2">
-                  {canManage ? (
-                    <>
-                      <button
-                        className="px-2 py-1 border rounded text-sm"
-                        onClick={() => {
-                          const next =
-                            m.role === "member"
-                              ? "admin"
-                              : m.role === "admin"
-                              ? "owner"
-                              : null;
-                          if (!next) return;
-                          changeMemberRole(m.id, next);
-                        }}
-                        disabled={!!processingMemberId}
-                      >
-                        {processingMemberId === m.id
-                          ? "Working…"
-                          : m.role === "member"
-                          ? "Promote"
-                          : m.role === "admin"
-                          ? "Make owner"
-                          : "Promote"}
-                      </button>
+              {(!team.members || team.members.length === 0) && (
+                <div className="text-sm text-gray-500">No members yet</div>
+              )}
+            </div>
+          </section>
 
-                      {m.role !== "member" && (
-                        <button
-                          className="px-2 py-1 border rounded text-sm"
-                          onClick={() => demoteMember(m)}
-                          disabled={!!processingMemberId}
+          {/* Projects assigned */}
+          <section className="bg-white p-4 rounded shadow">
+            <h3 className="text-lg font-semibold mb-3">Projects assigned</h3>
+            <div className="space-y-3">
+              {(team.projects || []).map((p: any) => {
+                let projTasks: any[] = [];
+                if (Array.isArray(p.tasks) && p.tasks.length)
+                  projTasks = p.tasks;
+                else if (Array.isArray(p.columns)) {
+                  p.columns.forEach((c: any) => {
+                    if (Array.isArray(c.tasks)) projTasks.push(...c.tasks);
+                  });
+                }
+                const summary = computeProgressForTasks(projTasks);
+                return (
+                  <div
+                    key={p.id}
+                    className="p-3 border rounded flex items-center justify-between"
+                  >
+                    <div>
+                      <div className="font-semibold">{p.name ?? "—"}</div>
+                      <div className="text-sm text-gray-500">
+                        {p.description}
+                      </div>
+                    </div>
+
+                    <div className="text-right">
+                      <div className="text-sm text-gray-500">
+                        Tasks: {projTasks.length}
+                      </div>
+                      <div className="text-sm font-medium">
+                        {summary.percent}% done
+                      </div>
+                      <div className="mt-2">
+                        <Link
+                          href={`/projects/${p.id}`}
+                          className="text-indigo-600 text-sm"
                         >
-                          {processingMemberId === m.id ? "Working…" : "Demote"}
-                        </button>
-                      )}
+                          Open
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
 
-                      <button
-                        className="px-2 py-1 bg-red-600 text-white rounded text-sm"
-                        onClick={() => {
-                          if (m.user.id === myUserId) {
-                            alert("You cannot remove yourself.");
-                            return;
-                          }
-                          removeMember(m.id);
-                        }}
-                        disabled={
-                          !!processingMemberId || m.user.id === myUserId
-                        }
-                      >
-                        {processingMemberId === m.id ? "Working…" : "Remove"}
-                      </button>
-                    </>
-                  ) : (
-                    <div className="text-sm text-gray-500">View only</div>
-                  )}
+              {(team.projects || []).length === 0 && (
+                <div className="text-sm text-gray-500">
+                  No projects assigned
                 </div>
-              </li>
-            ))}
-            {(!team.members || team.members.length === 0) && (
-              <div>No members yet</div>
-            )}
-          </ul>
+              )}
+            </div>
+          </section>
 
-          <h3 className="text-lg mb-2">Projects assigned</h3>
-          <ul>
-            {(team.projects || []).map((p) => (
-              <li
-                key={p.id}
-                className="p-2 border rounded mb-2 flex justify-between items-center"
-              >
-                <div>
-                  <div className="font-semibold">{p.name}</div>
-                  <div className="text-sm text-gray-600">{p.description}</div>
-                </div>
-                <div>
-                  <Link href={`/projects/${p.id}`} className="text-blue-600">
-                    Open
-                  </Link>
-                </div>
-              </li>
-            ))}
-            {(team.projects || []).length === 0 && (
-              <div>No projects assigned</div>
-            )}
-          </ul>
-
+          {/* delete team */}
           {(user?.role === "admin" || myRoleInTeam === "owner") && (
-            <div className="mt-6">
+            <section className="mt-4">
               {!showDeleteConfirm ? (
                 <button
                   className="bg-red-700 text-white px-3 py-2 rounded"
@@ -587,10 +747,7 @@ export default function TeamPage() {
                   <div className="mb-2">
                     This will permanently delete the team{" "}
                     <strong>{team.name}</strong> and{" "}
-                    <strong>
-                      will also delete projects assigned to this team
-                    </strong>
-                    .
+                    <strong>also delete projects assigned to this team</strong>.
                   </div>
 
                   <input
@@ -621,7 +778,7 @@ export default function TeamPage() {
                   </div>
                 </div>
               )}
-            </div>
+            </section>
           )}
         </>
       )}
