@@ -16,9 +16,9 @@ export default function TopNav() {
   if (!mounted) {
     return (
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b">
-        <div className="max-w-[100rem] mx-auto px-4 h-16 flex items-center justify-between">
+        <div className="max-w-400 mx-auto px-4 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
-            <div className="rounded-md p-2 bg-gradient-to-r from-indigo-600 to-violet-500">
+            <div className="rounded-md p-2 bg-linear-to-r from-indigo-600 to-violet-500">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="block">
                 <path d="M3 6h18M3 12h18M3 18h18" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -40,9 +40,9 @@ export default function TopNav() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b">
-      <div className="max-w-[100rem] mx-auto px-4 h-16 flex items-center justify-between">
+      <div className="max-w-400 mx-auto px-4 h-16 flex items-center justify-between">
         <Link href={brandHref} className="flex items-center gap-3">
-          <div className="rounded-md p-2 bg-gradient-to-r from-indigo-600 to-violet-500 shadow-md">
+          <div className="rounded-md p-2 bg-linear-to-r from-indigo-600 to-violet-500 shadow-md">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="block">
               <path d="M3 6h18M3 12h18M3 18h18" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
